@@ -39,46 +39,43 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.black87,
-      appBar:  PreferredSize(
-        preferredSize: Size.fromHeight(SizeConfig.blockWidth * 17),
-        child: AppBar(
-          title: Padding(
-            padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
-            child: Text(
-              'Bahçem',
-              style: TextStyle(
-                fontFamily: 'Photoshoot',
-                color: Colors.green[900],
-                fontSize: SizeConfig.blockWidth * 6,
-                shadows: <Shadow>[
-                  Shadow(
-                    offset: Offset(SizeConfig.blockWidth * 0.2,
-                      SizeConfig.blockWidth * 0.2,),
-                    blurRadius: SizeConfig.blockWidth * 0.2,
-                    color: Color.fromARGB(70, 0, 0, 0),
-                  ),
-                ],
+      backgroundColor: Colors.grey[300],
+      appBar:  AppBar(
+        title: Padding(
+          padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 3, 0, 0),
+          child: Text(
+            'Bahçem',
+            style: TextStyle(
+              fontFamily: 'Photoshoot',
+              color: Colors.green[900],
+              fontSize: SizeConfig.blockWidth * 5,
+              shadows: <Shadow>[
+                Shadow(
+                  offset: Offset(SizeConfig.blockWidth * 0.2,
+                    SizeConfig.blockWidth * 0.2,),
+                  blurRadius: SizeConfig.blockWidth * 0.2,
+                  color: Color.fromARGB(70, 0, 0, 0),
+                ),
+              ],
+            ),
+          ),
+        ),
+        centerTitle: true,
+        actions: <Widget>[
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+            child: GestureDetector(
+              onTap: () => Navigator.pushNamed(context, "/settings_page"),
+              child: Image.asset(
+                'assets/icons/settings.png',
+                width: SizeConfig.blockWidth * 7,
+                height: SizeConfig.blockWidth * 7,
               ),
             ),
           ),
-          centerTitle: true,
-          actions: <Widget>[
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 4, 0),
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/settings_page"),
-                child: Image.asset(
-                  'assets/icons/settings.png',
-                  width: SizeConfig.blockWidth * 8,
-                  height: SizeConfig.blockWidth * 8,
-                ),
-              ),
-            ),
-          ],
-          backgroundColor: Colors.grey[50],
-          elevation: 0.0,
-        ),
+        ],
+        backgroundColor: Colors.grey[50],
+        elevation: 0.0,
       ),
       body: PageView(
         children: _pages,
@@ -179,7 +176,6 @@ class _MyHomePageState extends State<MyHomePage> {
             _pageController.animateToPage(_selectedItem,
                 duration: Duration(milliseconds: 200), curve: Curves.linear);
           });
-
         },
       ),
     );
