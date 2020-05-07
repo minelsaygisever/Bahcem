@@ -66,7 +66,7 @@ class BahcemBitkiGoruntule extends StatelessWidget{
               ]),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -93,7 +93,7 @@ class BahcemBitkiGoruntule extends StatelessWidget{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -120,7 +120,7 @@ class BahcemBitkiGoruntule extends StatelessWidget{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -147,7 +147,7 @@ class BahcemBitkiGoruntule extends StatelessWidget{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -174,7 +174,7 @@ class BahcemBitkiGoruntule extends StatelessWidget{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -201,7 +201,7 @@ class BahcemBitkiGoruntule extends StatelessWidget{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Container(
                 alignment: Alignment.topLeft,
                 width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
@@ -242,7 +242,7 @@ class BahcemBitkiGoruntule extends StatelessWidget{
               ],
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[

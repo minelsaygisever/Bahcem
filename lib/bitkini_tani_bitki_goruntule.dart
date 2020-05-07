@@ -53,7 +53,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -78,7 +78,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -104,7 +104,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
             ),
 
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -130,7 +130,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
             ),
 
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -156,7 +156,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
             ),
 
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -182,7 +182,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
             ),
 
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
