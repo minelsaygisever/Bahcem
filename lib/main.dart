@@ -1,8 +1,12 @@
-import 'pages.dart';
 
-import 'pages.dart';
 import 'package:flutter/material.dart';
 import 'SizeConfig.dart';
+
+import 'bahcem_sayfasi.dart';
+import 'bitkini_tani_sayfasi.dart';
+import 'blog_anasayfa.dart';
+import 'ayarlar_sayfasi.dart';
+import 'acilis_sayfasi.dart';
 
 void main() => runApp(MyApp());
 
@@ -201,80 +205,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
-
-class AcilisSayfasi extends StatefulWidget {
-  @override
-  _AcilisSayfasiState createState() => _AcilisSayfasiState();
-}
-
-class _AcilisSayfasiState extends State<AcilisSayfasi> {
-  @override
-  void initState(){
-    super.initState();
-
-    //_mockCheckForSession true dönerse status true oluyor, false dönerse status false oluyor
-    _mockCheckForSession().then(
-            (status) {
-          if (status) {
-            _navigateToHome();
-          } else {
-            _navigateToLogin();
-          }
-        }
-    );
-  }
-
-  Future<bool> _mockCheckForSession() async {
-    await Future.delayed(Duration(milliseconds: 2000), () {});
-
-    return true; //bu kısmı giriş yapılmış mı yapılmamış mı ona göre döndürürüz
-  }
-
-  void _navigateToHome(){
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-            builder: (BuildContext context) => MyHomePage()
-        )
-    );
-  }
-
-  void _navigateToLogin(){
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-            builder: (BuildContext context) => LoginSayfasi()
-        )
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    return Scaffold(
-      body: Container(
-        color: Colors.green[900], //ekranın arka plan rengi
-        child: Center(
-          child: Text(
-            "Bahçem",
-            textDirection: TextDirection.ltr,
-            style: TextStyle(
-              color: Colors.grey[50],
-              fontFamily: "Photoshoot",
-              fontSize: SizeConfig.blockWidth * 15,
-              shadows: <Shadow> [
-                Shadow(
-                  offset: Offset(SizeConfig.blockWidth * 0.5,
-                      SizeConfig.blockWidth * 0.5),
-                  blurRadius: 5.0,
-                  color: Color.fromARGB(70, 0, 0, 0),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-
 }
