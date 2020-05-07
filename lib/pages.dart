@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'SizeConfig.dart';
 
-class FirstPage extends StatelessWidget{
+class BitkiniTaniSayfasi extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,7 +141,7 @@ class FirstPage extends StatelessWidget{
   }
 }
 
-class SecondPage extends StatelessWidget{
+class BahcemSayfasi extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -254,7 +254,7 @@ class SecondPage extends StatelessWidget{
   }
 }
 
-class ThirdPage extends StatelessWidget{
+class BlogAnaSayfa extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(

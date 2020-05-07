@@ -25,9 +25,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _selectedItem = 1;
-  var _pages = [FirstPage(), SecondPage(), ThirdPage()];
-  var _pageController = PageController();
+  static int _selectedItem = 1;
+  var _pages = [BitkiniTaniSayfasi(), BahcemSayfasi(), BlogAnaSayfa()];
+  var _pageController = PageController(initialPage: _selectedItem);
   static var _zeroIconSize = SizeConfig.blockWidth * 5;
   static var _oneIconSize = SizeConfig.blockWidth * 8;
   static var _twoIconSize = SizeConfig.blockWidth * 5;
@@ -82,6 +82,39 @@ class _MyHomePageState extends State<MyHomePage> {
         onPageChanged: (index) {
           setState(() {
             _selectedItem = index;
+            if(index == 0){
+              _zeroIconSize = SizeConfig.blockWidth * 8;
+              _oneIconSize = SizeConfig.blockWidth * 5;
+              _twoIconSize = SizeConfig.blockWidth * 5;
+              _zeroTextSize = SizeConfig.blockWidth * 0;
+              _oneTextSize = SizeConfig.blockWidth * 4;
+              _twoTextSize = SizeConfig.blockWidth * 4;
+            } else if (index == 1){
+              _zeroIconSize = SizeConfig.blockWidth * 5;
+              _oneIconSize = SizeConfig.blockWidth * 8;
+              _twoIconSize = SizeConfig.blockWidth * 5;
+              _zeroTextSize = SizeConfig.blockWidth * 4;
+              _oneTextSize = SizeConfig.blockWidth * 0;
+              _twoTextSize = SizeConfig.blockWidth * 4;
+            } else if (index == 2){
+              _zeroIconSize = SizeConfig.blockWidth * 5;
+              _oneIconSize = SizeConfig.blockWidth * 5;
+              _twoIconSize = SizeConfig.blockWidth * 8;
+              _zeroTextSize = SizeConfig.blockWidth * 4;
+              _oneTextSize = SizeConfig.blockWidth * 4;
+              _twoTextSize = SizeConfig.blockWidth * 0;
+            }
+          });
+
+        },
+        controller: _pageController,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        onTap: (index) {
+          setState(() {
+            _selectedItem = index;
+            _pageController.animateToPage(_selectedItem, duration: Duration(milliseconds: 200), curve: Curves.linear);
           });
           if(index == 0){
             _zeroIconSize = SizeConfig.blockWidth * 8;
@@ -106,10 +139,6 @@ class _MyHomePageState extends State<MyHomePage> {
             _twoTextSize = SizeConfig.blockWidth * 0;
           }
         },
-        controller: _pageController,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedItem,
         backgroundColor: Colors.green[900],
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -169,14 +198,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ],
-
-        onTap: (index) {
-          setState(() {
-            _selectedItem = index;
-            _pageController.animateToPage(_selectedItem,
-                duration: Duration(milliseconds: 200), curve: Curves.linear);
-          });
-        },
       ),
     );
   }
