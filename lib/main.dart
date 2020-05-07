@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
             child: GestureDetector(
-              onTap: () => Navigator.pushNamed(context, "/settings_page"),
+              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AyarlarSayfasi()),),
               child: Image.asset(
                 'assets/icons/settings.png',
                 width: SizeConfig.blockWidth * 7,
