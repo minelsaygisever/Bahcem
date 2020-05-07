@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'SizeConfig.dart';
 import 'custom_switch.dart';
-import 'hakkında_sayfasi.dart';
+import 'hakkinda_sayfasi.dart';
 
 class AyarlarSayfasi extends StatefulWidget {
   @override
