@@ -44,12 +44,7 @@ class BitkiniTaniSayfasi extends StatelessWidget{
                       child: new Text(
                         "Orkide",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "Champagne-Limousines-Bold",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green[900],
-                          fontSize: SizeConfig.blockWidth * 5,
-                        ),
+                        style: SizeConfig.yaziAciklamaBaslik,
                       ),
                     ),
                   ),
@@ -83,12 +78,7 @@ class BitkiniTaniSayfasi extends StatelessWidget{
                       child: new Text(
                         "Kasımpatı",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "Champagne-Limousines-Bold",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green[900],
-                          fontSize: SizeConfig.blockWidth * 5,
-                        ),
+                        style: SizeConfig.yaziAciklamaBaslik,
                       ),
                     ),
                   ),
@@ -122,12 +112,7 @@ class BitkiniTaniSayfasi extends StatelessWidget{
                       child: new Text(
                         "Deve Tabanı",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "Champagne-Limousines-Bold",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green[900],
-                          fontSize: SizeConfig.blockWidth * 5,
-                        ),
+                        style: SizeConfig.yaziAciklamaBaslik,
                       ),
                     ),
                   ),

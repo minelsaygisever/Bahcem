@@ -25,11 +25,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
       appBar:  AppBar(
         title: Text(
           'Ponsetya 1 Düzenle',
-          style: TextStyle(
-            fontFamily: "Champagne-Limousines-Bold",
-            fontSize: SizeConfig.blockWidth * 6,
-            color: Colors.green[900],
-          ),
+          style: SizeConfig.yaziAppbarBaslik,
         ),
         backgroundColor: Colors.grey[50],
         elevation: 0.0,
@@ -57,11 +53,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         ),
                       ),
                     ),
-                    style: TextStyle(
-                      fontFamily: "Champagne-Limousines-Bold",
-                      color: Colors.black87,
-                      fontSize: SizeConfig.blockWidth * 4.5,
-                    ),
+                    style: SizeConfig.yaziAciklama,
                   ),
                 ],
               ),
@@ -112,11 +104,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                               ),
                             ),
                           ),
-                          style: TextStyle(
-                            fontFamily: "Champagne-Limousines-Bold",
-                            color: Colors.black87,
-                            fontSize: SizeConfig.blockWidth * 4.5,
-                          ),
+                          style: SizeConfig.yaziAciklama,
                         ),
                       ),
                     ]
@@ -133,11 +121,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                     width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
                     child: Text(
                       "Sulama",
-                      style: TextStyle(
-                        fontFamily: "Champagne-Limousines-Bold",
-                        fontSize: SizeConfig.blockWidth * 5,
-                        color: Colors.green[900],
-                      ),
+                      style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Row(
@@ -153,11 +137,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             iconSize: SizeConfig.blockWidth * 6,
                             elevation: 15,
                             isExpanded: true,
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontFamily: "Champagne-Limousines-Bold",
-                              fontSize: SizeConfig.blockWidth * 4,
-                            ),
+                            style: SizeConfig.yaziWidgetIci,
                             underline: Container(
                               height:  SizeConfig.blockWidth * 0.3,
                               color: Colors.black87,
@@ -173,11 +153,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(
-                                    fontFamily: "Champagne-Limousines-Bold",
-                                    color: Colors.black87,
-                                    fontSize: SizeConfig.blockWidth * 4,
-                                  ),
+                                  style: SizeConfig.yaziWidgetIci,
                                 ),
                               );
                             }).toList(),
@@ -195,11 +171,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             icon: Icon(Icons.expand_more),
                             iconSize: SizeConfig.blockWidth * 6,
                             elevation: 15,
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontFamily: "Champagne-Limousines-Bold",
-                              fontSize: SizeConfig.blockWidth * 4,
-                            ),
+                            style: SizeConfig.yaziWidgetIci,
                             underline: Container(
                               height:  SizeConfig.blockWidth * 0.3,
                               color: Colors.black87,
@@ -215,11 +187,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(
-                                    fontFamily: "Champagne-Limousines-Bold",
-                                    color: Colors.black87,
-                                    fontSize: SizeConfig.blockWidth * 4,
-                                  ),
+                                  style: SizeConfig.yaziWidgetIci,
                                 ),
                               );
                             }).toList(),
@@ -233,10 +201,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                           width: SizeConfig.blockWidth * 5,
                           child: Text(
                             "bir",
-                            style: TextStyle(
-                              fontFamily: "Champagne-Limousines-Bold",
-                              fontSize: SizeConfig.blockWidth * 4,
-                            ),
+                            style: SizeConfig.yaziWidgetIci,
                           ),
                         ),
                       ),
@@ -257,11 +222,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                     width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
                     child: Text(
                       "Toprak değişim",
-                      style: TextStyle(
-                        fontFamily: "Champagne-Limousines-Bold",
-                        fontSize: SizeConfig.blockWidth * 5,
-                        color: Colors.green[900],
-                      ),
+                      style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Row(
@@ -277,11 +238,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             iconSize: SizeConfig.blockWidth * 6,
                             elevation: 15,
                             isExpanded: true,
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontFamily: "Champagne-Limousines-Bold",
-                              fontSize: SizeConfig.blockWidth * 4,
-                            ),
+                            style: SizeConfig.yaziWidgetIci,
                             underline: Container(
                               height:  SizeConfig.blockWidth * 0.3,
                               color: Colors.black87,
@@ -297,11 +254,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(
-                                    fontFamily: "Champagne-Limousines-Bold",
-                                    color: Colors.black87,
-                                    fontSize: SizeConfig.blockWidth * 4,
-                                  ),
+                                  style: SizeConfig.yaziWidgetIci,
                                 ),
                               );
                             }).toList(),
@@ -319,11 +272,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             iconSize: SizeConfig.blockWidth * 6,
                             elevation: 15,
                             isExpanded: true,
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontFamily: "Champagne-Limousines-Bold",
-                              fontSize: SizeConfig.blockWidth * 4,
-                            ),
+                            style: SizeConfig.yaziWidgetIci,
                             underline: Container(
                               height:  SizeConfig.blockWidth * 0.3,
                               color: Colors.black87,
@@ -339,11 +288,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(
-                                    fontFamily: "Champagne-Limousines-Bold",
-                                    color: Colors.black87,
-                                    fontSize: SizeConfig.blockWidth * 4,
-                                  ),
+                                  style: SizeConfig.yaziWidgetIci,
                                 ),
                               );
                             }).toList(),
@@ -357,10 +302,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                           width: SizeConfig.blockWidth * 5,
                           child: Text(
                             "bir",
-                            style: TextStyle(
-                              fontFamily: "Champagne-Limousines-Bold",
-                              fontSize: SizeConfig.blockWidth * 4,
-                            ),
+                            style: SizeConfig.yaziWidgetIci,
                           ),
                         ),
                       ),
@@ -380,11 +322,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                     width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
                     child: Text(
                       "Toprak tipi",
-                      style: TextStyle(
-                        fontFamily: "Champagne-Limousines-Bold",
-                        fontSize: SizeConfig.blockWidth * 5,
-                        color: Colors.green[900],
-                      ),
+                      style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Padding(
@@ -398,11 +336,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         iconSize: SizeConfig.blockWidth * 6,
                         elevation: 15,
                         isExpanded: true,
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontFamily: "Champagne-Limousines-Bold",
-                          fontSize: SizeConfig.blockWidth * 4,
-                        ),
+                        style: SizeConfig.yaziWidgetIci,
                         underline: Container(
                           height:  SizeConfig.blockWidth * 0.3,
                           color: Colors.black87,
@@ -418,11 +352,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             value: value,
                             child: Text(
                               value,
-                              style: TextStyle(
-                                fontFamily: "Champagne-Limousines-Bold",
-                                color: Colors.black87,
-                                fontSize: SizeConfig.blockWidth * 4,
-                              ),
+                              style: SizeConfig.yaziWidgetIci,
                             ),
                           );
                         }).toList(),
@@ -443,11 +373,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                     width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
                     child: Text(
                       "Işık ihtiyacı",
-                      style: TextStyle(
-                        fontFamily: "Champagne-Limousines-Bold",
-                        fontSize: SizeConfig.blockWidth * 5,
-                        color: Colors.green[900],
-                      ),
+                      style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Padding(
@@ -461,11 +387,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         icon: Icon(Icons.expand_more),
                         iconSize: SizeConfig.blockWidth * 6,
                         elevation: 15,
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontFamily: "Champagne-Limousines-Bold",
-                          fontSize: SizeConfig.blockWidth * 4,
-                        ),
+                        style: SizeConfig.yaziWidgetIci,
                         underline: Container(
                           height:  SizeConfig.blockWidth * 0.3,
                           color: Colors.black87,
@@ -481,11 +403,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             value: value,
                             child: Text(
                               value,
-                              style: TextStyle(
-                                fontFamily: "Champagne-Limousines-Bold",
-                                color: Colors.black87,
-                                fontSize: SizeConfig.blockWidth * 4,
-                              ),
+                              style: SizeConfig.yaziWidgetIci,
                             ),
                           );
                         }).toList(),
@@ -506,11 +424,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                     width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
                     child: Text(
                       "Isı ihtiyacı",
-                      style: TextStyle(
-                        fontFamily: "Champagne-Limousines-Bold",
-                        fontSize: SizeConfig.blockWidth * 5,
-                        color: Colors.green[900],
-                      ),
+                      style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Padding(
@@ -524,11 +438,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         iconSize: SizeConfig.blockWidth * 6,
                         elevation: 15,
                         isExpanded: true,
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontFamily: "Champagne-Limousines-Bold",
-                          fontSize: SizeConfig.blockWidth * 4,
-                        ),
+                        style: SizeConfig.yaziWidgetIci,
                         underline: Container(
                           height:  SizeConfig.blockWidth * 0.3,
                           color: Colors.black87,
@@ -544,11 +454,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             value: value,
                             child: Text(
                               value,
-                              style: TextStyle(
-                                fontFamily: "Champagne-Limousines-Bold",
-                                color: Colors.black87,
-                                fontSize: SizeConfig.blockWidth * 4,
-                              ),
+                              style: SizeConfig.yaziWidgetIci,
                             ),
                           );
                         }).toList(),
@@ -567,11 +473,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Fotoğraf albümü",
-                      style: TextStyle(
-                        fontFamily: "Champagne-Limousines-Bold",
-                        fontSize: SizeConfig.blockWidth * 5,
-                        color: Colors.green[900],
-                      ),
+                      style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                 ],
@@ -644,11 +546,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                     width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
                     child: Text(
                       "Hatırlatıcılar",
-                      style: TextStyle(
-                        fontFamily: "Champagne-Limousines-Bold",
-                        fontSize: SizeConfig.blockWidth * 5,
-                        color: Colors.green[900],
-                      ),
+                      style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Padding(
@@ -662,11 +560,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         iconSize: SizeConfig.blockWidth * 6,
                         elevation: 15,
                         isExpanded: true,
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontFamily: "Champagne-Limousines-Bold",
-                          fontSize: SizeConfig.blockWidth * 4,
-                        ),
+                        style: SizeConfig.yaziWidgetIci,
                         underline: Container(
                           height:  SizeConfig.blockWidth * 0.3,
                           color: Colors.black87,
@@ -682,11 +576,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             value: value,
                             child: Text(
                               value,
-                              style: TextStyle(
-                                fontFamily: "Champagne-Limousines-Bold",
-                                color: Colors.black87,
-                                fontSize: SizeConfig.blockWidth * 4,
-                              ),
+                              style: SizeConfig.yaziWidgetIci,
                             ),
                           );
                         }).toList(),
@@ -698,20 +588,16 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
 
             ),
             Padding(
-              padding: EdgeInsets.only(left: SizeConfig.blockWidth * 30, top: SizeConfig.blockWidth * 2, right: SizeConfig.blockWidth * 30, bottom: SizeConfig.blockWidth * 2),
+              padding: EdgeInsets.only(left: SizeConfig.blockWidth * 33, top: SizeConfig.blockWidth * 2, right: SizeConfig.blockWidth * 33, bottom: SizeConfig.blockWidth * 2),
               child: Container(
-                height: SizeConfig.blockWidth * 10,
-                width: SizeConfig.blockWidth * 26,
+                height: SizeConfig.blockWidth * 8,
+                width: SizeConfig.blockWidth * 24,
                 child: FlatButton(
                     onPressed: () {},
                     child: Container(
                       child: Text(
                         "Düzenle",
-                        style: TextStyle(
-                          fontSize: SizeConfig.blockWidth * 5,
-                          color: Colors.white,
-                          fontFamily: "Champagne-Limousines-Bold",
-                        ),
+                        style: SizeConfig.yaziButon,
                       ),
                     ),
                     color: Colors.green[900],

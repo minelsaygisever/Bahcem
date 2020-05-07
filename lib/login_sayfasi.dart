@@ -52,7 +52,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                       offset: Offset(SizeConfig.blockWidth * 0.5,
                                           SizeConfig.blockWidth * 0.5),
                                       blurRadius: 5.0,
-                                      color: Color.fromARGB(70, 0, 0, 0),
+                                      color: Color.fromARGB(60, 0, 0, 0),
                                     ),
                                   ],
                                 ),
@@ -68,10 +68,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                     controller: _kullaniciAdi,
                                     decoration: InputDecoration(
                                       hintText: "Kullanıcı Adı",
-                                      hintStyle: TextStyle(
-                                        fontFamily: 'Champagne-Limousines-Bold',
-                                        fontSize: SizeConfig.blockWidth * 4.5,
-                                      ),
+                                      hintStyle: SizeConfig.yaziHint,
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.zero,
                                       ),
@@ -102,10 +99,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                     controller: _sifre,
                                     decoration: InputDecoration(
                                       hintText: "Şifre",
-                                      hintStyle: TextStyle(
-                                        fontFamily: 'Champagne-Limousines-Bold',
-                                        fontSize: SizeConfig.blockWidth * 4.5,
-                                      ),
+                                      hintStyle: SizeConfig.yaziHint,
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.zero,
                                       ),
@@ -137,7 +131,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                       child: Text(
                                         "Giriş",
                                         style: TextStyle(
-                                          fontSize: SizeConfig.blockWidth * 6.5,
+                                          fontSize: SizeConfig.blockWidth * 5.5,
                                           color: Colors.white,
                                           fontFamily: "Champagne-Limousines-Bold",
                                         ),
@@ -161,18 +155,14 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 child: Text(
                                   "Üye değil misiniz?",
                                   textDirection: TextDirection.ltr,
-                                  style: TextStyle(
-                                    color: Colors.green[900],
-                                    fontFamily: "Champagne-Limousines-Bold",
-                                    fontSize: SizeConfig.blockWidth * 5,
-                                  ),
+                                  style: SizeConfig.yaziAciklamaBaslik,
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2),
                                 child: Container(
-                                  height: SizeConfig.blockWidth * 10,
-                                  width: SizeConfig.blockWidth * 26,
+                                  height: SizeConfig.blockWidth * 8,
+                                  width: SizeConfig.blockWidth * 24,
                                   child: FlatButton(
                                       onPressed: () => Navigator.push(context, MaterialPageRoute(
                                           builder: (BuildContext context) => RegisterSayfasi()
@@ -180,11 +170,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                       child: Container(
                                         child: Text(
                                           "Kayıt",
-                                          style: TextStyle(
-                                            fontSize: SizeConfig.blockWidth * 6.5,
-                                            color: Colors.white,
-                                            fontFamily: "Champagne-Limousines-Bold",
-                                          ),
+                                          style: SizeConfig.yaziButon,
                                         ),
                                       ),
                                       color: Colors.green[900],

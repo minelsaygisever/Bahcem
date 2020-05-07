@@ -50,7 +50,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   offset: Offset(SizeConfig.blockWidth * 0.5,
                                       SizeConfig.blockWidth * 0.5),
                                   blurRadius: 5.0,
-                                  color: Color.fromARGB(70, 0, 0, 0),
+                                  color: Color.fromARGB(60, 0, 0, 0),
                                 ),
                               ],
                             ),
@@ -66,10 +66,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                 controller: _kullaniciAdi,
                                 decoration: InputDecoration(
                                   hintText: "E-Posta",
-                                  hintStyle: TextStyle(
-                                    fontFamily: 'Champagne-Limousines-Bold',
-                                    fontSize: SizeConfig.blockWidth * 4.5,
-                                  ),
+                                  hintStyle: SizeConfig.yaziHint,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero,
                                   ),
@@ -100,10 +97,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                 controller: _kullaniciAdi,
                                 decoration: InputDecoration(
                                   hintText: "Kullanıcı adı",
-                                  hintStyle: TextStyle(
-                                    fontFamily: 'Champagne-Limousines-Bold',
-                                    fontSize: SizeConfig.blockWidth * 4.5,
-                                  ),
+                                  hintStyle: SizeConfig.yaziHint,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero,
                                   ),
@@ -134,10 +128,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                 controller: _kullaniciAdi,
                                 decoration: InputDecoration(
                                   hintText: "Şifre",
-                                  hintStyle: TextStyle(
-                                    fontFamily: 'Champagne-Limousines-Bold',
-                                    fontSize: SizeConfig.blockWidth * 4.5,
-                                  ),
+                                  hintStyle: SizeConfig.yaziHint,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero,
                                   ),
@@ -168,10 +159,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                 controller: _kullaniciAdi,
                                 decoration: InputDecoration(
                                   hintText: "Şifre tekrar",
-                                  hintStyle: TextStyle(
-                                    fontFamily: 'Champagne-Limousines-Bold',
-                                    fontSize: SizeConfig.blockWidth * 4.5,
-                                  ),
+                                  hintStyle: SizeConfig.yaziHint,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero,
                                   ),
@@ -196,18 +184,14 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                         Padding(
                           padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2),
                           child: Container(
-                            height: SizeConfig.blockWidth * 10,
-                            width: SizeConfig.blockWidth * 26,
+                            height: SizeConfig.blockWidth * 8,
+                            width: SizeConfig.blockWidth * 24,
                             child: FlatButton(
                                 onPressed: () {},
                                 child: Container(
                                   child: Text(
                                     "Kayıt",
-                                    style: TextStyle(
-                                      fontSize: SizeConfig.blockWidth * 6.5,
-                                      color: Colors.white,
-                                      fontFamily: "Champagne-Limousines-Bold",
-                                    ),
+                                    style: SizeConfig.yaziButon,
                                   ),
                                 ),
                                 color: Colors.green[900],

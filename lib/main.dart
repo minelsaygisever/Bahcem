@@ -7,6 +7,7 @@ import 'bitkini_tani_sayfasi.dart';
 import 'blog_anasayfa.dart';
 import 'ayarlar_sayfasi.dart';
 import 'acilis_sayfasi.dart';
+import 'blog_tab_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static int _selectedItem = 1;
-  var _pages = [BitkiniTaniSayfasi(), BahcemSayfasi(), BlogAnaSayfa()];
+  var _pages = [BitkiniTaniSayfasi(), BahcemSayfasi(), BlogTabBar()];
   var _pageController = PageController(initialPage: _selectedItem);
   static var _zeroIconSize = SizeConfig.blockWidth * 5;
   static var _oneIconSize = SizeConfig.blockWidth * 8;
@@ -58,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   offset: Offset(SizeConfig.blockWidth * 0.2,
                     SizeConfig.blockWidth * 0.2,),
                   blurRadius: SizeConfig.blockWidth * 0.2,
-                  color: Color.fromARGB(70, 0, 0, 0),
+                  color: Color.fromARGB(60, 0, 0, 0),
                 ),
               ],
             ),
@@ -114,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
         controller: _pageController,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
+        currentIndex: _selectedItem,
         onTap: (index) {
           setState(() {
             _selectedItem = index;

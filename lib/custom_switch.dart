@@ -49,10 +49,10 @@ class _CustomSwitchState extends State<CustomSwitch>
                 : widget.onChanged(false);
           },
           child: Container(
-            width: SizeConfig.blockWidth * 24,
-            height: SizeConfig.blockWidth * 8,
+            width: SizeConfig.blockWidth * 21,
+            height: SizeConfig.blockWidth * 7,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 6),
+                borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 4.5),
                 color: _circleAnimation.value == Alignment.centerLeft
                     ? Colors.grey
                     : widget.activeColor),
@@ -63,13 +63,13 @@ class _CustomSwitchState extends State<CustomSwitch>
                 children: <Widget>[
                   _circleAnimation.value == Alignment.centerRight
                       ? Padding(
-                    padding: EdgeInsets.only(left: SizeConfig.blockWidth * 5, right: SizeConfig.blockWidth * 2.5),
+                    padding: EdgeInsets.only(left: SizeConfig.blockWidth * 4, right: SizeConfig.blockWidth * 2),
                     child: Text(
                       'Açık',
                       style: TextStyle(
                           fontFamily: "Champagne-Limousines-Bold",
                           color: Colors.white70,
-                          fontSize: SizeConfig.blockWidth * 4),
+                          fontSize: SizeConfig.blockWidth * 3.5),
                     ),
                   )
                       : Container(),
@@ -84,13 +84,13 @@ class _CustomSwitchState extends State<CustomSwitch>
                   ),
                   _circleAnimation.value == Alignment.centerLeft
                       ? Padding(
-                    padding: EdgeInsets.only(left: SizeConfig.blockWidth * 1, right: SizeConfig.blockWidth * 2.5),
+                    padding: EdgeInsets.only(left: SizeConfig.blockWidth * 1, right: SizeConfig.blockWidth * 2),
                     child: Text(
                       'Kapalı',
                       style: TextStyle(
                           fontFamily: "Champagne-Limousines-Bold",
                           color: Colors.white70,
-                          fontSize: SizeConfig.blockWidth * 4,
+                          fontSize: SizeConfig.blockWidth * 3.5,
                       ),
                     ),
                   )

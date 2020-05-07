@@ -21,14 +21,11 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: Text(
           'Ayarlar',
-          style: TextStyle(
-            fontFamily: "Champagne-Limousines-Bold",
-            fontSize: SizeConfig.blockWidth * 6,
-            color: Colors.green[900],
-          ),
+          style: SizeConfig.yaziAppbarBaslik,
         ),
         backgroundColor: Colors.grey[50],
         elevation: 0.0,
@@ -44,16 +41,12 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
             child: Text(
               "Bildirimler",
               textAlign: TextAlign.left,
-              style: TextStyle(
-                color: Colors.green[900],
-                fontFamily: "Champagne-Limousines-Bold",
-                fontSize: SizeConfig.blockWidth * 5.5,
-              ),
+              style: SizeConfig.yaziAciklamaBaslik,
             ),
           ),
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 2),
+            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
             child: CustomSwitch(
               activeColor: Colors.green[900],
               value: isSwitched,
@@ -71,16 +64,12 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
             child: Text(
               "Alarm Sesi",
               textAlign: TextAlign.left,
-              style: TextStyle(
-                color: Colors.green[900],
-                fontFamily: "Champagne-Limousines-Bold",
-                fontSize: SizeConfig.blockWidth * 5.5,
-              ),
+              style: SizeConfig.yaziAciklamaBaslik,
             ),
           ),
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 2),
+            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
             child: DropdownButton(
               value: dropdownValue,
               onChanged: (newValue) {
@@ -92,11 +81,7 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
                 return DropdownMenuItem(
                   child: Text(
                     location,
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontFamily: "Champagne-Limousines-Bold",
-                      fontSize: SizeConfig.blockWidth * 4,
-                    ),
+                    style: SizeConfig.yaziWidgetIci,
                   ),
                   value: location,
                 );
@@ -105,49 +90,38 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
           ),
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 6, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 2),
+            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 6, SizeConfig.blockWidth * 4, 0),
             child: Text(
               "Alarm Yüksekliği",
               textAlign: TextAlign.left,
-              style: TextStyle(
-                color: Colors.green[900],
-                fontFamily: "Champagne-Limousines-Bold",
-                fontSize: SizeConfig.blockWidth * 5.5,
-              ),
+              style: SizeConfig.yaziAciklamaBaslik,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, SizeConfig.blockWidth * 2),
-            child: Container(
-              child: Slider(
-                min: 0.0,
-                max: 10.0,
-                divisions: 5,
-                value: sliderValue,
-                activeColor: Colors.green[900],
-                inactiveColor: Colors.grey,
-                onChanged: (newValue) {
-                  setState(() {
-                    sliderValue = newValue;
-                  });
-                },
-              ),
+          Container(
+            child: Slider(
+              min: 0.0,
+              max: 10.0,
+              divisions: 5,
+              value: sliderValue,
+              activeColor: Colors.green[900],
+              inactiveColor: Colors.grey,
+              onChanged: (newValue) {
+                setState(() {
+                  sliderValue = newValue;
+                });
+              },
             ),
           ),
           Container(
               alignment: Alignment.topLeft,
-              padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 2),
+              padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
               child: FlatButton(
                 padding: EdgeInsets.all(0.0),
                 onPressed: () =>  Navigator.push(context, MaterialPageRoute(builder: (context) => HakkindaSayfasi()),),
                 child: Text(
                   "Hakkında",
                   textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.green[900],
-                    fontFamily: "Champagne-Limousines-Bold",
-                    fontSize: SizeConfig.blockWidth * 5.5,
-                  ),
+                  style: SizeConfig.yaziAciklamaBaslik,
                 ),
               )),
           Container(
@@ -161,11 +135,7 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
               child: Text(
                 "Çıkış Yap",
                 textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Colors.green[900],
-                  fontFamily: "Champagne-Limousines-Bold",
-                  fontSize: SizeConfig.blockWidth * 5.5,
-                ),
+                style: SizeConfig.yaziAciklamaBaslik,
               ),
             ),
           ),

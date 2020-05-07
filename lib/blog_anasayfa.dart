@@ -29,12 +29,7 @@ class BlogAnaSayfa extends StatelessWidget{
                             padding: EdgeInsets.only(left: SizeConfig.blockWidth * 2),
                             child: Text(
                               'minelsaygisever',
-                              style: TextStyle(
-                                color: Colors.green[900],
-                                fontFamily: 'Champagne-Limousines-Bold',
-                                fontSize: SizeConfig.blockWidth * 5,
-                                fontStyle: FontStyle.normal,
-                              ),
+                              style: SizeConfig.yaziUserName,
                             ),
                           ),
                         ],
@@ -83,11 +78,7 @@ class BlogAnaSayfa extends StatelessWidget{
                       ),
                       Text(
                         ' 12 beğeni',
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontFamily: 'Champagne-Limousines-Bold',
-                          fontSize: SizeConfig.blockWidth * 4.5,
-                        ),
+                        style: SizeConfig.yaziAciklama,
                       ),
                     ],
                   ),
@@ -104,11 +95,7 @@ class BlogAnaSayfa extends StatelessWidget{
                           child: Text(
                             'Minik aloeveralarım <3 Geçtiğimiz pazar annemle toprağını değiştirmiştik, ne çabuk yenileri çıkmış :)',
                             maxLines: null,
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontFamily: 'Champagne-Limousines-Bold',
-                              fontSize: SizeConfig.blockWidth * 4.5,
-                            ),
+                            style: SizeConfig.yaziAciklama,
                           ),
                         ),
                       ),

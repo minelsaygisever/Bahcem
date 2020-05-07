@@ -29,7 +29,7 @@ class _AcilisSayfasiState extends State<AcilisSayfasi> {
   Future<bool> _mockCheckForSession() async {
     await Future.delayed(Duration(milliseconds: 2000), () {});
 
-    return true; //bu kısmı giriş yapılmış mı yapılmamış mı ona göre döndürürüz
+    return false; //bu kısmı giriş yapılmış mı yapılmamış mı ona göre döndürürüz
   }
 
   void _navigateToHome(){
@@ -61,13 +61,13 @@ class _AcilisSayfasiState extends State<AcilisSayfasi> {
             style: TextStyle(
               color: Colors.grey[50],
               fontFamily: "Photoshoot",
-              fontSize: SizeConfig.blockWidth * 15,
+              fontSize: SizeConfig.blockWidth * 14,
               shadows: <Shadow> [
                 Shadow(
                   offset: Offset(SizeConfig.blockWidth * 0.5,
                       SizeConfig.blockWidth * 0.5),
                   blurRadius: 5.0,
-                  color: Color.fromARGB(70, 0, 0, 0),
+                  color: Color.fromARGB(60, 0, 0, 0),
                 ),
               ],
             ),

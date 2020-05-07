@@ -47,12 +47,7 @@ class BahcemSayfasi extends StatelessWidget{
                       child: new Text(
                         "Ponsetya 1",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "Champagne-Limousines-Bold",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green[900],
-                          fontSize: SizeConfig.blockWidth * 5,
-                        ),
+                        style: SizeConfig.yaziAciklamaBaslik,
                       ),
                     ),
                   ),
@@ -85,12 +80,7 @@ class BahcemSayfasi extends StatelessWidget{
                       child: new Text(
                         "Deve Tabanı 1",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "Champagne-Limousines-Bold",
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green[900],
-                          fontSize: SizeConfig.blockWidth * 5,
-                        ),
+                        style: SizeConfig.yaziAciklamaBaslik,
                       ),
                     ),
                   ),

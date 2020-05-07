@@ -11,11 +11,7 @@ class HakkindaSayfasi extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Hakkında',
-          style: TextStyle(
-            fontFamily: "Champagne-Limousines-Bold",
-            fontSize: SizeConfig.blockWidth * 6,
-            color: Colors.green[900],
-          ),
+          style: SizeConfig.yaziAppbarBaslik,
         ),
         backgroundColor: Colors.grey[50],
         elevation: 0.0,
@@ -32,12 +28,7 @@ class HakkindaSayfasi extends StatelessWidget {
               child: Text(
                 "\nBu uygulama Esra Polat, Nur Deniz Çaylı ve Minel Saygısever tarafından geliştirilmiştir.\nTüm Hakları Saklıdır.\n\nBizimle iletişime geçin:\ninfo@bahcemapp.com",
                 textDirection: TextDirection.ltr,
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontFamily: "Champagne-Limousines-Bold",
-                  fontSize: SizeConfig.blockWidth * 4,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: SizeConfig.yaziAciklama,
               ),
             )
           ],
