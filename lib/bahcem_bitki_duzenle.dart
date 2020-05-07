@@ -23,18 +23,14 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar:  AppBar(
-        title: Padding(
-          padding: EdgeInsets.only(left: SizeConfig.blockWidth),
-          child: Text(
-            'Ponsetya 1 Düzenle',
-            style: TextStyle(
-              fontFamily: "Champagne-Limousines-Bold",
-              fontSize: SizeConfig.blockWidth * 6,
-              color: Colors.green[900],
-            ),
+        title: Text(
+          'Ponsetya 1 Düzenle',
+          style: TextStyle(
+            fontFamily: "Champagne-Limousines-Bold",
+            fontSize: SizeConfig.blockWidth * 6,
+            color: Colors.green[900],
           ),
         ),
-        centerTitle: true,
         backgroundColor: Colors.grey[50],
         elevation: 0.0,
         iconTheme: IconThemeData(
