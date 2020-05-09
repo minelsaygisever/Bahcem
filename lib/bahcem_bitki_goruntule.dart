@@ -9,7 +9,7 @@ class BahcemBitkiGoruntule extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       appBar:  AppBar(
         title: Text(
           'Ponsetya 1',
@@ -23,15 +23,15 @@ class BahcemBitkiGoruntule extends StatelessWidget{
               child: Icon(
                 Icons.edit,
                 size: SizeConfig.blockWidth * 7,
-                color: Colors.green[900],
+                color: SizeConfig.green,
               ),
             ),
           ),
         ],
-        backgroundColor: Colors.grey[50],
+        backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
         iconTheme: IconThemeData(
-          color: Colors.green[900], //change your color here
+          color: SizeConfig.green, //change your color here
         ),
       ),
       body: Padding(

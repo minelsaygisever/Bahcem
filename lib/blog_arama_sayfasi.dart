@@ -13,7 +13,7 @@ class _BlogSearchPageState extends State<BlogSearchPage> {
     SizeConfig().init(context);
     final _search = TextEditingController();
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       body: Padding(
         padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2, 0.0),
         child: ListView(
@@ -24,19 +24,19 @@ class _BlogSearchPageState extends State<BlogSearchPage> {
                 children: <Widget>[
                   Theme(
                       data: new ThemeData(
-                        primaryColor: Colors.green[900],
-                        primaryColorDark: Colors.green[900],
+                        primaryColor: SizeConfig.green,
+                        primaryColorDark: SizeConfig.green,
                       ),
                       child: Container(
                         height: SizeConfig.blockWidth * 16,
                         child: new TextField(
-                          cursorColor: Colors.green[900],
+                          cursorColor: SizeConfig.green,
                           decoration: new InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
                             filled: true,
-                            fillColor: Colors.grey[50],
+                            fillColor: SizeConfig.almostWhite,
                             border: new OutlineInputBorder(
-                                borderSide: new BorderSide(color: Colors.grey[50])),
+                                borderSide: new BorderSide(color: SizeConfig.almostWhite)),
                             hintText: 'Arama',
                             prefixIcon: const Icon(
                               Icons.search,

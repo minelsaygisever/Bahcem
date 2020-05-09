@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       appBar:  AppBar(
         title: Padding(
           padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 3, 0, 0),
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
             'Bahçem',
             style: TextStyle(
               fontFamily: 'Photoshoot',
-              color: Colors.green[900],
+              color: SizeConfig.green,
               fontSize: SizeConfig.blockWidth * 5,
               shadows: <Shadow>[
                 Shadow(
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ],
-        backgroundColor: Colors.grey[50],
+        backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
       ),
       body: PageView(
@@ -144,14 +144,14 @@ class _MyHomePageState extends State<MyHomePage> {
             _twoTextSize = SizeConfig.blockWidth * 0;
           }
         },
-        backgroundColor: Colors.green[900],
+        backgroundColor: SizeConfig.green,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0, SizeConfig.blockWidth * 0.6),
               child: Image.asset(
                 "assets/images/information.jpg",
-                color: Colors.grey[50],
+                color: SizeConfig.almostWhite,
                 height: _zeroIconSize,
                 width: _zeroIconSize,
               ),
@@ -159,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text(
               "Bitkini tanı",
               style: TextStyle(
-                color: Colors.grey[50],
+                color: SizeConfig.almostWhite,
                 fontFamily: 'Champagne-Limousines-Bold',
                 fontSize: _zeroTextSize,
               ),),
@@ -169,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0, SizeConfig.blockWidth * 0.6),
               child: Image.asset(
                 "assets/images/flower.jpg",
-                color: Colors.grey[50],
+                color: SizeConfig.almostWhite,
                 height: _oneIconSize,
                 width:  _oneIconSize,
               ),
@@ -177,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text(
               "Bahçem",
               style: TextStyle(
-                color: Colors.grey[50],
+                color: SizeConfig.almostWhite,
                 fontFamily: 'Champagne-Limousines-Bold',
                 fontSize: _oneTextSize,
               ),
@@ -188,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0, SizeConfig.blockWidth * 0.6),
               child: Image.asset(
                 "assets/images/photo-camera.jpg",
-                color: Colors.grey[50],
+                color: SizeConfig.almostWhite,
                 height: _twoIconSize,
                 width: _twoIconSize,
               ),
@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
             title: Text(
               "Blog",
               style: TextStyle(
-                color: Colors.grey[50],
+                color: SizeConfig.almostWhite,
                 fontFamily: 'Champagne-Limousines-Bold',
                 fontSize: _twoTextSize,
               ),

@@ -53,15 +53,15 @@ class _AcilisSayfasiState extends State<AcilisSayfasi> {
     SizeConfig().init(context);
     return Scaffold(
       body: Container(
-        color: Colors.green[900], //ekranın arka plan rengi
+        color: SizeConfig.green, //ekranın arka plan rengi
         child: Center(
           child: Text(
             "Bahçem",
             textDirection: TextDirection.ltr,
             style: TextStyle(
-              color: Colors.grey[50],
+              color: SizeConfig.almostWhite,
               fontFamily: "Photoshoot",
-              fontSize: SizeConfig.blockWidth * 14,
+              fontSize: SizeConfig.blockWidth * 13,
               shadows: <Shadow> [
                 Shadow(
                   offset: Offset(SizeConfig.blockWidth * 0.5,

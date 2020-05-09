@@ -10,7 +10,7 @@ class BahcemSayfasi extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       body: new Center(
         child: Padding(
           padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, 0),
@@ -92,10 +92,10 @@ class BahcemSayfasi extends StatelessWidget{
                   child: new Icon(
                     Icons.add,
                     size: SizeConfig.blockWidth * 30,
-                    color: Colors.green[900],
+                    color: SizeConfig.green,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.grey[50],
+                    color: SizeConfig.almostWhite,
                     borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 2),
                   ),
 

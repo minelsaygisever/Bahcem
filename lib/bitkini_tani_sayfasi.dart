@@ -7,7 +7,7 @@ class BitkiniTaniSayfasi extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       body:new Center(
         child: Padding(
           padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, 0),

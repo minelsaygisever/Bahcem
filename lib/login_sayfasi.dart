@@ -44,7 +44,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 "Bahçem",
                                 textDirection: TextDirection.ltr,
                                 style: TextStyle(
-                                  color: Colors.green[900],
+                                  color: SizeConfig.green,
                                   fontFamily: "Photoshoot",
                                   fontSize: SizeConfig.blockWidth * 13,
                                   shadows: <Shadow>[
@@ -64,7 +64,8 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 height: SizeConfig.blockWidth * 12,
                                 alignment: Alignment.center,
                                 child: TextFormField(
-                                    cursorColor: Colors.green[900],
+                                  textAlignVertical: TextAlignVertical.bottom,
+                                    cursorColor: SizeConfig.green,
                                     controller: _kullaniciAdi,
                                     decoration: InputDecoration(
                                       hintText: "Kullanıcı Adı",
@@ -75,7 +76,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.zero,
                                         borderSide: BorderSide(
-                                          color: Colors.green[900],
+                                          color: SizeConfig.green,
                                         ),
                                       ),
 
@@ -95,7 +96,8 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 height: SizeConfig.blockWidth * 12,
                                 alignment: Alignment.center,
                                 child: TextFormField(
-                                    cursorColor: Colors.green[900],
+                                    textAlignVertical: TextAlignVertical.bottom,
+                                    cursorColor: SizeConfig.green,
                                     controller: _sifre,
                                     decoration: InputDecoration(
                                       hintText: "Şifre",
@@ -106,7 +108,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.zero,
                                         borderSide: BorderSide(
-                                          color: Colors.green[900],
+                                          color: SizeConfig.green,
                                         ),
                                       ),
 
@@ -132,12 +134,12 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                         "Giriş",
                                         style: TextStyle(
                                           fontSize: SizeConfig.blockWidth * 5.5,
-                                          color: Colors.white,
+                                          color: SizeConfig.almostWhite,
                                           fontFamily: "Champagne-Limousines-Bold",
                                         ),
                                       ),
                                     ),
-                                    color: Colors.green[900],
+                                    color: SizeConfig.green,
                                     shape: StadiumBorder()
                                 ),
                               ),
@@ -162,7 +164,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2),
                                 child: Container(
                                   height: SizeConfig.blockWidth * 8,
-                                  width: SizeConfig.blockWidth * 24,
+                                  width: SizeConfig.blockWidth * 26,
                                   child: FlatButton(
                                       onPressed: () => Navigator.push(context, MaterialPageRoute(
                                           builder: (BuildContext context) => RegisterSayfasi()
@@ -173,7 +175,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                           style: SizeConfig.yaziButon,
                                         ),
                                       ),
-                                      color: Colors.green[900],
+                                      color: SizeConfig.green,
                                       shape: StadiumBorder()
                                   ),
                                 ),

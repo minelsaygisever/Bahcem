@@ -6,7 +6,7 @@ class BlogAnaSayfa extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       body: ListView(
         children: <Widget>[
           Padding(
@@ -71,7 +71,7 @@ class BlogAnaSayfa extends StatelessWidget{
                         padding: EdgeInsets.only(left: SizeConfig.blockWidth * 2, top: 0),
                         child: new Image.asset(
                           "assets/icons/flower.png",
-                          color: Colors.black87,
+                          color: SizeConfig.almostBlack,
                           height: SizeConfig.blockWidth * 7,
                           width: SizeConfig.blockWidth * 7,
                         ),

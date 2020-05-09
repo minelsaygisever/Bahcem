@@ -21,16 +21,16 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       appBar:  AppBar(
         title: Text(
           'Ponsetya 1 Düzenle',
           style: SizeConfig.yaziAppbarBaslik,
         ),
-        backgroundColor: Colors.grey[50],
+        backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
         iconTheme: IconThemeData(
-          color: Colors.green[900], //change your color here
+          color: SizeConfig.green, //change your color here
         ),
       ),
       body: Padding(
@@ -44,12 +44,12 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                 children: <Widget>[
                   TextFormField(
                     maxLines: null,
-                    cursorColor: Colors.green[900],
+                    cursorColor: SizeConfig.green,
                     initialValue: 'Pontesya 1',
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.green[900],
+                          color: SizeConfig.green,
                         ),
                       ),
                     ),
@@ -82,7 +82,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                           child: new Icon(
                             Icons.edit,
                             size: SizeConfig.blockWidth * 8,
-                            color: Colors.black87,
+                            color: SizeConfig.almostBlack,
                           ),
                         ),
                       ),
@@ -95,12 +95,12 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         child: TextFormField(
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
-                          cursorColor: Colors.green[900],
+                          cursorColor: SizeConfig.green,
                           initialValue: 'Zeynep\'in kendisi kadar zarif hediyesi <3',
                           decoration: InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: Colors.green[900],
+                                color: SizeConfig.green,
                               ),
                             ),
                           ),
@@ -140,7 +140,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             style: SizeConfig.yaziWidgetIci,
                             underline: Container(
                               height:  SizeConfig.blockWidth * 0.3,
-                              color: Colors.black87,
+                              color: SizeConfig.almostBlack,
                             ),
                             onChanged: (String newValue) {
                               setState(() {
@@ -174,7 +174,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             style: SizeConfig.yaziWidgetIci,
                             underline: Container(
                               height:  SizeConfig.blockWidth * 0.3,
-                              color: Colors.black87,
+                              color: SizeConfig.almostBlack,
                             ),
                             onChanged: (String newValue) {
                               setState(() {
@@ -241,7 +241,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             style: SizeConfig.yaziWidgetIci,
                             underline: Container(
                               height:  SizeConfig.blockWidth * 0.3,
-                              color: Colors.black87,
+                              color: SizeConfig.almostBlack,
                             ),
                             onChanged: (String newValue) {
                               setState(() {
@@ -275,7 +275,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                             style: SizeConfig.yaziWidgetIci,
                             underline: Container(
                               height:  SizeConfig.blockWidth * 0.3,
-                              color: Colors.black87,
+                              color: SizeConfig.almostBlack,
                             ),
                             onChanged: (String newValue) {
                               setState(() {
@@ -339,7 +339,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         style: SizeConfig.yaziWidgetIci,
                         underline: Container(
                           height:  SizeConfig.blockWidth * 0.3,
-                          color: Colors.black87,
+                          color: SizeConfig.almostBlack,
                         ),
                         onChanged: (String newValue) {
                           setState(() {
@@ -390,7 +390,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         style: SizeConfig.yaziWidgetIci,
                         underline: Container(
                           height:  SizeConfig.blockWidth * 0.3,
-                          color: Colors.black87,
+                          color: SizeConfig.almostBlack,
                         ),
                         onChanged: (String newValue) {
                           setState(() {
@@ -441,7 +441,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         style: SizeConfig.yaziWidgetIci,
                         underline: Container(
                           height:  SizeConfig.blockWidth * 0.3,
-                          color: Colors.black87,
+                          color: SizeConfig.almostBlack,
                         ),
                         onChanged: (String newValue) {
                           setState(() {
@@ -497,7 +497,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                     child: new Icon(
                       Icons.clear,
                       size: SizeConfig.blockWidth * 10,
-                      color: Colors.black87,
+                      color: SizeConfig.almostBlack,
                     ),
                   ),
                 ),
@@ -517,7 +517,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                     child: new Icon(
                       Icons.clear,
                       size: SizeConfig.blockWidth * 10,
-                      color: Colors.black87,
+                      color: SizeConfig.almostBlack,
                     ),
                   ),
                 ),
@@ -525,12 +525,12 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                   height: SizeConfig.blockWidth * 15,
                   width: SizeConfig.blockWidth * 15,
                   decoration: BoxDecoration(
-                    color: Colors.grey[50],
+                    color: SizeConfig.almostWhite,
                   ),
                   child: new Icon(
                     Icons.add,
                     size: SizeConfig.blockWidth * 10,
-                    color: Colors.black87,
+                    color: SizeConfig.almostBlack,
                   ),
                 ),
               ],
@@ -563,7 +563,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         style: SizeConfig.yaziWidgetIci,
                         underline: Container(
                           height:  SizeConfig.blockWidth * 0.3,
-                          color: Colors.black87,
+                          color: SizeConfig.almostBlack,
                         ),
                         onChanged: (String newValue) {
                           setState(() {
@@ -591,7 +591,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
               padding: EdgeInsets.only(left: SizeConfig.blockWidth * 33, top: SizeConfig.blockWidth * 2, right: SizeConfig.blockWidth * 33, bottom: SizeConfig.blockWidth * 2),
               child: Container(
                 height: SizeConfig.blockWidth * 8,
-                width: SizeConfig.blockWidth * 24,
+                width: SizeConfig.blockWidth * 26,
                 child: FlatButton(
                     onPressed: () {},
                     child: Container(
@@ -600,7 +600,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle>{
                         style: SizeConfig.yaziButon,
                       ),
                     ),
-                    color: Colors.green[900],
+                    color: SizeConfig.green,
                     shape: StadiumBorder()
                 ),
               ),

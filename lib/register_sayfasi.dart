@@ -17,7 +17,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: SizeConfig.almostWhite,
       body: ListView(
         children: <Widget>[
           Container(
@@ -37,12 +37,12 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, SizeConfig.blockWidth * 6),
+                          padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, SizeConfig.blockWidth * 10),
                           child: Text(
                             "Bahçem",
                             textDirection: TextDirection.ltr,
                             style: TextStyle(
-                              color: Colors.green[900],
+                              color: SizeConfig.green,
                               fontFamily: "Photoshoot",
                               fontSize: SizeConfig.blockWidth * 13,
                               shadows: <Shadow>[
@@ -62,7 +62,8 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
-                                cursorColor: Colors.green[900],
+                                textAlignVertical: TextAlignVertical.bottom,
+                                cursorColor: SizeConfig.green,
                                 controller: _kullaniciAdi,
                                 decoration: InputDecoration(
                                   hintText: "E-Posta",
@@ -73,7 +74,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero,
                                     borderSide: BorderSide(
-                                      color: Colors.green[900],
+                                      color: SizeConfig.green,
                                     ),
                                   ),
 
@@ -93,7 +94,8 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
-                                cursorColor: Colors.green[900],
+                                textAlignVertical: TextAlignVertical.bottom,
+                                cursorColor: SizeConfig.green,
                                 controller: _kullaniciAdi,
                                 decoration: InputDecoration(
                                   hintText: "Kullanıcı adı",
@@ -104,7 +106,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero,
                                     borderSide: BorderSide(
-                                      color: Colors.green[900],
+                                      color: SizeConfig.green,
                                     ),
                                   ),
 
@@ -124,7 +126,8 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
-                                cursorColor: Colors.green[900],
+                                textAlignVertical: TextAlignVertical.bottom,
+                                cursorColor: SizeConfig.green,
                                 controller: _kullaniciAdi,
                                 decoration: InputDecoration(
                                   hintText: "Şifre",
@@ -135,7 +138,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero,
                                     borderSide: BorderSide(
-                                      color: Colors.green[900],
+                                      color: SizeConfig.green,
                                     ),
                                   ),
 
@@ -155,7 +158,8 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
-                                cursorColor: Colors.green[900],
+                                textAlignVertical: TextAlignVertical.bottom,
+                                cursorColor: SizeConfig.green,
                                 controller: _kullaniciAdi,
                                 decoration: InputDecoration(
                                   hintText: "Şifre tekrar",
@@ -166,7 +170,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero,
                                     borderSide: BorderSide(
-                                      color: Colors.green[900],
+                                      color: SizeConfig.green,
                                     ),
                                   ),
 
@@ -182,19 +186,23 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                         ),
 
                         Padding(
-                          padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2),
+                          padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 1),
                           child: Container(
-                            height: SizeConfig.blockWidth * 8,
-                            width: SizeConfig.blockWidth * 24,
+                            height: SizeConfig.blockWidth * 10,
+                            width: SizeConfig.blockWidth * 26,
                             child: FlatButton(
-                                onPressed: () {},
+                                onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
                                 child: Container(
                                   child: Text(
                                     "Kayıt",
-                                    style: SizeConfig.yaziButon,
+                                    style: TextStyle(
+                                      fontSize: SizeConfig.blockWidth * 5.5,
+                                      color: SizeConfig.almostWhite,
+                                      fontFamily: "Champagne-Limousines-Bold",
+                                    ),
                                   ),
                                 ),
-                                color: Colors.green[900],
+                                color: SizeConfig.green,
                                 shape: StadiumBorder()
                             ),
                           ),

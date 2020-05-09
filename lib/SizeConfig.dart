@@ -11,21 +11,21 @@ class SizeConfig {
   static var blockHeight;
 
   static var yaziAciklama = TextStyle(
-    color: Colors.black87,
+    color: SizeConfig.almostBlack,
     fontFamily: "Champagne-Limousines-Bold",
     fontSize: SizeConfig.blockWidth * 4.5,
   );
 
   static var yaziAciklamaBaslik = TextStyle(
-    color: Colors.green[900],
+    color: SizeConfig.green,
     fontFamily: "Champagne-Limousines-Bold",
     fontSize: SizeConfig.blockWidth * 4.5,
   );
 
   static var yaziAppbarBaslik = TextStyle(
     fontFamily: "Champagne-Limousines-Bold",
-    fontSize: SizeConfig.blockWidth * 6,
-    color: Colors.green[900],
+    fontSize: SizeConfig.blockWidth * 5.5,
+    color: SizeConfig.green,
   );
 
   static var yaziHint = TextStyle(
@@ -36,27 +36,32 @@ class SizeConfig {
 
   static var yaziButon = TextStyle(
     fontSize: SizeConfig.blockWidth * 4.5,
-    color: Colors.white,
+    color: almostWhite,
     fontFamily: "Champagne-Limousines-Bold",
   );
 
   static var yaziWidgetIci = TextStyle(
-    color: Colors.black87,
+    color: SizeConfig.almostBlack,
     fontFamily: "Champagne-Limousines-Bold",
     fontSize: SizeConfig.blockWidth * 4,
   );
 
   static var yaziUserName = TextStyle(
-    color: Colors.green[900],
+    color: SizeConfig.green,
     fontFamily: "Champagne-Limousines-Bold",
     fontSize: SizeConfig.blockWidth * 5,
   );
 
   static var yaziProfilKucukAciklama = TextStyle(
-    color: Colors.black87,
+    color: SizeConfig.almostBlack,
     fontFamily: "Champagne-Limousines-Bold",
     fontSize: SizeConfig.blockWidth * 3.5,
   );
+  
+  static var green = Colors.green[900];
+  static var backgroundColor = Colors.grey[300];
+  static var almostWhite = Colors.grey[50];
+  static var almostBlack = Colors.black87;
 
   void init(BuildContext context) {
 

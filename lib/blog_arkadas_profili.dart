@@ -14,7 +14,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       body: ListView(
         children: <Widget>[
           Padding(
@@ -40,7 +40,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                           Text(
                             'minelsaygisever',
                             style: TextStyle(
-                              color: Colors.green[900],
+                              color: SizeConfig.green,
                               fontFamily: 'Champagne-Limousines-Bold',
                               fontSize: SizeConfig.blockWidth * 5.5,
                             ),
@@ -52,7 +52,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                                 child: Text(
                                   '6 gönderi',
                                   style: TextStyle(
-                                    color: Colors.black87,
+                                    color: SizeConfig.almostBlack,
                                     fontFamily: 'Champagne-Limousines-Bold',
                                     fontSize: SizeConfig.blockWidth * 3.5,
                                   ),
@@ -63,7 +63,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                                 child: Text(
                                   '25 takipçi',
                                   style: TextStyle(
-                                    color: Colors.black87,
+                                    color: SizeConfig.almostBlack,
                                     fontFamily: 'Champagne-Limousines-Bold',
                                     fontSize: SizeConfig.blockWidth * 3.5,
                                   ),
@@ -74,7 +74,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                                 child: Text(
                                   '20 takip edilen',
                                   style: TextStyle(
-                                    color: Colors.black87,
+                                    color: SizeConfig.almostBlack,
                                     fontFamily: 'Champagne-Limousines-Bold',
                                     fontSize: SizeConfig.blockWidth * 3.5,
                                   ),
@@ -87,7 +87,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                             child: Text(
                               'Minel',
                               style: TextStyle(
-                                color: Colors.black87,
+                                color: SizeConfig.almostBlack,
                                 fontFamily: 'Champagne-Limousines-Bold',
                                 fontSize: SizeConfig.blockWidth * 4,
                               ),
@@ -101,7 +101,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                                 Text(
                                   'Welcome to my green life!',
                                   style: TextStyle(
-                                    color: Colors.black87,
+                                    color: SizeConfig.almostBlack,
                                     fontFamily: 'Champagne-Limousines-Bold',
                                     fontSize: SizeConfig.blockWidth * 3.5,
                                   ),
@@ -120,11 +120,11 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                                           "Takip Et",
                                           style: TextStyle(
                                             fontSize: SizeConfig.blockWidth * 3.5,
-                                            color: Colors.white,
+                                            color: SizeConfig.almostWhite,
                                             fontFamily: "Champagne-Limousines-Bold",
                                           ),
                                         ),
-                                        color: Colors.green[900],
+                                        color: SizeConfig.green,
                                         shape: StadiumBorder()
                                     ),
                                   ),

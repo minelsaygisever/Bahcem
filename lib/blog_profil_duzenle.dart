@@ -14,16 +14,16 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       appBar: AppBar(
         title: Text(
           'Profili Düzenle',
           style: SizeConfig.yaziAppbarBaslik,
         ),
-        backgroundColor: Colors.grey[50],
+        backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
         iconTheme: IconThemeData(
-          color: Colors.green[900], //change your color here
+          color: SizeConfig.green, //change your color here
         ),
       ),
       body: Padding(
@@ -74,18 +74,18 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                       padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 1, SizeConfig.blockWidth * 6),
                       child: Theme(
                           data: new ThemeData(
-                            primaryColor: Colors.green[900],
-                            primaryColorDark: Colors.green[900],
+                            primaryColor: SizeConfig.green,
+                            primaryColorDark: SizeConfig.green,
                           ),
                           child: TextFormField(
                             autofocus: false,
-                            cursorColor: Colors.green[900],
+                            cursorColor: SizeConfig.green,
                             initialValue: 'Minel',
                             decoration: InputDecoration(
-                              fillColor: Colors.green[900],
+                              fillColor: SizeConfig.green,
                               labelStyle: SizeConfig.yaziWidgetIci,
                               border: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.grey[50])),
+                                  borderSide: BorderSide(color: SizeConfig.almostWhite)),
                             ),
                           ))),
                   Padding(
@@ -102,18 +102,18 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                       padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 1, SizeConfig.blockWidth * 6),
                       child: Theme(
                           data: new ThemeData(
-                            primaryColor: Colors.green[900],
-                            primaryColorDark: Colors.green[900],
+                            primaryColor: SizeConfig.green,
+                            primaryColorDark: SizeConfig.green,
                           ),
                           child: TextFormField(
                             autofocus: false,
-                            cursorColor: Colors.green[900],
+                            cursorColor: SizeConfig.green,
                             initialValue: 'minelsaygisever',
                             decoration: InputDecoration(
-                              fillColor: Colors.green[900],
+                              fillColor: SizeConfig.green,
                               labelStyle: SizeConfig.yaziWidgetIci,
                               border: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.grey[50])),
+                                  borderSide: BorderSide(color: SizeConfig.almostWhite)),
                             ),
                           ))),
                   Padding(
@@ -130,20 +130,20 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                       padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 1, SizeConfig.blockWidth * 6),
                       child: Theme(
                           data: new ThemeData(
-                            primaryColor: Colors.green[900],
-                            primaryColorDark: Colors.green[900],
+                            primaryColor: SizeConfig.green,
+                            primaryColorDark: SizeConfig.green,
                           ),
                           child: TextFormField(
                             autofocus: false,
                             keyboardType: TextInputType.multiline,
                             maxLines: null,
-                            cursorColor: Colors.green[900],
+                            cursorColor: SizeConfig.green,
                             initialValue: 'Welcome to my green world!',
                             decoration: InputDecoration(
-                              fillColor: Colors.green[900],
+                              fillColor: SizeConfig.green,
                               labelStyle: SizeConfig.yaziWidgetIci,
                               border: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.grey[50])),
+                                  borderSide: BorderSide(color: SizeConfig.almostWhite)),
                             ),
                           ))),
 
@@ -152,7 +152,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                     padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2,  bottom: SizeConfig.blockWidth * 2),
                     child: Container(
                       height: SizeConfig.blockWidth * 8,
-                      width: SizeConfig.blockWidth * 24,
+                      width: SizeConfig.blockWidth * 26,
                       child: FlatButton(
                           onPressed: () {},
                           child: Container(
@@ -161,7 +161,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                               style: SizeConfig.yaziButon,
                             ),
                           ),
-                          color: Colors.green[900],
+                          color: SizeConfig.green,
                           shape: StadiumBorder()
                       ),
                     ),

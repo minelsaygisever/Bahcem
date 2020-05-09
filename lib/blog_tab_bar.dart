@@ -21,19 +21,19 @@ class _BlogTabBarState extends State<BlogTabBar> with SingleTickerProviderStateM
       length:3,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(SizeConfig.blockWidth * 12.5),
+          preferredSize: Size.fromHeight(SizeConfig.blockWidth * 14),
           child: AppBar(
-            backgroundColor: Colors.grey[50],
+            backgroundColor: SizeConfig.almostWhite,
             elevation: 0.0,
             bottom: TabBar(
               controller: _tabController,
-              indicatorColor:Colors.green[900],
+              indicatorColor:SizeConfig.green,
               unselectedLabelColor: Colors.grey,
               tabs: <Widget>[
                 Tab(
                   icon:Image.asset(
                     "assets/icons/home.png",
-                    color: Colors.green[900],
+                    color: SizeConfig.green,
                     height: SizeConfig.blockWidth * 5,
                     width: SizeConfig.blockWidth * 5,
                   ),
@@ -41,7 +41,7 @@ class _BlogTabBarState extends State<BlogTabBar> with SingleTickerProviderStateM
                 Tab(
                   icon: Image.asset(
                     "assets/icons/search.png",
-                    color: Colors.green[900],
+                    color: SizeConfig.green,
                     height: SizeConfig.blockWidth * 5,
                     width: SizeConfig.blockWidth * 5,
                   ),
@@ -49,7 +49,7 @@ class _BlogTabBarState extends State<BlogTabBar> with SingleTickerProviderStateM
                 Tab(
                   icon: Image.asset(
                     "assets/icons/user.png",
-                    color: Colors.green[900],
+                    color: SizeConfig.green,
                     height: SizeConfig.blockWidth * 5,
                     width: SizeConfig.blockWidth * 5,
                   ),

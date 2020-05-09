@@ -14,16 +14,16 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       appBar: AppBar(
         title: Text(
           'Gönderi Ekle',
           style: SizeConfig.yaziAppbarBaslik,
         ),
-        backgroundColor: Colors.grey[50],
+        backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
         iconTheme: IconThemeData(
-          color: Colors.green[900], //change your color here
+          color: SizeConfig.green, //change your color here
         ),
       ),
       body: Padding(
@@ -43,10 +43,10 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: Colors.grey[50],
+                            color: SizeConfig.almostWhite,
                             width: 0,
                           ),
-                          color: Colors.grey[50],
+                          color: SizeConfig.almostWhite,
                         ),
                         child: Padding(
                           padding: EdgeInsets.all(SizeConfig.blockWidth * 20),
@@ -62,13 +62,13 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                   TextField(
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
-                    cursorColor: Colors.green[900],
+                    cursorColor: SizeConfig.green,
                     decoration: InputDecoration(
                       hintText: 'Düşüncelerin...',
                       hintStyle: SizeConfig.yaziHint,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
-                          color: Colors.green[900],
+                          color: SizeConfig.green,
                         ),
                       ),
                     ),
@@ -79,7 +79,7 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                     padding: EdgeInsets.only(top: SizeConfig.blockWidth * 4, bottom: SizeConfig.blockWidth * 2),
                     child: Container(
                       height: SizeConfig.blockWidth * 8,
-                      width: SizeConfig.blockWidth * 24,
+                      width: SizeConfig.blockWidth * 26,
                       child: FlatButton(
                           onPressed: () {},
                           child: Container(
@@ -88,7 +88,7 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                               style: SizeConfig.yaziButon,
                             ),
                           ),
-                          color: Colors.green[900],
+                          color: SizeConfig.green,
                           shape: StadiumBorder()
                       ),
                     ),

@@ -6,16 +6,16 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       appBar: AppBar(
         title: Text(
           'Orkide',
           style: SizeConfig.yaziAppbarBaslik
         ),
-        backgroundColor: Colors.grey[50],
+        backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
         iconTheme: IconThemeData(
-          color: Colors.green[900], //change your color here
+          color: SizeConfig.green, //change your color here
         ),
       ),
       body: Padding(

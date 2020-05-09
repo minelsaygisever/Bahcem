@@ -15,7 +15,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       body: ListView(
         children: <Widget>[
           Padding(
@@ -96,7 +96,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BlogProfilDuzenle()),),
                               child: new Image.asset(
                                 "assets/icons/pencil.png",
-                                color: Colors.black87,
+                                color: SizeConfig.almostBlack,
                                 height: SizeConfig.blockWidth * 6,
                                 width: SizeConfig.blockWidth * 6,
                               ),
@@ -108,7 +108,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                               onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BlogGonderiEkle()),),
                               child: new Image.asset(
                                 "assets/icons/newPost.png",
-                                color: Colors.black87,
+                                color: SizeConfig.almostBlack,
                                 height: SizeConfig.blockWidth * 6,
                                 width: SizeConfig.blockWidth * 6,
                               ),

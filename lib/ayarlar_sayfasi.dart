@@ -13,24 +13,24 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
   bool isSwitched = true;
   String heightInFeet = "null";
   int height = 180;
-  String dropdownValue = 'Green Mornings';
-  List<String> _locations = ['Green Mornings', 'Happy Day']; // Option 2
+  String dropdownValue = 'SizeConfig.green Mornings';
+  List<String> _locations = ['SizeConfig.green Mornings', 'Happy Day']; // Option 2
   String _selectedLocation; // Option 2
   var sliderValue = 0.0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: SizeConfig.backgroundColor,
       appBar: AppBar(
         title: Text(
           'Ayarlar',
           style: SizeConfig.yaziAppbarBaslik,
         ),
-        backgroundColor: Colors.grey[50],
+        backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
         iconTheme: IconThemeData(
-          color: Colors.green[900], //change your color here
+          color: SizeConfig.green, //change your color here
         ),
       ),
       body: ListView(
@@ -48,7 +48,7 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
             alignment: Alignment.topLeft,
             padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
             child: CustomSwitch(
-              activeColor: Colors.green[900],
+              activeColor: SizeConfig.green,
               value: isSwitched,
               onChanged: (value) {
                 print("VALUE : $value");
@@ -103,7 +103,7 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
               max: 10.0,
               divisions: 5,
               value: sliderValue,
-              activeColor: Colors.green[900],
+              activeColor: SizeConfig.green,
               inactiveColor: Colors.grey,
               onChanged: (newValue) {
                 setState(() {
