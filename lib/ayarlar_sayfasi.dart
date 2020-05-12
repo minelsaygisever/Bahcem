@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'SizeConfig.dart';
 import 'custom_switch.dart';
 import 'hakkinda_sayfasi.dart';
+import 'services/auth.dart';
 
 class AyarlarSayfasi extends StatefulWidget {
   @override
@@ -10,6 +11,8 @@ class AyarlarSayfasi extends StatefulWidget {
 }
 
 class AyarlarSayfasiState extends State<AyarlarSayfasi>{
+  final AuthService _auth = AuthService();
+
   bool isSwitched = true;
   String heightInFeet = "null";
   int height = 180;
@@ -129,8 +132,8 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
             padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 2),
             child: FlatButton(
               padding: EdgeInsets.all(0.0),
-              onPressed: () {
-                /*...*/
+              onPressed: () async {
+                await _auth.signOut();
               },
               child: Text(
                 "Çıkış Yap",

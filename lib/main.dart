@@ -1,5 +1,9 @@
-
 import 'package:flutter/material.dart';
+import 'package:my_project/authenticate/authenticate.dart';
+import 'package:my_project/models/user.dart';
+import 'package:my_project/services/auth.dart';
+import 'package:my_project/wrapper.dart';
+import 'package:provider/provider.dart';
 import 'SizeConfig.dart';
 
 import 'bahcem_sayfasi.dart';
@@ -15,10 +19,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Bahçem',
-      home: AcilisSayfasi(),
+    return StreamProvider<User>.value(
+        value: AuthService().user,
+        child: MaterialApp(
+          title: 'Bahçem',
+          home: Wrapper(),
+        ),
     );
+
   }
 }
 

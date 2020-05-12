@@ -128,7 +128,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 height: SizeConfig.blockWidth * 10,
                                 width: SizeConfig.blockWidth * 26,
                                 child: FlatButton(
-                                    onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
+                                    onPressed: () async  => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
                                     child: Container(
                                       child: Text(
                                         "Giriş",

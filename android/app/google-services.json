@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "214193752343",
+    "firebase_url": "https://bahcem-109e7.firebaseio.com",
+    "project_id": "bahcem-109e7",
+    "storage_bucket": "bahcem-109e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214193752343:android:44851346080fb44b880f52",
+        "android_client_info": {
+          "package_name": "com.example.bahcemdeneme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214193752343-hv9cp7op0qma9aa147gklats2co8emr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHOryCU-p295ydJHutzpbrv32AIHD8ayc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214193752343-hv9cp7op0qma9aa147gklats2co8emr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
