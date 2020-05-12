@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/authenticate/authenticate.dart';
-import 'package:my_project/models/user.dart';
-import 'package:my_project/services/auth.dart';
-import 'package:my_project/wrapper.dart';
+import 'authenticate/authenticate.dart';
+import 'models/user.dart';
+import 'services/auth.dart';
+import 'wrapper.dart';
 import 'package:provider/provider.dart';
 import 'SizeConfig.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'services/auth.dart';
 import 'SizeConfig.dart';
 import 'main.dart';
 
@@ -12,6 +13,10 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
   final formKey = GlobalKey<FormState>();
   final _kullaniciAdi = TextEditingController();
   final _sifre = TextEditingController();
+
+  final AuthService _auth = AuthService();
+  String email = '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +99,9 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
+                                onChanged: (val){
+                                  setState(() => email = val);
+                                },
                                 textAlignVertical: TextAlignVertical.bottom,
                                 cursorColor: SizeConfig.green,
                                 controller: _kullaniciAdi,
@@ -126,6 +134,9 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
+                                onChanged: (val){
+                                  setState(() => password = val);
+                                },
                                 textAlignVertical: TextAlignVertical.bottom,
                                 cursorColor: SizeConfig.green,
                                 controller: _kullaniciAdi,
@@ -191,7 +202,11 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 10,
                             width: SizeConfig.blockWidth * 26,
                             child: FlatButton(
-                                onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
+                                onPressed: () async {
+                                  print(email);
+                                  print(password);
+                                },
+                                //onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
                                 child: Container(
                                   child: Text(
                                     "Kayıt",

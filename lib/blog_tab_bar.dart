@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/blog_arama_sayfasi.dart';
+import 'blog_arama_sayfasi.dart';
 import 'blog_anasayfa.dart';
 import 'blog_profil.dart';
-import 'package:my_project/SizeConfig.dart';
+import 'SizeConfig.dart';
 
 class BlogTabBar extends StatefulWidget {
   _BlogTabBarState createState() => _BlogTabBarState();

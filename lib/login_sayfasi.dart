@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'services/auth.dart';
 import 'SizeConfig.dart';
 import 'main.dart';
 import 'register_sayfasi.dart';
@@ -13,6 +14,10 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
   final formKey = GlobalKey<FormState>();
   final _kullaniciAdi = TextEditingController();
   final _sifre = TextEditingController();
+
+  final AuthService _auth = AuthService();
+  String email = '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +69,9 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 height: SizeConfig.blockWidth * 12,
                                 alignment: Alignment.center,
                                 child: TextFormField(
+                                  onChanged: (val){
+                                    setState(() => email = val);
+                                  },
                                   textAlignVertical: TextAlignVertical.bottom,
                                     cursorColor: SizeConfig.green,
                                     controller: _kullaniciAdi,
@@ -96,6 +104,10 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 height: SizeConfig.blockWidth * 12,
                                 alignment: Alignment.center,
                                 child: TextFormField(
+                                    obscureText: true,
+                                    onChanged: (val){
+                                      setState(() => password = val);
+                                    },
                                     textAlignVertical: TextAlignVertical.bottom,
                                     cursorColor: SizeConfig.green,
                                     controller: _sifre,
@@ -128,7 +140,11 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 height: SizeConfig.blockWidth * 10,
                                 width: SizeConfig.blockWidth * 26,
                                 child: FlatButton(
-                                    onPressed: () async  => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
+                                    onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
+                                    /*onPressed: () async {
+                                      print(email);
+                                      print(password);
+                                    },*/
                                     child: Container(
                                       child: Text(
                                         "Giriş",
