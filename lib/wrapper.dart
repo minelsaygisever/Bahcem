@@ -1,3 +1,4 @@
+import 'package:bahcem_deneme/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'bahcem_sayfasi.dart';
@@ -16,8 +17,9 @@ class Wrapper extends StatelessWidget {
     //return Authenticate();
     if (user == null){
       return Authenticate();
-    }else {
-      return BahcemSayfasi();
+    }
+    else {
+      return MyHomePage();
     }
 
   }

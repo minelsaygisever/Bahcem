@@ -1,3 +1,6 @@
+import 'package:bahcem_deneme/login_sayfasi.dart';
+import 'package:bahcem_deneme/main.dart';
+import 'package:bahcem_deneme/wrapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'SizeConfig.dart';
@@ -32,6 +35,7 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
         ),
         backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
+        //automaticallyImplyLeading: false,
         iconTheme: IconThemeData(
           color: SizeConfig.green, //change your color here
         ),
@@ -134,6 +138,8 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
               padding: EdgeInsets.all(0.0),
               onPressed: () async {
                 await _auth.signOut();
+                Navigator.popUntil(context, ModalRoute.withName("/"));
+
               },
               child: Text(
                 "Çıkış Yap",

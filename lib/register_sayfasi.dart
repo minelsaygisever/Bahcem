@@ -5,16 +5,23 @@ import 'SizeConfig.dart';
 import 'main.dart';
 
 class RegisterSayfasi extends StatefulWidget {
+  final Function toggleView;
+  RegisterSayfasi({ this.toggleView });
+
   @override
   _RegisterSayfasiState createState() => _RegisterSayfasiState();
 }
 
 class _RegisterSayfasiState extends State<RegisterSayfasi> {
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   final _kullaniciAdi = TextEditingController();
   final _sifre = TextEditingController();
+  final _eposta = TextEditingController();
+  final _sifreTekrar = TextEditingController();
 
   final AuthService _auth = AuthService();
+  String error = '';
+
   String email = '';
   String password = '';
 
@@ -37,7 +44,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                     FocusScope.of(context).requestFocus(FocusNode());
                   },
                   child: Form(
-                    key: formKey,
+                    key: _formKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -67,9 +74,13 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
+                                validator: (val) => val.isEmpty ? 'Lütfen eposta giriniz' : null,
+                                onChanged: (val){
+                                  setState(() => email = val);
+                                },
                                 textAlignVertical: TextAlignVertical.bottom,
                                 cursorColor: SizeConfig.green,
-                                controller: _kullaniciAdi,
+                                controller: _eposta,
                                 decoration: InputDecoration(
                                   hintText: "E-Posta",
                                   hintStyle: SizeConfig.yaziHint,
@@ -84,13 +95,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   ),
 
                                 ),
-                                validator: (val) {
-                                  if (val.isEmpty) {
-                                    return "Boş geçilemez";
-                                  } else {
-                                    return null;
-                                  }
-                                }),
+                             ),
                           ),
                         ),
                         Padding(
@@ -99,9 +104,6 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
-                                onChanged: (val){
-                                  setState(() => email = val);
-                                },
                                 textAlignVertical: TextAlignVertical.bottom,
                                 cursorColor: SizeConfig.green,
                                 controller: _kullaniciAdi,
@@ -134,12 +136,14 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
+                                obscureText: true,
+                                validator: (val) => val.length < 6 ? 'En az 6 karakter uzunluğunda şifre giriniz' : null,
                                 onChanged: (val){
                                   setState(() => password = val);
                                 },
                                 textAlignVertical: TextAlignVertical.bottom,
                                 cursorColor: SizeConfig.green,
-                                controller: _kullaniciAdi,
+                                controller: _sifre,
                                 decoration: InputDecoration(
                                   hintText: "Şifre",
                                   hintStyle: SizeConfig.yaziHint,
@@ -154,13 +158,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   ),
 
                                 ),
-                                validator: (val) {
-                                  if (val.isEmpty) {
-                                    return "Boş geçilemez";
-                                  } else {
-                                    return null;
-                                  }
-                                }),
+                             ),
                           ),
                         ),
                         Padding(
@@ -169,9 +167,10 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
+                                obscureText: true,
                                 textAlignVertical: TextAlignVertical.bottom,
                                 cursorColor: SizeConfig.green,
-                                controller: _kullaniciAdi,
+                                controller: _sifreTekrar,
                                 decoration: InputDecoration(
                                   hintText: "Şifre tekrar",
                                   hintStyle: SizeConfig.yaziHint,
@@ -203,13 +202,50 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             width: SizeConfig.blockWidth * 26,
                             child: FlatButton(
                                 onPressed: () async {
-                                  print(email);
-                                  print(password);
+                                  if(_formKey.currentState.validate()) {
+                                    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                                    if (result == null) {
+                                      setState(() {
+                                        error = 'Lütfen geçerli bir eposta giriniz';
+                                      });
+                                    }
+                                  }
                                 },
                                 //onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
                                 child: Container(
                                   child: Text(
                                     "Kayıt",
+                                    style: TextStyle(
+                                      fontSize: SizeConfig.blockWidth * 5.5,
+                                      color: SizeConfig.almostWhite,
+                                      fontFamily: "Champagne-Limousines-Bold",
+                                    ),
+                                  ),
+                                ),
+                                color: SizeConfig.green,
+                                shape: StadiumBorder()
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 1),
+                              //child: SizedBox(height: 12.0),
+                              child: Text(
+                                error,
+                                style: TextStyle(color: Colors.red, fontSize: 14.0),
+                              )
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: SizeConfig.blockWidth * 30),
+                          child: Container(
+                            height: SizeConfig.blockWidth * 10,
+                            width: SizeConfig.blockWidth * 40,
+                            child: FlatButton(
+                                onPressed: () => widget.toggleView(),
+                                //onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
+                                child: Container(
+                                  child: Text(
+                                    "Giriş Yap",
                                     style: TextStyle(
                                       fontSize: SizeConfig.blockWidth * 5.5,
                                       color: SizeConfig.almostWhite,

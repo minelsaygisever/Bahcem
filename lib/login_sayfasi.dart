@@ -6,16 +6,21 @@ import 'main.dart';
 import 'register_sayfasi.dart';
 
 class LoginSayfasi extends StatefulWidget {
+  final Function toggleView;
+  LoginSayfasi({ this.toggleView });
+
   @override
   _LoginSayfasiState createState() => _LoginSayfasiState();
 }
 
 class _LoginSayfasiState extends State<LoginSayfasi> {
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   final _kullaniciAdi = TextEditingController();
   final _sifre = TextEditingController();
 
   final AuthService _auth = AuthService();
+  String error = '';
+
   String email = '';
   String password = '';
 
@@ -37,7 +42,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                     FocusScope.of(context).requestFocus(FocusNode());
                   },
                   child: Form(
-                    key: formKey,
+                    key: _formKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -69,33 +74,28 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 height: SizeConfig.blockWidth * 12,
                                 alignment: Alignment.center,
                                 child: TextFormField(
-                                  onChanged: (val){
-                                    setState(() => email = val);
-                                  },
-                                  textAlignVertical: TextAlignVertical.bottom,
-                                    cursorColor: SizeConfig.green,
-                                    controller: _kullaniciAdi,
-                                    decoration: InputDecoration(
-                                      hintText: "Kullanıcı Adı",
-                                      hintStyle: SizeConfig.yaziHint,
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.zero,
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.zero,
-                                        borderSide: BorderSide(
-                                          color: SizeConfig.green,
+                                    validator: (val) => val.isEmpty ? 'Lütfen epostanızı giriniz' : null,
+                                    onChanged: (val){
+                                      setState(() => email = val);
+                                    },
+                                    textAlignVertical: TextAlignVertical.bottom,
+                                      cursorColor: SizeConfig.green,
+                                      controller: _kullaniciAdi,
+                                      decoration: InputDecoration(
+                                        hintText: "Kullanıcı Adı",
+                                        hintStyle: SizeConfig.yaziHint,
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.zero,
                                         ),
-                                      ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.zero,
+                                          borderSide: BorderSide(
+                                            color: SizeConfig.green,
+                                          ),
+                                        ),
 
-                                    ),
-                                    validator: (val) {
-                                      if (val.isEmpty) {
-                                        return "Boş geçilemez";
-                                      } else {
-                                        return null;
-                                      }
-                                    }),
+                                      ),
+                                ),
                               ),
                             ),
                             Padding(
@@ -105,6 +105,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 alignment: Alignment.center,
                                 child: TextFormField(
                                     obscureText: true,
+                                    validator: (val) => val.length < 6 ? 'En az 6 karakter uzunluğunda şifre giriniz' : null,
                                     onChanged: (val){
                                       setState(() => password = val);
                                     },
@@ -125,13 +126,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                       ),
 
                                     ),
-                                    validator: (val) {
-                                      if (val.isEmpty) {
-                                        return "Boş geçilemez";
-                                      } else {
-                                        return null;
-                                      }
-                                    }),
+                                 ),
                               ),
                             ),
                             Padding(
@@ -140,11 +135,17 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 height: SizeConfig.blockWidth * 10,
                                 width: SizeConfig.blockWidth * 26,
                                 child: FlatButton(
-                                    onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
-                                    /*onPressed: () async {
-                                      print(email);
-                                      print(password);
-                                    },*/
+                                    //onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
+                                    onPressed: () async {
+                                      if(_formKey.currentState.validate()){
+                                        dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+                                        if(result == null) {
+                                          setState(() {
+                                            error = 'Lütfen kayıtlı bir eposta ve şifre giriniz';
+                                          });
+                                        }
+                                      }
+                                    },
                                     child: Container(
                                       child: Text(
                                         "Giriş",
@@ -159,6 +160,14 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                     shape: StadiumBorder()
                                 ),
                               ),
+                            ),
+                            Padding(
+                                padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 1),
+                                //child: SizedBox(height: 12.0),
+                                child: Text(
+                                  error,
+                                  style: TextStyle(color: Colors.red, fontSize: 14.0),
+                                )
                             ),
                           ],
                         ),
@@ -182,9 +191,10 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                   height: SizeConfig.blockWidth * 8,
                                   width: SizeConfig.blockWidth * 26,
                                   child: FlatButton(
-                                      onPressed: () => Navigator.push(context, MaterialPageRoute(
+                                      /*onPressed: () => Navigator.push(context, MaterialPageRoute(
                                           builder: (BuildContext context) => RegisterSayfasi()
-                                      )),
+                                      )),*/
+                                      onPressed: () => widget.toggleView(),
                                       child: Container(
                                         child: Text(
                                           "Kayıt",
