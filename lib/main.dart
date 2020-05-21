@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'SizeConfig.dart';
 
 import 'bahcem_sayfasi.dart';
-import 'bitkini_tani_sayfasi.dart';
+import 'bitkini_tani_view.dart';
 import 'blog_anasayfa.dart';
 import 'ayarlar_sayfasi.dart';
 import 'acilis_sayfasi.dart';
@@ -39,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static int _selectedItem = 1;
-  var _pages = [BitkiniTaniSayfasi(), BahcemSayfasi(), BlogTabBar()];
+  var _pages = [BitkiniTaniView(), BahcemSayfasi(), BlogTabBar()];
   var _pageController = PageController(initialPage: _selectedItem);
   static var _zeroIconSize = SizeConfig.blockWidth * 5;
   static var _oneIconSize = SizeConfig.blockWidth * 8;

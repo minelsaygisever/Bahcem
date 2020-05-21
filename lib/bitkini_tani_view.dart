@@ -1,4 +1,4 @@
-import 'package:bahcem_deneme/core/model/bitkini_tani.dart';
+import 'package:bahcem_deneme/core/model/bitkini_tani_model.dart';
 import 'package:bahcem_deneme/core/services/bitkini_tani_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +6,12 @@ import 'package:flutter/painting.dart';
 import 'SizeConfig.dart';
 import 'bitkini_tani_bitki_goruntule.dart';
 
-class BitkiniTaniSayfasi extends StatefulWidget {
+class BitkiniTaniView extends StatefulWidget {
   @override
-  _BitkiniTaniSayfasiState createState() => _BitkiniTaniSayfasiState();
+  _BitkiniTaniViewState createState() => _BitkiniTaniViewState();
 }
 
-class _BitkiniTaniSayfasiState extends State<BitkiniTaniSayfasi> {
+class _BitkiniTaniViewState extends State<BitkiniTaniView> {
   //servisi bağlayıp veri kullanmak için state tanımlıyoruz
   //initstate olması lazım çünkü başlangıçta ilk gelecek veriyi çekiyoruz
   //güncelleme yapmak isteseydik setstate kullanırdık
@@ -51,13 +51,13 @@ class _BitkiniTaniSayfasiState extends State<BitkiniTaniSayfasi> {
   }
 
   //uygulamamızın body si burada olacak
-  Widget _listBitkiniTani(List<BitkiniTani> list) {
+  Widget _listBitkiniTani(List<BitkiniTaniModel> list) {
     return ListView.builder(
         itemCount: list.length,
         itemBuilder: (context, index) => _card(list[index]));
   }
 
-  Widget _card(BitkiniTani bitkiniTani) {
+  Widget _card(BitkiniTaniModel bitkiniTani) {
     return Container(
       height: 150,
       width: 50,

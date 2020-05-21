@@ -1,6 +1,6 @@
 //jsondan darta gelen dönüşen kısım
 //servisten gelen veriler burada eşleşiyor
-class BitkiniTani {
+class BitkiniTaniModel {
   String aciklama;
   String isiIhtiyaci;
   String isikIhtiyaci;
@@ -10,7 +10,7 @@ class BitkiniTani {
   String toprakTipi;
   String bitkiAdi;
 
-  BitkiniTani(
+  BitkiniTaniModel(
       {this.aciklama,
         this.isiIhtiyaci,
         this.isikIhtiyaci,
@@ -20,7 +20,7 @@ class BitkiniTani {
         this.toprakTipi,
         this.bitkiAdi});
 
-  BitkiniTani.fromJson(Map<String, dynamic> json) {
+  BitkiniTaniModel.fromJson(Map<String, dynamic> json) {
     aciklama = json['Aciklama'];
     isiIhtiyaci = json['IsiIhtiyaci'];
     isikIhtiyaci = json['IsikIhtiyaci'];
