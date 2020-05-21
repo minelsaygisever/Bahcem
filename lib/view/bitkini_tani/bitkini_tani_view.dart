@@ -52,53 +52,52 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
 
   //uygulamamızın body si burada olacak
   Widget _listBitkiniTani(List<BitkiniTaniModel> list) {
-    return GridView.builder(
-        itemCount: list.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisSpacing: SizeConfig.blockWidth * 2,
-            mainAxisSpacing: SizeConfig.blockWidth * 2,
-            crossAxisCount: 2),
-        itemBuilder: (context, index) => _card(list[index]));
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.blockWidth * 4),
+      child: GridView.builder(
+          itemCount: list.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisSpacing: SizeConfig.blockWidth * 4,
+              mainAxisSpacing: SizeConfig.blockWidth * 4,
+              crossAxisCount: 2),
+          itemBuilder: (context, index) => _card(list[index])),
+    );
   }
 
   Widget _card(BitkiniTaniModel bitkiniTani) {
     return Center(
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2,
-            SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2, 0),
-        child: GestureDetector(
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => BitkiniTaniBitkiGoruntule()),
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/orkide.jpg"),
-                fit: BoxFit.scaleDown,
-              ),
-              borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 2),
+      child: GestureDetector(
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => BitkiniTaniBitkiGoruntule()),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/orkide.jpg"),
+              fit: BoxFit.cover,
             ),
+            borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 2),
+          ),
+          alignment: Alignment.bottomCenter,
+          child: Transform(
             alignment: Alignment.bottomCenter,
-            child: Transform(
-              alignment: Alignment.bottomCenter,
-              transform: Matrix4.skewY(0.0)..rotateZ(0.0),
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(SizeConfig.blockWidth * 1),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(SizeConfig.blockWidth * 2),
-                    bottomRight: Radius.circular(SizeConfig.blockWidth * 2),
-                  ),
-                  color: Color(0xCDFFFFFF),
+            transform: Matrix4.skewY(0.0)..rotateZ(0.0),
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(SizeConfig.blockWidth * 1),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(SizeConfig.blockWidth * 2),
+                  bottomRight: Radius.circular(SizeConfig.blockWidth * 2),
                 ),
-                child: new Text(
-                  bitkiniTani.bitkiAdi,
-                  textAlign: TextAlign.center,
-                  style: SizeConfig.yaziAciklamaBaslik,
-                ),
+                color: Color(0xCDFFFFFF),
+              ),
+              child: new Text(
+                bitkiniTani.bitkiAdi,
+                textAlign: TextAlign.center,
+                style: SizeConfig.yaziAciklamaBaslik,
               ),
             ),
           ),
