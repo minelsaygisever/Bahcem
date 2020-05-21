@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'file:///C:/Users/esrap/Desktop/bahcem_deneme/lib/models/bitkini_tani_model.dart';
+import 'package:bahcem_deneme/models/bitkini_tani_model.dart';
 import 'package:http/http.dart' as http;
 
 class FirebaseService {

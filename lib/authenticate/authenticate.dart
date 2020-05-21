@@ -1,5 +1,5 @@
-import 'package:bahcem_deneme/view/login/login_sayfasi.dart';
-import 'package:bahcem_deneme/view/login/register_sayfasi.dart';
+import 'package:bahcem_deneme/view/login/login_sayfasi_view.dart';
+import 'package:bahcem_deneme/view/login/register_sayfasi_view.dart';
 import 'package:flutter/material.dart';
 
 class Authenticate extends StatefulWidget {
