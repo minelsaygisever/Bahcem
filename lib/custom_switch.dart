@@ -1,5 +1,4 @@
 library custom_switch;
-//gfd
 import 'package:flutter/material.dart';
 import 'SizeConfig.dart';
 
@@ -26,10 +25,10 @@ class _CustomSwitchState extends State<CustomSwitch>
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 60));
     _circleAnimation = AlignmentTween(
-        begin: widget.value ? Alignment.centerRight : Alignment.centerLeft,
-        end: widget.value ? Alignment.centerLeft : Alignment.centerRight)
+            begin: widget.value ? Alignment.centerRight : Alignment.centerLeft,
+            end: widget.value ? Alignment.centerLeft : Alignment.centerRight)
         .animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.linear));
+            parent: _animationController, curve: Curves.linear));
   }
 
   @override
@@ -52,7 +51,8 @@ class _CustomSwitchState extends State<CustomSwitch>
             width: SizeConfig.blockWidth * 21,
             height: SizeConfig.blockWidth * 7,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 4.5),
+                borderRadius:
+                    BorderRadius.circular(SizeConfig.blockWidth * 4.5),
                 color: _circleAnimation.value == Alignment.centerLeft
                     ? Colors.grey
                     : widget.activeColor),
@@ -63,15 +63,17 @@ class _CustomSwitchState extends State<CustomSwitch>
                 children: <Widget>[
                   _circleAnimation.value == Alignment.centerRight
                       ? Padding(
-                    padding: EdgeInsets.only(left: SizeConfig.blockWidth * 4, right: SizeConfig.blockWidth * 2),
-                    child: Text(
-                      'Açık',
-                      style: TextStyle(
-                          fontFamily: "Champagne-Limousines-Bold",
-                          color: Colors.white70,
-                          fontSize: SizeConfig.blockWidth * 3.5),
-                    ),
-                  )
+                          padding: EdgeInsets.only(
+                              left: SizeConfig.blockWidth * 4,
+                              right: SizeConfig.blockWidth * 2),
+                          child: Text(
+                            'Açık',
+                            style: TextStyle(
+                                fontFamily: "Champagne-Limousines-Bold",
+                                color: Colors.white70,
+                                fontSize: SizeConfig.blockWidth * 3.5),
+                          ),
+                        )
                       : Container(),
                   Align(
                     alignment: _circleAnimation.value,
@@ -84,16 +86,18 @@ class _CustomSwitchState extends State<CustomSwitch>
                   ),
                   _circleAnimation.value == Alignment.centerLeft
                       ? Padding(
-                    padding: EdgeInsets.only(left: SizeConfig.blockWidth * 1, right: SizeConfig.blockWidth * 2),
-                    child: Text(
-                      'Kapalı',
-                      style: TextStyle(
-                          fontFamily: "Champagne-Limousines-Bold",
-                          color: Colors.white70,
-                          fontSize: SizeConfig.blockWidth * 3.5,
-                      ),
-                    ),
-                  )
+                          padding: EdgeInsets.only(
+                              left: SizeConfig.blockWidth * 1,
+                              right: SizeConfig.blockWidth * 2),
+                          child: Text(
+                            'Kapalı',
+                            style: TextStyle(
+                              fontFamily: "Champagne-Limousines-Bold",
+                              color: Colors.white70,
+                              fontSize: SizeConfig.blockWidth * 3.5,
+                            ),
+                          ),
+                        )
                       : Container(),
                 ],
               ),

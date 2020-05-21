@@ -1,19 +1,18 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
-import 'custom_switch.dart';
-import 'main.dart';
-import 'bahcem_bitki_goruntule.dart';
-import 'bahcem_bitki_ekle.dart';
+import 'bahcem_bitki_ekle_view.dart';
+import 'bahcem_bitki_goruntule_view.dart';
 
-class BahcemSayfasi extends StatelessWidget{
+class BahcemSayfasi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
       body: new Center(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, 0),
+          padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4,
+              SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, 0),
           child: new GridView.count(
             primary: false,
             crossAxisSpacing: SizeConfig.blockWidth * 4,
@@ -21,14 +20,19 @@ class BahcemSayfasi extends StatelessWidget{
             crossAxisCount: 2,
             children: <Widget>[
               new GestureDetector(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BahcemBitkiGoruntule()),),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BahcemBitkiGoruntule()),
+                ),
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/images/ponsetya.jpg"),
                       fit: BoxFit.cover,
                     ),
-                    borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 2),
+                    borderRadius:
+                        BorderRadius.circular(SizeConfig.blockWidth * 2),
                   ),
                   alignment: Alignment.bottomCenter,
                   child: Transform(
@@ -39,8 +43,10 @@ class BahcemSayfasi extends StatelessWidget{
                       padding: EdgeInsets.all(SizeConfig.blockWidth * 1),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(SizeConfig.blockWidth * 2),
-                          bottomRight: Radius.circular(SizeConfig.blockWidth * 2),
+                          bottomLeft:
+                              Radius.circular(SizeConfig.blockWidth * 2),
+                          bottomRight:
+                              Radius.circular(SizeConfig.blockWidth * 2),
                         ),
                         color: Color(0xCDFFFFFF),
                       ),
@@ -54,14 +60,19 @@ class BahcemSayfasi extends StatelessWidget{
                 ),
               ),
               new GestureDetector(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BahcemBitkiGoruntule()),),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BahcemBitkiGoruntule()),
+                ),
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/images/photo5.jpg"),
                       fit: BoxFit.cover,
                     ),
-                    borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 2),
+                    borderRadius:
+                        BorderRadius.circular(SizeConfig.blockWidth * 2),
                   ),
                   alignment: Alignment.bottomCenter,
                   child: Transform(
@@ -72,8 +83,10 @@ class BahcemSayfasi extends StatelessWidget{
                       padding: EdgeInsets.all(SizeConfig.blockWidth * 1),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(SizeConfig.blockWidth * 2),
-                          bottomRight: Radius.circular(SizeConfig.blockWidth * 2),
+                          bottomLeft:
+                              Radius.circular(SizeConfig.blockWidth * 2),
+                          bottomRight:
+                              Radius.circular(SizeConfig.blockWidth * 2),
                         ),
                         color: Color(0xCDFFFFFF),
                       ),
@@ -87,7 +100,10 @@ class BahcemSayfasi extends StatelessWidget{
                 ),
               ),
               new GestureDetector(
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BahcemBitkiEkle()),),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BahcemBitkiEkle()),
+                ),
                 child: Container(
                   child: new Icon(
                     Icons.add,
@@ -96,9 +112,9 @@ class BahcemSayfasi extends StatelessWidget{
                   ),
                   decoration: BoxDecoration(
                     color: SizeConfig.almostWhite,
-                    borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 2),
+                    borderRadius:
+                        BorderRadius.circular(SizeConfig.blockWidth * 2),
                   ),
-
                 ),
               ),
             ],

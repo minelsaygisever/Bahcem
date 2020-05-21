@@ -1,17 +1,13 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/models/user_model.dart';
+import 'package:bahcem_deneme/services/auth_service.dart';
+import 'package:bahcem_deneme/wrapper.dart';
 import 'package:flutter/material.dart';
-import 'authenticate/authenticate.dart';
-import 'models/user.dart';
-import 'services/auth.dart';
-import 'wrapper.dart';
+import 'bitkini_tani/bitkini_tani_view.dart';
 import 'package:provider/provider.dart';
-import 'SizeConfig.dart';
-
-import 'bahcem_sayfasi.dart';
-import 'bitkini_tani_view.dart';
-import 'blog_anasayfa.dart';
-import 'ayarlar_sayfasi.dart';
-import 'acilis_sayfasi.dart';
-import 'blog_tab_bar.dart';
+import 'bahcem/bahcem_sayfasi_view.dart';
+import 'ayarlar_sayfasi_view.dart';
+import 'blog/blog_tab_bar_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,14 +15,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<User>.value(
-        value: AuthService().user,
-        child: MaterialApp(
-          title: 'Bahçem',
-          home: Wrapper(),
-        ),
+    return StreamProvider<UserModel>.value(
+      value: AuthService().user,
+      child: MaterialApp(
+        title: 'Bahçem',
+        home: Wrapper(),
+      ),
     );
-
   }
 }
 
@@ -53,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
-      appBar:  AppBar(
+      appBar: AppBar(
         title: Padding(
           padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 3, 0, 0),
           child: Text(
@@ -64,8 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
               fontSize: SizeConfig.blockWidth * 5,
               shadows: <Shadow>[
                 Shadow(
-                  offset: Offset(SizeConfig.blockWidth * 0.2,
-                    SizeConfig.blockWidth * 0.2,),
+                  offset: Offset(
+                    SizeConfig.blockWidth * 0.2,
+                    SizeConfig.blockWidth * 0.2,
+                  ),
                   blurRadius: SizeConfig.blockWidth * 0.2,
                   color: Color.fromARGB(60, 0, 0, 0),
                 ),
@@ -78,7 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
             child: GestureDetector(
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AyarlarSayfasi()),),
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AyarlarSayfasi()),
+              ),
               child: Image.asset(
                 'assets/icons/settings.png',
                 width: SizeConfig.blockWidth * 7,
@@ -95,21 +95,21 @@ class _MyHomePageState extends State<MyHomePage> {
         onPageChanged: (index) {
           setState(() {
             _selectedItem = index;
-            if(index == 0){
+            if (index == 0) {
               _zeroIconSize = SizeConfig.blockWidth * 8;
               _oneIconSize = SizeConfig.blockWidth * 5;
               _twoIconSize = SizeConfig.blockWidth * 5;
               _zeroTextSize = SizeConfig.blockWidth * 0;
               _oneTextSize = SizeConfig.blockWidth * 4;
               _twoTextSize = SizeConfig.blockWidth * 4;
-            } else if (index == 1){
+            } else if (index == 1) {
               _zeroIconSize = SizeConfig.blockWidth * 5;
               _oneIconSize = SizeConfig.blockWidth * 8;
               _twoIconSize = SizeConfig.blockWidth * 5;
               _zeroTextSize = SizeConfig.blockWidth * 4;
               _oneTextSize = SizeConfig.blockWidth * 0;
               _twoTextSize = SizeConfig.blockWidth * 4;
-            } else if (index == 2){
+            } else if (index == 2) {
               _zeroIconSize = SizeConfig.blockWidth * 5;
               _oneIconSize = SizeConfig.blockWidth * 5;
               _twoIconSize = SizeConfig.blockWidth * 8;
@@ -118,7 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
               _twoTextSize = SizeConfig.blockWidth * 0;
             }
           });
-
         },
         controller: _pageController,
       ),
@@ -127,23 +126,24 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: (index) {
           setState(() {
             _selectedItem = index;
-            _pageController.animateToPage(_selectedItem, duration: Duration(milliseconds: 200), curve: Curves.linear);
+            _pageController.animateToPage(_selectedItem,
+                duration: Duration(milliseconds: 200), curve: Curves.linear);
           });
-          if(index == 0){
+          if (index == 0) {
             _zeroIconSize = SizeConfig.blockWidth * 8;
             _oneIconSize = SizeConfig.blockWidth * 5;
             _twoIconSize = SizeConfig.blockWidth * 5;
             _zeroTextSize = SizeConfig.blockWidth * 0;
             _oneTextSize = SizeConfig.blockWidth * 4;
             _twoTextSize = SizeConfig.blockWidth * 4;
-          } else if (index == 1){
+          } else if (index == 1) {
             _zeroIconSize = SizeConfig.blockWidth * 5;
             _oneIconSize = SizeConfig.blockWidth * 8;
             _twoIconSize = SizeConfig.blockWidth * 5;
             _zeroTextSize = SizeConfig.blockWidth * 4;
             _oneTextSize = SizeConfig.blockWidth * 0;
             _twoTextSize = SizeConfig.blockWidth * 4;
-          } else if (index == 2){
+          } else if (index == 2) {
             _zeroIconSize = SizeConfig.blockWidth * 5;
             _oneIconSize = SizeConfig.blockWidth * 5;
             _twoIconSize = SizeConfig.blockWidth * 8;
@@ -156,7 +156,8 @@ class _MyHomePageState extends State<MyHomePage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0, SizeConfig.blockWidth * 0.6),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0,
+                  SizeConfig.blockWidth * 0.6),
               child: Image.asset(
                 "assets/images/information.jpg",
                 color: SizeConfig.almostWhite,
@@ -170,16 +171,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: SizeConfig.almostWhite,
                 fontFamily: 'Champagne-Limousines-Bold',
                 fontSize: _zeroTextSize,
-              ),),
+              ),
+            ),
           ),
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0, SizeConfig.blockWidth * 0.6),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0,
+                  SizeConfig.blockWidth * 0.6),
               child: Image.asset(
                 "assets/images/flower.jpg",
                 color: SizeConfig.almostWhite,
                 height: _oneIconSize,
-                width:  _oneIconSize,
+                width: _oneIconSize,
               ),
             ),
             title: Text(
@@ -193,7 +196,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0, SizeConfig.blockWidth * 0.6),
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0,
+                  SizeConfig.blockWidth * 0.6),
               child: Image.asset(
                 "assets/images/photo-camera.jpg",
                 color: SizeConfig.almostWhite,

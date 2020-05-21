@@ -1,15 +1,13 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
-import 'custom_switch.dart';
-import 'main.dart';
 
-class BahcemBitkiEkle extends StatefulWidget{
+class BahcemBitkiDuzenle extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => BahcemBitkiEkleState();
+  State<StatefulWidget> createState() => BahcemBitkiDuzenleState();
 }
 
-class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
+class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
   String dropdownValue = '1';
   String dropdownValue1 = 'günde';
   String dropdownValue3 = '1';
@@ -18,13 +16,14 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
   String dropdownValue6 = 'Çok ışıklı ortam';
   String dropdownValue7 = '20-22 derece';
   String dropdownValue8 = 'Açık';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
       appBar: AppBar(
         title: Text(
-          'Bitki Ekle',
+          'Ponsetya 1 Düzenle',
           style: SizeConfig.yaziAppbarBaslik,
         ),
         backgroundColor: SizeConfig.almostWhite,
@@ -34,8 +33,9 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
-        child: ListView(
+        padding: EdgeInsets.fromLTRB(
+            SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+        child: new ListView(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2),
@@ -45,9 +45,8 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                   TextFormField(
                     maxLines: null,
                     cursorColor: SizeConfig.green,
+                    initialValue: 'Pontesya 1',
                     decoration: InputDecoration(
-                      hintText: 'Bitkinin adı...',
-                      hintStyle: SizeConfig.yaziHint,
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: SizeConfig.green,
@@ -60,42 +59,54 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
               ),
             ),
             Padding(
-                padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+                padding:
+                    EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(right: SizeConfig.blockWidth * 4),
+                        padding:
+                            EdgeInsets.only(right: SizeConfig.blockWidth * 4),
                         child: Container(
-                          height:
-                          (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.3,
-                          width:
-                          (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.3,
+                          height: (SizeConfig.screenWidth -
+                                  SizeConfig.blockWidth * 12) *
+                              0.3,
+                          width: (SizeConfig.screenWidth -
+                                  SizeConfig.blockWidth * 12) *
+                              0.3,
                           decoration: BoxDecoration(
-                            color: SizeConfig.almostWhite,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(SizeConfig.blockWidth * 3),
-                            child: Image(
-                              image: AssetImage("assets/images/postdef.png"),
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/ponsetya.jpg"),
+                              colorFilter: ColorFilter.mode(
+                                  Colors.white.withOpacity(0.6),
+                                  BlendMode.dstATop),
                               fit: BoxFit.cover,
                             ),
+                          ),
+                          //margin: EdgeInsets.all(5.0),
+                          alignment: Alignment.bottomRight,
+                          child: new Icon(
+                            Icons.edit,
+                            size: SizeConfig.blockWidth * 8,
+                            color: SizeConfig.almostBlack,
                           ),
                         ),
                       ),
                       Container(
-                        height:
-                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.3,
-                        width:
-                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.7,
+                        height: (SizeConfig.screenWidth -
+                                SizeConfig.blockWidth * 12) *
+                            0.3,
+                        width: (SizeConfig.screenWidth -
+                                SizeConfig.blockWidth * 12) *
+                            0.7,
                         alignment: Alignment.bottomCenter,
                         child: TextFormField(
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                           cursorColor: SizeConfig.green,
+                          initialValue:
+                              'Zeynep\'in kendisi kadar zarif hediyesi <3',
                           decoration: InputDecoration(
-                            hintText: 'Bitki hakkında notlar...',
-                            hintStyle: SizeConfig.yaziHint,
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: SizeConfig.green,
@@ -105,18 +116,18 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                           style: SizeConfig.yaziAciklama,
                         ),
                       ),
-                    ]
-                )
-            ),
+                    ])),
             Padding(
-              padding: EdgeInsets.fromLTRB(0,
-                  SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
+              padding: EdgeInsets.fromLTRB(
+                  0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.4,
                     child: Text(
                       "Sulama",
                       style: SizeConfig.yaziAciklamaBaslik,
@@ -125,7 +136,8 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                   Row(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2, 0),
+                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2,
+                            0, SizeConfig.blockWidth * 2, 0),
                         child: Container(
                           width: SizeConfig.blockWidth * 12,
                           //alignment: Alignment.topLeft,
@@ -137,7 +149,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                             isExpanded: true,
                             style: SizeConfig.yaziWidgetIci,
                             underline: Container(
-                              height:  SizeConfig.blockWidth * 0.3,
+                              height: SizeConfig.blockWidth * 0.3,
                               color: SizeConfig.almostBlack,
                             ),
                             onChanged: (String newValue) {
@@ -159,7 +171,8 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2, 0),
+                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2,
+                            0, SizeConfig.blockWidth * 2, 0),
                         child: Container(
                           width: SizeConfig.blockWidth * 22,
                           //alignment: Alignment.topLeft,
@@ -171,7 +184,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                             elevation: 15,
                             style: SizeConfig.yaziWidgetIci,
                             underline: Container(
-                              height:  SizeConfig.blockWidth * 0.3,
+                              height: SizeConfig.blockWidth * 0.3,
                               color: SizeConfig.almostBlack,
                             ),
                             onChanged: (String newValue) {
@@ -193,7 +206,8 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(
+                            SizeConfig.blockWidth * 2, 0, 0, 0),
                         child: Container(
                           alignment: Alignment.centerLeft,
                           width: SizeConfig.blockWidth * 5,
@@ -205,19 +219,20 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                       ),
                     ],
                   ),
-
                 ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0,
-                  SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
+              padding: EdgeInsets.fromLTRB(
+                  0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.4,
                     child: Text(
                       "Toprak değişim",
                       style: SizeConfig.yaziAciklamaBaslik,
@@ -226,7 +241,8 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                   Row(
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2, 0),
+                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2,
+                            0, SizeConfig.blockWidth * 2, 0),
                         child: Container(
                           width: SizeConfig.blockWidth * 12,
                           //alignment: Alignment.topLeft,
@@ -238,7 +254,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                             isExpanded: true,
                             style: SizeConfig.yaziWidgetIci,
                             underline: Container(
-                              height:  SizeConfig.blockWidth * 0.3,
+                              height: SizeConfig.blockWidth * 0.3,
                               color: SizeConfig.almostBlack,
                             ),
                             onChanged: (String newValue) {
@@ -260,7 +276,8 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2, 0),
+                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2,
+                            0, SizeConfig.blockWidth * 2, 0),
                         child: Container(
                           width: SizeConfig.blockWidth * 22,
                           //alignment: Alignment.topLeft,
@@ -272,7 +289,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                             isExpanded: true,
                             style: SizeConfig.yaziWidgetIci,
                             underline: Container(
-                              height:  SizeConfig.blockWidth * 0.3,
+                              height: SizeConfig.blockWidth * 0.3,
                               color: SizeConfig.almostBlack,
                             ),
                             onChanged: (String newValue) {
@@ -294,7 +311,8 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(
+                            SizeConfig.blockWidth * 2, 0, 0, 0),
                         child: Container(
                           alignment: Alignment.centerLeft,
                           width: SizeConfig.blockWidth * 5,
@@ -310,21 +328,24 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0,
-                  SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
+              padding: EdgeInsets.fromLTRB(
+                  0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.4,
                     child: Text(
                       "Toprak tipi",
                       style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
                     child: Container(
                       width: SizeConfig.blockWidth * 47,
                       //alignment: Alignment.topLeft,
@@ -336,7 +357,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                         isExpanded: true,
                         style: SizeConfig.yaziWidgetIci,
                         underline: Container(
-                          height:  SizeConfig.blockWidth * 0.3,
+                          height: SizeConfig.blockWidth * 0.3,
                           color: SizeConfig.almostBlack,
                         ),
                         onChanged: (String newValue) {
@@ -361,21 +382,24 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0,
-                  SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
+              padding: EdgeInsets.fromLTRB(
+                  0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.4,
                     child: Text(
                       "Işık ihtiyacı",
                       style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
                     child: Container(
                       width: SizeConfig.blockWidth * 47,
                       //alignment: Alignment.topLeft,
@@ -387,7 +411,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                         elevation: 15,
                         style: SizeConfig.yaziWidgetIci,
                         underline: Container(
-                          height:  SizeConfig.blockWidth * 0.3,
+                          height: SizeConfig.blockWidth * 0.3,
                           color: SizeConfig.almostBlack,
                         ),
                         onChanged: (String newValue) {
@@ -412,21 +436,24 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0,
-                  SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
+              padding: EdgeInsets.fromLTRB(
+                  0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.4,
                     child: Text(
                       "Isı ihtiyacı",
                       style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
                     child: Container(
                       width: SizeConfig.blockWidth * 47,
                       //alignment: Alignment.topLeft,
@@ -438,7 +465,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                         isExpanded: true,
                         style: SizeConfig.yaziWidgetIci,
                         underline: Container(
-                          height:  SizeConfig.blockWidth * 0.3,
+                          height: SizeConfig.blockWidth * 0.3,
                           color: SizeConfig.almostBlack,
                         ),
                         onChanged: (String newValue) {
@@ -463,7 +490,8 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2),
+              padding: EdgeInsets.fromLTRB(
+                  0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -479,9 +507,51 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
             ),
             Row(
               children: <Widget>[
+                Padding(
+                  padding:
+                      EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 2, 0),
+                  child: Container(
+                    height: SizeConfig.blockWidth * 15,
+                    width: SizeConfig.blockWidth * 15,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/ponsetya.jpg"),
+                        colorFilter: ColorFilter.mode(
+                            Colors.white.withOpacity(0.75), BlendMode.dstATop),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: new Icon(
+                      Icons.clear,
+                      size: SizeConfig.blockWidth * 10,
+                      color: SizeConfig.almostBlack,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 2, 0),
+                  child: Container(
+                    height: SizeConfig.blockWidth * 15,
+                    width: SizeConfig.blockWidth * 15,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/ponsetya-saksi.jpg"),
+                        colorFilter: ColorFilter.mode(
+                            Colors.white.withOpacity(0.75), BlendMode.dstATop),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: new Icon(
+                      Icons.clear,
+                      size: SizeConfig.blockWidth * 10,
+                      color: SizeConfig.almostBlack,
+                    ),
+                  ),
+                ),
                 Container(
-                  height: SizeConfig.blockWidth * 20,
-                  width: SizeConfig.blockWidth * 20,
+                  height: SizeConfig.blockWidth * 15,
+                  width: SizeConfig.blockWidth * 15,
                   decoration: BoxDecoration(
                     color: SizeConfig.almostWhite,
                   ),
@@ -494,21 +564,24 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
               ],
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0,
-                  SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
+              padding: EdgeInsets.fromLTRB(
+                  0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
                     alignment: Alignment.centerLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.4,
                     child: Text(
                       "Hatırlatıcılar",
                       style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0),
                     child: Container(
                       width: SizeConfig.blockWidth * 47,
                       //alignment: Alignment.topLeft,
@@ -520,7 +593,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                         isExpanded: true,
                         style: SizeConfig.yaziWidgetIci,
                         underline: Container(
-                          height:  SizeConfig.blockWidth * 0.3,
+                          height: SizeConfig.blockWidth * 0.3,
                           color: SizeConfig.almostBlack,
                         ),
                         onChanged: (String newValue) {
@@ -543,10 +616,13 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                   ),
                 ],
               ),
-
             ),
             Padding(
-              padding: EdgeInsets.only(left: SizeConfig.blockWidth * 33, top: SizeConfig.blockWidth * 2, right: SizeConfig.blockWidth * 33, bottom: SizeConfig.blockWidth * 2),
+              padding: EdgeInsets.only(
+                  left: SizeConfig.blockWidth * 33,
+                  top: SizeConfig.blockWidth * 2,
+                  right: SizeConfig.blockWidth * 33,
+                  bottom: SizeConfig.blockWidth * 2),
               child: Container(
                 height: SizeConfig.blockWidth * 8,
                 width: SizeConfig.blockWidth * 26,
@@ -554,13 +630,12 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle>{
                     onPressed: () {},
                     child: Container(
                       child: Text(
-                        "Ekle",
-                        style: SizeConfig.yaziButon
+                        "Düzenle",
+                        style: SizeConfig.yaziButon,
                       ),
                     ),
                     color: SizeConfig.green,
-                    shape: StadiumBorder()
-                ),
+                    shape: StadiumBorder()),
               ),
             ),
           ],

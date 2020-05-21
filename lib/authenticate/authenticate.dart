@@ -1,6 +1,6 @@
-import 'package:bahcem_deneme/register_sayfasi.dart';
+import 'package:bahcem_deneme/view/login/login_sayfasi.dart';
+import 'package:bahcem_deneme/view/login/register_sayfasi.dart';
 import 'package:flutter/material.dart';
-import 'package:bahcem_deneme/login_sayfasi.dart';
 
 class Authenticate extends StatefulWidget {
   @override

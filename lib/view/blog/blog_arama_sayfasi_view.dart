@@ -1,6 +1,6 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
 
 class BlogSearchPage extends StatefulWidget {
   @override
@@ -15,11 +15,13 @@ class _BlogSearchPageState extends State<BlogSearchPage> {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
       body: Padding(
-        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2, 0.0),
+        padding: EdgeInsets.fromLTRB(
+            SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2, 0.0),
         child: ListView(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0.0),
+              padding:
+                  EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0.0),
               child: Column(
                 children: <Widget>[
                   Theme(
@@ -32,11 +34,13 @@ class _BlogSearchPageState extends State<BlogSearchPage> {
                         child: new TextField(
                           cursorColor: SizeConfig.green,
                           decoration: new InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
+                            contentPadding: EdgeInsets.fromLTRB(
+                                0, SizeConfig.blockWidth * 2, 0, 0),
                             filled: true,
                             fillColor: SizeConfig.almostWhite,
                             border: new OutlineInputBorder(
-                                borderSide: new BorderSide(color: SizeConfig.almostWhite)),
+                                borderSide: new BorderSide(
+                                    color: SizeConfig.almostWhite)),
                             hintText: 'Arama',
                             prefixIcon: const Icon(
                               Icons.search,
@@ -49,7 +53,6 @@ class _BlogSearchPageState extends State<BlogSearchPage> {
               ),
             ),
           ],
-
         ),
       ),
     );

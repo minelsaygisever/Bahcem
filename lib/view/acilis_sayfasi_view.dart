@@ -1,8 +1,8 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/view/login/login_sayfasi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
 import 'main.dart';
-import 'login_sayfasi.dart';
 
 class AcilisSayfasi extends StatefulWidget {
   @override
@@ -11,19 +11,17 @@ class AcilisSayfasi extends StatefulWidget {
 
 class _AcilisSayfasiState extends State<AcilisSayfasi> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
 
     //_mockCheckForSession true dönerse status true oluyor, false dönerse status false oluyor
-    _mockCheckForSession().then(
-            (status) {
-          if (status) {
-            _navigateToHome();
-          } else {
-            _navigateToLogin();
-          }
-        }
-    );
+    _mockCheckForSession().then((status) {
+      if (status) {
+        _navigateToHome();
+      } else {
+        _navigateToLogin();
+      }
+    });
   }
 
   Future<bool> _mockCheckForSession() async {
@@ -32,20 +30,14 @@ class _AcilisSayfasiState extends State<AcilisSayfasi> {
     return false; //bu kısmı giriş yapılmış mı yapılmamış mı ona göre döndürürüz
   }
 
-  void _navigateToHome(){
+  void _navigateToHome() {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-            builder: (BuildContext context) => MyHomePage()
-        )
-    );
+        MaterialPageRoute(builder: (BuildContext context) => MyHomePage()));
   }
 
-  void _navigateToLogin(){
+  void _navigateToLogin() {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-            builder: (BuildContext context) => LoginSayfasi()
-        )
-    );
+        MaterialPageRoute(builder: (BuildContext context) => LoginSayfasi()));
   }
 
   @override
@@ -62,10 +54,10 @@ class _AcilisSayfasiState extends State<AcilisSayfasi> {
               color: SizeConfig.almostWhite,
               fontFamily: "Photoshoot",
               fontSize: SizeConfig.blockWidth * 13,
-              shadows: <Shadow> [
+              shadows: <Shadow>[
                 Shadow(
-                  offset: Offset(SizeConfig.blockWidth * 0.5,
-                      SizeConfig.blockWidth * 0.5),
+                  offset: Offset(
+                      SizeConfig.blockWidth * 0.5, SizeConfig.blockWidth * 0.5),
                   blurRadius: 5.0,
                   color: Color.fromARGB(60, 0, 0, 0),
                 ),
@@ -76,6 +68,4 @@ class _AcilisSayfasiState extends State<AcilisSayfasi> {
       ),
     );
   }
-
-
 }
