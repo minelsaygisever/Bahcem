@@ -57,22 +57,19 @@ class SizeConfig {
     fontFamily: "Champagne-Limousines-Bold",
     fontSize: SizeConfig.blockWidth * 3.5,
   );
-  
+
   static var green = Colors.green[900];
   static var backgroundColor = Colors.grey[300];
   static var almostWhite = Colors.grey[50];
   static var almostBlack = Colors.black87;
 
   void init(BuildContext context) {
-
     screenData = MediaQuery.of(context);
     screenWidth = screenData.size.width;
     screenHeight = screenData.size.height;
     safeAreaVertical = screenData.padding.left + screenData.padding.right;
     safeAreaHorizontal = screenData.padding.top + screenData.padding.bottom;
-    blockWidth = (screenWidth - safeAreaVertical)/100;
-    blockHeight = (screenHeight - safeAreaHorizontal)/100;
-
+    blockWidth = (screenWidth - safeAreaVertical) / 100;
+    blockHeight = (screenHeight - safeAreaHorizontal) / 100;
   }
-
 }

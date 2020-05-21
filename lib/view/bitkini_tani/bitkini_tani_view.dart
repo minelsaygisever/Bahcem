@@ -1,10 +1,10 @@
-import 'package:bahcem_deneme/core/model/bitkini_tani_model.dart';
-import 'package:bahcem_deneme/core/services/bitkini_tani_service.dart';
+import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/models/bitkini_tani_model.dart';
+import 'package:bahcem_deneme/services/firebase_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'SizeConfig.dart';
-import 'bitkini_tani_bitki_goruntule.dart';
+import 'bitkini_tani_bitki_goruntule_view.dart';
 
 class BitkiniTaniView extends StatefulWidget {
   @override
@@ -15,12 +15,12 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
   //servisi bağlayıp veri kullanmak için state tanımlıyoruz
   //initstate olması lazım çünkü başlangıçta ilk gelecek veriyi çekiyoruz
   //güncelleme yapmak isteseydik setstate kullanırdık
-  BitkiniTaniService service;
+  FirebaseService service;
 
   @override
   void initState() {
     super.initState();
-    service = BitkiniTaniService();
+    service = FirebaseService();
   }
 
   @override
@@ -32,16 +32,16 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
         future: service.getBitkiniTani(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
-          //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir
+            //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir
             case ConnectionState.done:
-            //datası var mı
+              //datası var mı
               if (snapshot.hasData)
                 return _listBitkiniTani(snapshot.data);
               else
                 //servis geldi ama data yoksa
                 return _notFoundWidget;
               break;
-          //servisten dönemediyse, hata varsa
+            //servisten dönemediyse, hata varsa
             default:
               return _waitingWidget;
           }
@@ -55,18 +55,23 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
     return GridView.builder(
         itemCount: list.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisSpacing: SizeConfig.blockWidth * 2,
-          mainAxisSpacing: SizeConfig.blockWidth * 2,
-          crossAxisCount: 2),
+            crossAxisSpacing: SizeConfig.blockWidth * 2,
+            mainAxisSpacing: SizeConfig.blockWidth * 2,
+            crossAxisCount: 2),
         itemBuilder: (context, index) => _card(list[index]));
   }
 
   Widget _card(BitkiniTaniModel bitkiniTani) {
     return Center(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2, 0),
+        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2,
+            SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2, 0),
         child: GestureDetector(
-          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BitkiniTaniBitkiGoruntule()),),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => BitkiniTaniBitkiGoruntule()),
+          ),
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
@@ -103,8 +108,7 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
   }
 
   //servisten data dönmediyse bu gelecek
-  Widget get _notFoundWidget =>
-      Center(
+  Widget get _notFoundWidget => Center(
         child: Text("Not Found"),
       );
 

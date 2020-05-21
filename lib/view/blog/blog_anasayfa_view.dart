@@ -1,8 +1,8 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
 
-class BlogAnaSayfa extends StatelessWidget{
+class BlogAnaSayfa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,11 +10,14 @@ class BlogAnaSayfa extends StatelessWidget{
       body: ListView(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 2, 0.0, 0.0),
+            padding:
+                EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 2, 0.0, 0.0),
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(left: SizeConfig.blockWidth * 2, right: SizeConfig.blockWidth * 3),
+                  padding: EdgeInsets.only(
+                      left: SizeConfig.blockWidth * 2,
+                      right: SizeConfig.blockWidth * 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,11 +25,13 @@ class BlogAnaSayfa extends StatelessWidget{
                       Row(
                         children: <Widget>[
                           CircleAvatar(
-                            backgroundImage: AssetImage('assets/images/minel.jpg'),
+                            backgroundImage:
+                                AssetImage('assets/images/minel.jpg'),
                             radius: SizeConfig.blockWidth * 5,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: SizeConfig.blockWidth * 2),
+                            padding: EdgeInsets.only(
+                                left: SizeConfig.blockWidth * 2),
                             child: Text(
                               'minelsaygisever',
                               style: SizeConfig.yaziUserName,
@@ -37,7 +42,6 @@ class BlogAnaSayfa extends StatelessWidget{
                       Row(
                         children: <Widget>[
                           GestureDetector(
-
                             onTap: () {},
                             child: new Image.asset(
                               "assets/icons/more.png",
@@ -51,10 +55,9 @@ class BlogAnaSayfa extends StatelessWidget{
                     ],
                   ),
                 ),
-
-
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
+                  padding:
+                      EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
                   child: Image(
                     image: AssetImage('assets/images/photo1.jpg'),
                     height: SizeConfig.screenWidth,
@@ -63,12 +66,14 @@ class BlogAnaSayfa extends StatelessWidget{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
+                  padding:
+                      EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(left: SizeConfig.blockWidth * 2, top: 0),
+                        padding: EdgeInsets.only(
+                            left: SizeConfig.blockWidth * 2, top: 0),
                         child: new Image.asset(
                           "assets/icons/flower.png",
                           color: SizeConfig.almostBlack,
@@ -84,14 +89,17 @@ class BlogAnaSayfa extends StatelessWidget{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 6),
+                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0,
+                      SizeConfig.blockWidth * 6),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2, 0),
+                        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2,
+                            0, SizeConfig.blockWidth * 2, 0),
                         child: Container(
-                          width: SizeConfig.screenWidth - SizeConfig.blockWidth * 4,
+                          width: SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 4,
                           child: Text(
                             'Minik aloeveralarım <3 Geçtiğimiz pazar annemle toprağını değiştirmiştik, ne çabuk yenileri çıkmış :)',
                             maxLines: null,

@@ -1,16 +1,14 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
-import 'custom_switch.dart';
-import 'main.dart';
-import 'bahcem_bitki_duzenle.dart';
+import 'bahcem_bitki_duzenle_view.dart';
 
-class BahcemBitkiGoruntule extends StatelessWidget{
+class BahcemBitkiGoruntule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
-      appBar:  AppBar(
+      appBar: AppBar(
         title: Text(
           'Ponsetya 1',
           style: SizeConfig.yaziAppbarBaslik,
@@ -19,7 +17,10 @@ class BahcemBitkiGoruntule extends StatelessWidget{
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
             child: GestureDetector(
-              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BahcemBitkiDuzenle()),),
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BahcemBitkiDuzenle()),
+              ),
               child: Icon(
                 Icons.edit,
                 size: SizeConfig.blockWidth * 7,
@@ -35,29 +36,41 @@ class BahcemBitkiGoruntule extends StatelessWidget{
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+        padding: EdgeInsets.fromLTRB(
+            SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
         child: ListView(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
-              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+              child:
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: <
+                      Widget>[
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                  padding:
+                      EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                   child: Container(
-                    height: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.3,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.3,
+                    height:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.3,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.3,
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage("assets/images/ponsetya.jpg"),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 1.5),
+                      borderRadius:
+                          BorderRadius.circular(SizeConfig.blockWidth * 1.5),
                     ),
                   ),
                 ),
                 Container(
-                  height: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.3,
-                  width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.7,
+                  height:
+                      (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                          0.3,
+                  width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                      0.7,
                   child: Text(
                     "Zeynep'in kendisi kadar zarif hediyesi <3",
                     style: SizeConfig.yaziAciklama,
@@ -71,10 +84,13 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
                       alignment: Alignment.topLeft,
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Sulama",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -83,7 +99,9 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                   ),
                   Container(
                     alignment: Alignment.topLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "3 günde bir",
                       style: SizeConfig.yaziAciklama,
@@ -98,10 +116,13 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
                       alignment: Alignment.topLeft,
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Toprak değişim",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -110,7 +131,9 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                   ),
                   Container(
                     alignment: Alignment.topLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "6 ayda bir",
                       style: SizeConfig.yaziAciklama,
@@ -125,10 +148,13 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
                       alignment: Alignment.topLeft,
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Toprak Tipi",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -137,7 +163,9 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                   ),
                   Container(
                     alignment: Alignment.topLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "Torflu",
                       style: SizeConfig.yaziAciklama,
@@ -152,10 +180,13 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
                       alignment: Alignment.topLeft,
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Işık ihtiyacı",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -164,7 +195,9 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                   ),
                   Container(
                     alignment: Alignment.topLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "Çok ışıklı ortam",
                       style: SizeConfig.yaziAciklama,
@@ -179,10 +212,13 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
                       alignment: Alignment.topLeft,
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Isı ihtiyacı",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -191,7 +227,9 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                   ),
                   Container(
                     alignment: Alignment.topLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "20 - 22 derece",
                       style: SizeConfig.yaziAciklama,
@@ -204,7 +242,8 @@ class BahcemBitkiGoruntule extends StatelessWidget{
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Container(
                 alignment: Alignment.topLeft,
-                width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                width:
+                    (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
                 child: Text(
                   "Fotoğraf Albümü",
                   style: SizeConfig.yaziAciklamaBaslik,
@@ -214,7 +253,8 @@ class BahcemBitkiGoruntule extends StatelessWidget{
             Row(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2),
+                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2,
+                      SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2),
                   child: Container(
                     height: SizeConfig.blockWidth * 20,
                     width: SizeConfig.blockWidth * 20,
@@ -227,7 +267,8 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2),
+                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2,
+                      SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2),
                   child: Container(
                     height: SizeConfig.blockWidth * 20,
                     width: SizeConfig.blockWidth * 20,
@@ -248,10 +289,12 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                 children: <Widget>[
                   Padding(
                     padding:
-                    EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
                       alignment: Alignment.topLeft,
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Hatırlatıcılar",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -260,7 +303,9 @@ class BahcemBitkiGoruntule extends StatelessWidget{
                   ),
                   Container(
                     alignment: Alignment.topLeft,
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "Açık",
                       style: SizeConfig.yaziAciklama,

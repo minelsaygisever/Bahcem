@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:bahcem_deneme/core/model/bitkini_tani_model.dart';
+import 'file:///C:/Users/esrap/Desktop/bahcem_deneme/lib/models/bitkini_tani_model.dart';
 import 'package:http/http.dart' as http;
 
-class BitkiniTaniService {
+class FirebaseService {
   //bitkini tani tablosunun database linki
   static const String FIREBASE_URL = "https://bahcem-109e7.firebaseio.com/";
 

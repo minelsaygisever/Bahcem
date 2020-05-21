@@ -1,17 +1,14 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
 
-class BitkiniTaniBitkiGoruntule extends StatelessWidget{
+class BitkiniTaniBitkiGoruntule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
       appBar: AppBar(
-        title: Text(
-          'Orkide',
-          style: SizeConfig.yaziAppbarBaslik
-        ),
+        title: Text('Orkide', style: SizeConfig.yaziAppbarBaslik),
         backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
         iconTheme: IconThemeData(
@@ -19,38 +16,47 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+        padding: EdgeInsets.fromLTRB(
+            SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
         child: new ListView(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(top: SizeConfig.blockWidth * 4),
-              child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
-                      child: Container(
-                        height: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
-                        width:  (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/orkide.jpg"),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 2),
-                        ),
+              child:
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: <
+                      Widget>[
+                Padding(
+                  padding:
+                      EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                  child: Container(
+                    height:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.4,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.4,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/orkide.jpg"),
+                        fit: BoxFit.cover,
                       ),
+                      borderRadius:
+                          BorderRadius.circular(SizeConfig.blockWidth * 2),
                     ),
-                    Container(
-                      height: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.4,
-                      width:  (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.6,
-                      child: Text(
-                        "Tropikal iklim seven orkidelerin küçük yaprakları ve uzun gövdeleri vardır. Orkide çiçeklerinin ince uzun gövdeleri narin oldukları hissini uyandırsada fazlasıyla dayanıklı uzun ömürlü bitkilerdir.",
-                        style: SizeConfig.yaziAciklama,
-                      ),
-                    ),
-                  ]
-              ),
+                  ),
+                ),
+                Container(
+                  height:
+                      (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                          0.4,
+                  width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                      0.6,
+                  child: Text(
+                    "Tropikal iklim seven orkidelerin küçük yaprakları ve uzun gövdeleri vardır. Orkide çiçeklerinin ince uzun gövdeleri narin oldukları hissini uyandırsada fazlasıyla dayanıklı uzun ömürlü bitkilerdir.",
+                    style: SizeConfig.yaziAciklama,
+                  ),
+                ),
+              ]),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
@@ -58,9 +64,12 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Sulama",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -68,7 +77,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                     ),
                   ),
                   Container(
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "3 günde bir",
                       style: SizeConfig.yaziAciklama,
@@ -83,9 +94,12 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Toprak değişim",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -93,7 +107,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                     ),
                   ),
                   Container(
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "Yılda 1, ilkbahar",
                       style: SizeConfig.yaziAciklama,
@@ -102,16 +118,18 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                 ],
               ),
             ),
-
             Padding(
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Toprak Tipi",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -119,7 +137,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                     ),
                   ),
                   Container(
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "Özel orkide toprağı",
                       style: SizeConfig.yaziAciklama,
@@ -128,16 +148,18 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                 ],
               ),
             ),
-
             Padding(
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Işık ihtiyacı",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -145,7 +167,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                     ),
                   ),
                   Container(
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "Aydınlık sever ancak direkt ışık almamalı",
                       style: SizeConfig.yaziAciklama,
@@ -154,16 +178,18 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                 ],
               ),
             ),
-
             Padding(
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Isı ihtiyacı",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -171,7 +197,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                     ),
                   ),
                   Container(
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "20 - 30 derece",
                       style: SizeConfig.yaziAciklama,
@@ -180,16 +208,18 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                 ],
               ),
             ),
-
             Padding(
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
+                    padding:
+                        EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
                     child: Container(
-                      width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                      width: (SizeConfig.screenWidth -
+                              SizeConfig.blockWidth * 12) *
+                          0.5,
                       child: Text(
                         "Notlar",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -197,7 +227,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                     ),
                   ),
                   Container(
-                    width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
+                    width:
+                        (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
+                            0.5,
                     child: Text(
                       "Şeffaf saksıda durmalı köklerin güneşe ihtiyacı var.",
                       style: SizeConfig.yaziAciklama,
@@ -206,7 +238,6 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget{
                 ],
               ),
             ),
-
           ],
         ),
       ),

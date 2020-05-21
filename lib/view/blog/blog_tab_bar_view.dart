@@ -1,24 +1,27 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/material.dart';
-import 'blog_arama_sayfasi.dart';
-import 'blog_anasayfa.dart';
-import 'blog_profil.dart';
-import 'SizeConfig.dart';
+import 'blog_anasayfa_view.dart';
+import 'blog_arama_sayfasi_view.dart';
+import 'blog_profil_view.dart';
 
 class BlogTabBar extends StatefulWidget {
   _BlogTabBarState createState() => _BlogTabBarState();
 }
 
-class _BlogTabBarState extends State<BlogTabBar> with SingleTickerProviderStateMixin{
+class _BlogTabBarState extends State<BlogTabBar>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
+
   @override
   void initState() {
     super.initState();
     _tabController = new TabController(vsync: this, length: 3);
   }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length:3,
+      length: 3,
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(SizeConfig.blockWidth * 14),
@@ -27,11 +30,11 @@ class _BlogTabBarState extends State<BlogTabBar> with SingleTickerProviderStateM
             elevation: 0.0,
             bottom: TabBar(
               controller: _tabController,
-              indicatorColor:SizeConfig.green,
+              indicatorColor: SizeConfig.green,
               unselectedLabelColor: Colors.grey,
               tabs: <Widget>[
                 Tab(
-                  icon:Image.asset(
+                  icon: Image.asset(
                     "assets/icons/home.png",
                     color: SizeConfig.green,
                     height: SizeConfig.blockWidth * 5,

@@ -1,8 +1,7 @@
 import 'dart:ui';
-
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
 
 class BlogProfilDuzenle extends StatefulWidget {
   @override
@@ -27,7 +26,8 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+        padding: EdgeInsets.fromLTRB(
+            SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
         child: ListView(
           children: <Widget>[
             Padding(
@@ -61,7 +61,8 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0.0),
+                    padding: EdgeInsets.fromLTRB(
+                        SizeConfig.blockWidth * 2, 0, 0, 0.0),
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -71,7 +72,8 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 1, SizeConfig.blockWidth * 6),
+                      padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0,
+                          SizeConfig.blockWidth * 1, SizeConfig.blockWidth * 6),
                       child: Theme(
                           data: new ThemeData(
                             primaryColor: SizeConfig.green,
@@ -85,11 +87,13 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                               fillColor: SizeConfig.green,
                               labelStyle: SizeConfig.yaziWidgetIci,
                               border: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: SizeConfig.almostWhite)),
+                                  borderSide: BorderSide(
+                                      color: SizeConfig.almostWhite)),
                             ),
                           ))),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0.0),
+                    padding: EdgeInsets.fromLTRB(
+                        SizeConfig.blockWidth * 2, 0, 0, 0.0),
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -99,7 +103,8 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 1, SizeConfig.blockWidth * 6),
+                      padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0,
+                          SizeConfig.blockWidth * 1, SizeConfig.blockWidth * 6),
                       child: Theme(
                           data: new ThemeData(
                             primaryColor: SizeConfig.green,
@@ -113,11 +118,13 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                               fillColor: SizeConfig.green,
                               labelStyle: SizeConfig.yaziWidgetIci,
                               border: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: SizeConfig.almostWhite)),
+                                  borderSide: BorderSide(
+                                      color: SizeConfig.almostWhite)),
                             ),
                           ))),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0.0),
+                    padding: EdgeInsets.fromLTRB(
+                        SizeConfig.blockWidth * 2, 0, 0, 0.0),
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -127,7 +134,8 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                     ),
                   ),
                   Padding(
-                      padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 1, SizeConfig.blockWidth * 6),
+                      padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0,
+                          SizeConfig.blockWidth * 1, SizeConfig.blockWidth * 6),
                       child: Theme(
                           data: new ThemeData(
                             primaryColor: SizeConfig.green,
@@ -143,13 +151,14 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                               fillColor: SizeConfig.green,
                               labelStyle: SizeConfig.yaziWidgetIci,
                               border: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: SizeConfig.almostWhite)),
+                                  borderSide: BorderSide(
+                                      color: SizeConfig.almostWhite)),
                             ),
                           ))),
-
-
                   Padding(
-                    padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2,  bottom: SizeConfig.blockWidth * 2),
+                    padding: EdgeInsets.only(
+                        top: SizeConfig.blockWidth * 2,
+                        bottom: SizeConfig.blockWidth * 2),
                     child: Container(
                       height: SizeConfig.blockWidth * 8,
                       width: SizeConfig.blockWidth * 26,
@@ -162,15 +171,13 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                             ),
                           ),
                           color: SizeConfig.green,
-                          shape: StadiumBorder()
-                      ),
+                          shape: StadiumBorder()),
                     ),
                   ),
                 ],
               ),
             ),
           ],
-
         ),
       ),
     );

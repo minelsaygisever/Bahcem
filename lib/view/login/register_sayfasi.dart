@@ -1,12 +1,12 @@
+import 'package:bahcem_deneme/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'services/auth.dart';
-import 'SizeConfig.dart';
-import 'main.dart';
+import '../../SizeConfig.dart';
 
 class RegisterSayfasi extends StatefulWidget {
   final Function toggleView;
-  RegisterSayfasi({ this.toggleView });
+
+  RegisterSayfasi({this.toggleView});
 
   @override
   _RegisterSayfasiState createState() => _RegisterSayfasiState();
@@ -36,7 +36,8 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
             height: SizeConfig.screenHeight - SizeConfig.safeAreaHorizontal,
             width: SizeConfig.screenWidth - SizeConfig.safeAreaVertical,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 6, 0, SizeConfig.blockWidth * 6, 0),
+              padding: EdgeInsets.fromLTRB(
+                  SizeConfig.blockWidth * 6, 0, SizeConfig.blockWidth * 6, 0),
               child: Center(
                 child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
@@ -49,7 +50,11 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, SizeConfig.blockWidth * 10),
+                          padding: EdgeInsets.fromLTRB(
+                              0,
+                              SizeConfig.blockWidth * 6,
+                              0,
+                              SizeConfig.blockWidth * 10),
                           child: Text(
                             "Bahçem",
                             textDirection: TextDirection.ltr,
@@ -69,37 +74,43 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 3, left: SizeConfig.blockWidth * 6, right: SizeConfig.blockWidth * 6),
+                          padding: EdgeInsets.only(
+                              bottom: SizeConfig.blockWidth * 3,
+                              left: SizeConfig.blockWidth * 6,
+                              right: SizeConfig.blockWidth * 6),
                           child: Container(
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
-                                validator: (val) => val.isEmpty ? 'Lütfen eposta giriniz' : null,
-                                onChanged: (val){
-                                  setState(() => email = val);
-                                },
-                                textAlignVertical: TextAlignVertical.bottom,
-                                cursorColor: SizeConfig.green,
-                                controller: _eposta,
-                                decoration: InputDecoration(
-                                  hintText: "E-Posta",
-                                  hintStyle: SizeConfig.yaziHint,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.zero,
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.zero,
-                                    borderSide: BorderSide(
-                                      color: SizeConfig.green,
-                                    ),
-                                  ),
-
+                              validator: (val) =>
+                                  val.isEmpty ? 'Lütfen eposta giriniz' : null,
+                              onChanged: (val) {
+                                setState(() => email = val);
+                              },
+                              textAlignVertical: TextAlignVertical.bottom,
+                              cursorColor: SizeConfig.green,
+                              controller: _eposta,
+                              decoration: InputDecoration(
+                                hintText: "E-Posta",
+                                hintStyle: SizeConfig.yaziHint,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.zero,
                                 ),
-                             ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.zero,
+                                  borderSide: BorderSide(
+                                    color: SizeConfig.green,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 3, left: SizeConfig.blockWidth * 6, right: SizeConfig.blockWidth * 6),
+                          padding: EdgeInsets.only(
+                              bottom: SizeConfig.blockWidth * 3,
+                              left: SizeConfig.blockWidth * 6,
+                              right: SizeConfig.blockWidth * 6),
                           child: Container(
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
@@ -119,7 +130,6 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                       color: SizeConfig.green,
                                     ),
                                   ),
-
                                 ),
                                 validator: (val) {
                                   if (val.isEmpty) {
@@ -131,38 +141,45 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 3, left: SizeConfig.blockWidth * 6, right: SizeConfig.blockWidth * 6),
+                          padding: EdgeInsets.only(
+                              bottom: SizeConfig.blockWidth * 3,
+                              left: SizeConfig.blockWidth * 6,
+                              right: SizeConfig.blockWidth * 6),
                           child: Container(
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
-                                obscureText: true,
-                                validator: (val) => val.length < 6 ? 'En az 6 karakter uzunluğunda şifre giriniz' : null,
-                                onChanged: (val){
-                                  setState(() => password = val);
-                                },
-                                textAlignVertical: TextAlignVertical.bottom,
-                                cursorColor: SizeConfig.green,
-                                controller: _sifre,
-                                decoration: InputDecoration(
-                                  hintText: "Şifre",
-                                  hintStyle: SizeConfig.yaziHint,
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.zero,
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.zero,
-                                    borderSide: BorderSide(
-                                      color: SizeConfig.green,
-                                    ),
-                                  ),
-
+                              obscureText: true,
+                              validator: (val) => val.length < 6
+                                  ? 'En az 6 karakter uzunluğunda şifre giriniz'
+                                  : null,
+                              onChanged: (val) {
+                                setState(() => password = val);
+                              },
+                              textAlignVertical: TextAlignVertical.bottom,
+                              cursorColor: SizeConfig.green,
+                              controller: _sifre,
+                              decoration: InputDecoration(
+                                hintText: "Şifre",
+                                hintStyle: SizeConfig.yaziHint,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.zero,
                                 ),
-                             ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.zero,
+                                  borderSide: BorderSide(
+                                    color: SizeConfig.green,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 3, left: SizeConfig.blockWidth * 6, right: SizeConfig.blockWidth * 6),
+                          padding: EdgeInsets.only(
+                              bottom: SizeConfig.blockWidth * 3,
+                              left: SizeConfig.blockWidth * 6,
+                              right: SizeConfig.blockWidth * 6),
                           child: Container(
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
@@ -183,7 +200,6 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                       color: SizeConfig.green,
                                     ),
                                   ),
-
                                 ),
                                 validator: (val) {
                                   if (val.isEmpty) {
@@ -194,19 +210,22 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                 }),
                           ),
                         ),
-
                         Padding(
-                          padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 1),
+                          padding: EdgeInsets.only(
+                              bottom: SizeConfig.blockWidth * 1),
                           child: Container(
                             height: SizeConfig.blockWidth * 10,
                             width: SizeConfig.blockWidth * 26,
                             child: FlatButton(
                                 onPressed: () async {
-                                  if(_formKey.currentState.validate()) {
-                                    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                                  if (_formKey.currentState.validate()) {
+                                    dynamic result = await _auth
+                                        .registerWithEmailAndPassword(
+                                            email, password);
                                     if (result == null) {
                                       setState(() {
-                                        error = 'Lütfen geçerli bir eposta giriniz';
+                                        error =
+                                            'Lütfen geçerli bir eposta giriniz';
                                       });
                                     }
                                   }
@@ -223,20 +242,21 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   ),
                                 ),
                                 color: SizeConfig.green,
-                                shape: StadiumBorder()
-                            ),
+                                shape: StadiumBorder()),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 1),
-                              //child: SizedBox(height: 12.0),
-                              child: Text(
-                                error,
-                                style: TextStyle(color: Colors.red, fontSize: 14.0),
-                              )
-                        ),
+                            padding: EdgeInsets.only(
+                                bottom: SizeConfig.blockWidth * 1),
+                            //child: SizedBox(height: 12.0),
+                            child: Text(
+                              error,
+                              style:
+                                  TextStyle(color: Colors.red, fontSize: 14.0),
+                            )),
                         Padding(
-                          padding: EdgeInsets.only(top: SizeConfig.blockWidth * 30),
+                          padding:
+                              EdgeInsets.only(top: SizeConfig.blockWidth * 30),
                           child: Container(
                             height: SizeConfig.blockWidth * 10,
                             width: SizeConfig.blockWidth * 40,
@@ -254,8 +274,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   ),
                                 ),
                                 color: SizeConfig.green,
-                                shape: StadiumBorder()
-                            ),
+                                shape: StadiumBorder()),
                           ),
                         ),
                       ],

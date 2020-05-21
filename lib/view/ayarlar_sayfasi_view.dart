@@ -1,26 +1,26 @@
-import 'package:bahcem_deneme/login_sayfasi.dart';
-import 'package:bahcem_deneme/main.dart';
-import 'package:bahcem_deneme/wrapper.dart';
+import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/custom_switch.dart';
+import 'package:bahcem_deneme/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
-import 'custom_switch.dart';
-import 'hakkinda_sayfasi.dart';
-import 'services/auth.dart';
+import 'hakkinda_sayfasi_view.dart';
 
 class AyarlarSayfasi extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => AyarlarSayfasiState();
 }
 
-class AyarlarSayfasiState extends State<AyarlarSayfasi>{
+class AyarlarSayfasiState extends State<AyarlarSayfasi> {
   final AuthService _auth = AuthService();
 
   bool isSwitched = true;
   String heightInFeet = "null";
   int height = 180;
   String dropdownValue = 'SizeConfig.green Mornings';
-  List<String> _locations = ['SizeConfig.green Mornings', 'Happy Day']; // Option 2
+  List<String> _locations = [
+    'SizeConfig.green Mornings',
+    'Happy Day'
+  ]; // Option 2
   String _selectedLocation; // Option 2
   var sliderValue = 0.0;
 
@@ -44,7 +44,11 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
         children: <Widget>[
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 2),
+            padding: EdgeInsets.fromLTRB(
+                SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 2),
             child: Text(
               "Bildirimler",
               textAlign: TextAlign.left,
@@ -53,7 +57,8 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
           ),
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+            padding: EdgeInsets.fromLTRB(
+                SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
             child: CustomSwitch(
               activeColor: SizeConfig.green,
               value: isSwitched,
@@ -67,7 +72,11 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
           ),
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 6, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 2),
+            padding: EdgeInsets.fromLTRB(
+                SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 6,
+                SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 2),
             child: Text(
               "Alarm Sesi",
               textAlign: TextAlign.left,
@@ -76,7 +85,8 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
           ),
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+            padding: EdgeInsets.fromLTRB(
+                SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
             child: DropdownButton(
               value: dropdownValue,
               onChanged: (newValue) {
@@ -97,7 +107,8 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
           ),
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 6, SizeConfig.blockWidth * 4, 0),
+            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 6, SizeConfig.blockWidth * 4, 0),
             child: Text(
               "Alarm Yüksekliği",
               textAlign: TextAlign.left,
@@ -121,10 +132,14 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
           ),
           Container(
               alignment: Alignment.topLeft,
-              padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+              padding: EdgeInsets.fromLTRB(
+                  SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
               child: FlatButton(
                 padding: EdgeInsets.all(0.0),
-                onPressed: () =>  Navigator.push(context, MaterialPageRoute(builder: (context) => HakkindaSayfasi()),),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HakkindaSayfasi()),
+                ),
                 child: Text(
                   "Hakkında",
                   textAlign: TextAlign.left,
@@ -133,13 +148,16 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi>{
               )),
           Container(
             alignment: Alignment.topLeft,
-            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 2),
+            padding: EdgeInsets.fromLTRB(
+                SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 2),
             child: FlatButton(
               padding: EdgeInsets.all(0.0),
               onPressed: () async {
                 await _auth.signOut();
                 Navigator.popUntil(context, ModalRoute.withName("/"));
-
               },
               child: Text(
                 "Çıkış Yap",

@@ -1,6 +1,6 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
 
 class HakkindaSayfasi extends StatelessWidget {
   @override
@@ -20,7 +20,8 @@ class HakkindaSayfasi extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+        padding: EdgeInsets.fromLTRB(
+            SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
         child: ListView(
           children: <Widget>[
             Container(

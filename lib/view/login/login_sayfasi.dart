@@ -1,13 +1,12 @@
+import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'services/auth.dart';
-import 'SizeConfig.dart';
-import 'main.dart';
-import 'register_sayfasi.dart';
 
 class LoginSayfasi extends StatefulWidget {
   final Function toggleView;
-  LoginSayfasi({ this.toggleView });
+
+  LoginSayfasi({this.toggleView});
 
   @override
   _LoginSayfasiState createState() => _LoginSayfasiState();
@@ -34,7 +33,8 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
             height: SizeConfig.screenHeight - SizeConfig.safeAreaHorizontal,
             width: SizeConfig.screenWidth - SizeConfig.safeAreaVertical,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 6, 0, SizeConfig.blockWidth * 6, 0),
+              padding: EdgeInsets.fromLTRB(
+                  SizeConfig.blockWidth * 6, 0, SizeConfig.blockWidth * 6, 0),
               child: Center(
                 child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
@@ -49,7 +49,11 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                         Column(
                           children: <Widget>[
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 40, 0, SizeConfig.blockWidth * 10),
+                              padding: EdgeInsets.fromLTRB(
+                                  0,
+                                  SizeConfig.blockWidth * 40,
+                                  0,
+                                  SizeConfig.blockWidth * 10),
                               child: Text(
                                 "Bahçem",
                                 textDirection: TextDirection.ltr,
@@ -59,7 +63,8 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                   fontSize: SizeConfig.blockWidth * 13,
                                   shadows: <Shadow>[
                                     Shadow(
-                                      offset: Offset(SizeConfig.blockWidth * 0.5,
+                                      offset: Offset(
+                                          SizeConfig.blockWidth * 0.5,
                                           SizeConfig.blockWidth * 0.5),
                                       blurRadius: 5.0,
                                       color: Color.fromARGB(60, 0, 0, 0),
@@ -69,79 +74,91 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 3, left: SizeConfig.blockWidth * 6, right: SizeConfig.blockWidth * 6),
+                              padding: EdgeInsets.only(
+                                  bottom: SizeConfig.blockWidth * 3,
+                                  left: SizeConfig.blockWidth * 6,
+                                  right: SizeConfig.blockWidth * 6),
                               child: Container(
                                 height: SizeConfig.blockWidth * 12,
                                 alignment: Alignment.center,
                                 child: TextFormField(
-                                    validator: (val) => val.isEmpty ? 'Lütfen epostanızı giriniz' : null,
-                                    onChanged: (val){
-                                      setState(() => email = val);
-                                    },
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                      cursorColor: SizeConfig.green,
-                                      controller: _kullaniciAdi,
-                                      decoration: InputDecoration(
-                                        hintText: "Kullanıcı Adı",
-                                        hintStyle: SizeConfig.yaziHint,
-                                        border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.zero,
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.zero,
-                                          borderSide: BorderSide(
-                                            color: SizeConfig.green,
-                                          ),
-                                        ),
-
+                                  validator: (val) => val.isEmpty
+                                      ? 'Lütfen epostanızı giriniz'
+                                      : null,
+                                  onChanged: (val) {
+                                    setState(() => email = val);
+                                  },
+                                  textAlignVertical: TextAlignVertical.bottom,
+                                  cursorColor: SizeConfig.green,
+                                  controller: _kullaniciAdi,
+                                  decoration: InputDecoration(
+                                    hintText: "Kullanıcı Adı",
+                                    hintStyle: SizeConfig.yaziHint,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.zero,
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.zero,
+                                      borderSide: BorderSide(
+                                        color: SizeConfig.green,
                                       ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 3, left: SizeConfig.blockWidth * 6, right: SizeConfig.blockWidth * 6),
+                              padding: EdgeInsets.only(
+                                  bottom: SizeConfig.blockWidth * 3,
+                                  left: SizeConfig.blockWidth * 6,
+                                  right: SizeConfig.blockWidth * 6),
                               child: Container(
                                 height: SizeConfig.blockWidth * 12,
                                 alignment: Alignment.center,
                                 child: TextFormField(
-                                    obscureText: true,
-                                    validator: (val) => val.length < 6 ? 'En az 6 karakter uzunluğunda şifre giriniz' : null,
-                                    onChanged: (val){
-                                      setState(() => password = val);
-                                    },
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                    cursorColor: SizeConfig.green,
-                                    controller: _sifre,
-                                    decoration: InputDecoration(
-                                      hintText: "Şifre",
-                                      hintStyle: SizeConfig.yaziHint,
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.zero,
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.zero,
-                                        borderSide: BorderSide(
-                                          color: SizeConfig.green,
-                                        ),
-                                      ),
-
+                                  obscureText: true,
+                                  validator: (val) => val.length < 6
+                                      ? 'En az 6 karakter uzunluğunda şifre giriniz'
+                                      : null,
+                                  onChanged: (val) {
+                                    setState(() => password = val);
+                                  },
+                                  textAlignVertical: TextAlignVertical.bottom,
+                                  cursorColor: SizeConfig.green,
+                                  controller: _sifre,
+                                  decoration: InputDecoration(
+                                    hintText: "Şifre",
+                                    hintStyle: SizeConfig.yaziHint,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.zero,
                                     ),
-                                 ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.zero,
+                                      borderSide: BorderSide(
+                                        color: SizeConfig.green,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 1),
+                              padding: EdgeInsets.only(
+                                  bottom: SizeConfig.blockWidth * 1),
                               child: Container(
                                 height: SizeConfig.blockWidth * 10,
                                 width: SizeConfig.blockWidth * 26,
                                 child: FlatButton(
                                     //onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
                                     onPressed: () async {
-                                      if(_formKey.currentState.validate()){
-                                        dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-                                        if(result == null) {
+                                      if (_formKey.currentState.validate()) {
+                                        dynamic result = await _auth
+                                            .signInWithEmailAndPassword(
+                                                email, password);
+                                        if (result == null) {
                                           setState(() {
-                                            error = 'Lütfen kayıtlı bir eposta ve şifre giriniz';
+                                            error =
+                                                'Lütfen kayıtlı bir eposta ve şifre giriniz';
                                           });
                                         }
                                       }
@@ -152,28 +169,30 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                         style: TextStyle(
                                           fontSize: SizeConfig.blockWidth * 5.5,
                                           color: SizeConfig.almostWhite,
-                                          fontFamily: "Champagne-Limousines-Bold",
+                                          fontFamily:
+                                              "Champagne-Limousines-Bold",
                                         ),
                                       ),
                                     ),
                                     color: SizeConfig.green,
-                                    shape: StadiumBorder()
-                                ),
+                                    shape: StadiumBorder()),
                               ),
                             ),
                             Padding(
-                                padding: EdgeInsets.only(bottom: SizeConfig.blockWidth * 1),
+                                padding: EdgeInsets.only(
+                                    bottom: SizeConfig.blockWidth * 1),
                                 //child: SizedBox(height: 12.0),
                                 child: Text(
                                   error,
-                                  style: TextStyle(color: Colors.red, fontSize: 14.0),
-                                )
-                            ),
+                                  style: TextStyle(
+                                      color: Colors.red, fontSize: 14.0),
+                                )),
                           ],
                         ),
-
                         Padding(
-                          padding: EdgeInsets.only(top: SizeConfig.blockWidth * 4, bottom: SizeConfig.blockWidth * 4),
+                          padding: EdgeInsets.only(
+                              top: SizeConfig.blockWidth * 4,
+                              bottom: SizeConfig.blockWidth * 4),
                           child: Column(
                             children: <Widget>[
                               Container(
@@ -186,7 +205,8 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2),
+                                padding: EdgeInsets.only(
+                                    top: SizeConfig.blockWidth * 2),
                                 child: Container(
                                   height: SizeConfig.blockWidth * 8,
                                   width: SizeConfig.blockWidth * 26,
@@ -202,15 +222,12 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                         ),
                                       ),
                                       color: SizeConfig.green,
-                                      shape: StadiumBorder()
-                                  ),
+                                      shape: StadiumBorder()),
                                 ),
                               ),
                             ],
                           ),
                         ),
-
-
                       ],
                     ),
                   ),
@@ -219,7 +236,6 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
             ),
           ),
         ],
-
       ),
     );
   }

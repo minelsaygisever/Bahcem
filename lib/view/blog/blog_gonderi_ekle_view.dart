@@ -1,8 +1,7 @@
 import 'dart:ui';
-
+import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'SizeConfig.dart';
 
 class BlogGonderiEkle extends StatefulWidget {
   @override
@@ -27,19 +26,23 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+        padding: EdgeInsets.fromLTRB(
+            SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
         child: ListView(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0.0),
+              padding:
+                  EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0.0),
               child: Column(
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Container(
-                        height: SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
-                        width: SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
+                        height: SizeConfig.screenWidth -
+                            (SizeConfig.blockWidth * 8),
+                        width: SizeConfig.screenWidth -
+                            (SizeConfig.blockWidth * 8),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -58,7 +61,6 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                       )
                     ],
                   ),
-
                   TextField(
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
@@ -74,9 +76,10 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                     ),
                     style: SizeConfig.yaziAciklama,
                   ),
-
                   Padding(
-                    padding: EdgeInsets.only(top: SizeConfig.blockWidth * 4, bottom: SizeConfig.blockWidth * 2),
+                    padding: EdgeInsets.only(
+                        top: SizeConfig.blockWidth * 4,
+                        bottom: SizeConfig.blockWidth * 2),
                     child: Container(
                       height: SizeConfig.blockWidth * 8,
                       width: SizeConfig.blockWidth * 26,
@@ -89,8 +92,7 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                             ),
                           ),
                           color: SizeConfig.green,
-                          shape: StadiumBorder()
-                      ),
+                          shape: StadiumBorder()),
                     ),
                   ),
                 ],
