@@ -64,7 +64,7 @@ class _BlogTabBarState extends State<BlogTabBar>
         body: TabBarView(
           controller: _tabController,
           children: <Widget>[
-            BlogAnaSayfa(),
+            BlogAnaSayfaView(),
             BlogSearchPage(),
             BlogProfilePage()
           ],
