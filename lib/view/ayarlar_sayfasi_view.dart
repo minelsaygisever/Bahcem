@@ -16,9 +16,9 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi> {
   bool isSwitched = true;
   String heightInFeet = "null";
   int height = 180;
-  String dropdownValue = 'SizeConfig.green Mornings';
+  String dropdownValue = 'Green Mornings';
   List<String> _locations = [
-    'SizeConfig.green Mornings',
+    'Green Mornings',
     'Happy Day'
   ]; // Option 2
   String _selectedLocation; // Option 2

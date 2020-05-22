@@ -26,7 +26,6 @@ class _AcilisSayfasiState extends State<AcilisSayfasi> {
 
   Future<bool> _mockCheckForSession() async {
     await Future.delayed(Duration(milliseconds: 2000), () {});
-
     return false; //bu kısmı giriş yapılmış mı yapılmamış mı ona göre döndürürüz
   }
 

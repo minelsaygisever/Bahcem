@@ -17,7 +17,7 @@ class BahcemSayfasi extends StatelessWidget {
             primary: false,
             crossAxisSpacing: SizeConfig.blockWidth * 4,
             mainAxisSpacing: SizeConfig.blockWidth * 4,
-            crossAxisCount: 2,
+            crossAxisCount: 3,
             children: <Widget>[
               new GestureDetector(
                 onTap: () => Navigator.push(

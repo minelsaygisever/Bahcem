@@ -54,12 +54,13 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
   Widget _listBitkiniTani(List<BitkiniTaniModel> list) {
     return Padding(
       padding: EdgeInsets.all(SizeConfig.blockWidth * 4),
+      //çiçeklerin hr birini grid içine çekmek için _item widgetini çağıracağız
       child: GridView.builder(
           itemCount: list.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisSpacing: SizeConfig.blockWidth * 4,
               mainAxisSpacing: SizeConfig.blockWidth * 4,
-              crossAxisCount: 2),
+              crossAxisCount: 3),
           itemBuilder: (context, index) => _card(list[index])),
     );
   }
