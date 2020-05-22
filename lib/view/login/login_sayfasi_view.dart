@@ -13,6 +13,7 @@ class LoginSayfasi extends StatefulWidget {
 }
 
 class _LoginSayfasiState extends State<LoginSayfasi> {
+  GlobalKey<ScaffoldState> scaffold = GlobalKey();
   final _formKey = GlobalKey<FormState>();
   final _kullaniciAdi = TextEditingController();
   final _sifre = TextEditingController();
@@ -27,6 +28,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
+      key: scaffold,
       body: ListView(
         children: <Widget>[
           Container(
@@ -162,6 +164,9 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                           });
                                         }
                                       }
+                                      /*scaffold.currentState.showSnackBar(SnackBar(
+                                        content: Text("Giriş Başarılı"),
+                                      ));*/
                                     },
                                     child: Container(
                                       child: Text(

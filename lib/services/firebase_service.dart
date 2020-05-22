@@ -4,10 +4,9 @@ import 'package:bahcem_deneme/models/bitkini_tani_model.dart';
 import 'package:http/http.dart' as http;
 
 class FirebaseService {
-  //bitkini tani tablosunun database linki
   static const String FIREBASE_URL = "https://bahcem-109e7.firebaseio.com/";
 
-  //tablodan verileri almak için
+  //bitkini tani tablosu get fonksiyonu, tablodan verileri almak için
   Future<List<BitkiniTaniModel>> getBitkiniTani() async {
     final response = await http.get("$FIREBASE_URL/BitkiniTani.json");
 
