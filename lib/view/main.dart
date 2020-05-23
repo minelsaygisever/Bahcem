@@ -179,13 +179,14 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 0.6, 0,
                   SizeConfig.blockWidth * 0.6),
               child: Image.asset(
-                "assets/images/flower.jpg",
+                "assets/icons/flower.png",
                 color: SizeConfig.almostWhite,
                 height: _oneIconSize,
                 width: _oneIconSize,
               ),
             ),
             title: Text(
+
               "Bahçem",
               style: TextStyle(
                 color: SizeConfig.almostWhite,

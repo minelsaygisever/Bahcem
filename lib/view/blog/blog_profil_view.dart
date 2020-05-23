@@ -26,7 +26,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                   padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0,
                       SizeConfig.blockWidth * 4, 0),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Row(
@@ -53,7 +53,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                                     padding: EdgeInsets.fromLTRB(
                                         0.0,
                                         SizeConfig.blockWidth * 1,
-                                        SizeConfig.blockWidth * 1.5,
+                                        SizeConfig.blockWidth * 4,
                                         0.0),
                                     child: Text(
                                       '6 gönderi',
@@ -67,15 +67,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                                         SizeConfig.blockWidth * 1.5,
                                         0.0),
                                     child: Text(
-                                      '25 takipçi',
-                                      style: SizeConfig.yaziProfilKucukAciklama,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.0, SizeConfig.blockWidth * 1, 0, 0.0),
-                                    child: Text(
-                                      '20 takip edilen',
+                                      '25 arkadaş',
                                       style: SizeConfig.yaziProfilKucukAciklama,
                                     ),
                                   ),
@@ -106,8 +98,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                         children: <Widget>[
                           Padding(
                             padding: EdgeInsets.only(
-                                top: SizeConfig.blockWidth * 0,
-                                bottom: SizeConfig.blockWidth * 5),
+                                top: SizeConfig.blockWidth * 2),
                             child: new GestureDetector(
                               onTap: () => Navigator.push(
                                 context,
@@ -116,9 +107,9 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                               ),
                               child: new Image.asset(
                                 "assets/icons/more.png",
-                                color: SizeConfig.almostBlack,
-                                height: SizeConfig.blockWidth * 5,
-                                width: SizeConfig.blockWidth * 5,
+                                color: Colors.black45,
+                                height: SizeConfig.blockWidth * 4,
+                                width: SizeConfig.blockWidth * 4,
                               ),
                             ),
                           ),

@@ -14,17 +14,6 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
-      appBar: AppBar(
-        title: Text(
-          'Gönderi Ekle',
-          style: SizeConfig.yaziAppbarBaslik,
-        ),
-        backgroundColor: SizeConfig.almostWhite,
-        elevation: 0.0,
-        iconTheme: IconThemeData(
-          color: SizeConfig.green, //change your color here
-        ),
-      ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(
             SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
