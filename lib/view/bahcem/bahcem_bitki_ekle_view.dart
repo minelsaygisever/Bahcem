@@ -508,10 +508,12 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                   decoration: BoxDecoration(
                     color: SizeConfig.almostWhite,
                   ),
-                  child: new Icon(
-                    Icons.add,
-                    size: SizeConfig.blockWidth * 10,
-                    color: SizeConfig.almostBlack,
+                  child: Padding(
+                    padding: EdgeInsets.all(SizeConfig.blockWidth * 7),
+                    child: Image.asset(
+                      "assets/icons/plus.png",
+                      color: SizeConfig.almostBlack,
+                    ),
                   ),
                 ),
               ],

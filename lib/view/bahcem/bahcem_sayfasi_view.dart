@@ -105,10 +105,12 @@ class BahcemSayfasi extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => BahcemBitkiEkle()),
                 ),
                 child: Container(
-                  child: new Icon(
-                    Icons.add,
-                    size: SizeConfig.blockWidth * 30,
-                    color: SizeConfig.green,
+                  child:Padding(
+                    padding: EdgeInsets.all(SizeConfig.blockWidth * 8),
+                    child: Image.asset(
+                        "assets/icons/plus.png",
+                        color: SizeConfig.green,
+                    ),
                   ),
                   decoration: BoxDecoration(
                     color: SizeConfig.almostWhite,

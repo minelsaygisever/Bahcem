@@ -555,10 +555,12 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                   decoration: BoxDecoration(
                     color: SizeConfig.almostWhite,
                   ),
-                  child: new Icon(
-                    Icons.add,
-                    size: SizeConfig.blockWidth * 10,
-                    color: SizeConfig.almostBlack,
+                  child: Padding(
+                    padding: EdgeInsets.all(SizeConfig.blockWidth * 4.5),
+                    child: Image.asset(
+                      "assets/icons/plus.png",
+                      color: SizeConfig.almostBlack,
+                    ),
                   ),
                 ),
               ],
