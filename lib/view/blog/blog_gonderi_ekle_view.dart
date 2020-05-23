@@ -35,31 +35,31 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                   EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0.0),
               child: Column(
                 children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Container(
-                        height: SizeConfig.screenWidth -
-                            (SizeConfig.blockWidth * 8),
-                        width: SizeConfig.screenWidth -
-                            (SizeConfig.blockWidth * 8),
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          border: Border.all(
+                  GestureDetector(
+                    onTap: () => selectImage(),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Container(
+                          height: SizeConfig.screenWidth -
+                              (SizeConfig.blockWidth * 8),
+                          width: SizeConfig.screenWidth -
+                              (SizeConfig.blockWidth * 8),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: SizeConfig.almostWhite,
+                              width: 0,
+                            ),
                             color: SizeConfig.almostWhite,
-                            width: 0,
                           ),
-                          color: SizeConfig.almostWhite,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(SizeConfig.blockWidth * 20),
                           child: Image(
                             image: AssetImage('assets/icons/postdef.png'),
                             fit: BoxFit.cover,
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                   TextField(
                     keyboardType: TextInputType.multiline,
@@ -102,5 +102,9 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
         ),
       ),
     );
+  }
+
+  Future selectImage() {
+      print("hello");
   }
 }

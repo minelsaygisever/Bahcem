@@ -106,7 +106,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                         children: <Widget>[
                           Padding(
                             padding: EdgeInsets.only(
-                                top: SizeConfig.blockWidth * 1,
+                                top: SizeConfig.blockWidth * 0,
                                 bottom: SizeConfig.blockWidth * 5),
                             child: new GestureDetector(
                               onTap: () => Navigator.push(
@@ -115,27 +115,10 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                                     builder: (context) => BlogProfilDuzenle()),
                               ),
                               child: new Image.asset(
-                                "assets/icons/pencil.png",
+                                "assets/icons/more.png",
                                 color: SizeConfig.almostBlack,
-                                height: SizeConfig.blockWidth * 6,
-                                width: SizeConfig.blockWidth * 6,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                bottom: SizeConfig.blockWidth * 1),
-                            child: new GestureDetector(
-                              onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BlogGonderiEkle()),
-                              ),
-                              child: new Image.asset(
-                                "assets/icons/newPost.png",
-                                color: SizeConfig.almostBlack,
-                                height: SizeConfig.blockWidth * 6,
-                                width: SizeConfig.blockWidth * 6,
+                                height: SizeConfig.blockWidth * 5,
+                                width: SizeConfig.blockWidth * 5,
                               ),
                             ),
                           ),

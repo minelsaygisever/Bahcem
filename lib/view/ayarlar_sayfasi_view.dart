@@ -133,7 +133,7 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi> {
           Container(
               alignment: Alignment.topLeft,
               padding: EdgeInsets.fromLTRB(
-                  SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+                  SizeConfig.blockWidth * 1, 0, SizeConfig.blockWidth * 4, 0),
               child: FlatButton(
                 padding: EdgeInsets.all(0.0),
                 onPressed: () => Navigator.push(
@@ -149,7 +149,7 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi> {
           Container(
             alignment: Alignment.topLeft,
             padding: EdgeInsets.fromLTRB(
-                SizeConfig.blockWidth * 4,
+                SizeConfig.blockWidth * 1,
                 SizeConfig.blockWidth * 4,
                 SizeConfig.blockWidth * 4,
                 SizeConfig.blockWidth * 2),
