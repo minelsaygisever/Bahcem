@@ -1,16 +1,16 @@
 //jsondan darta gelen dönüşen kısım
 //servisten gelen veriler burada eşleşiyor
-class BlogAnasayfaModel {
+class BlogPostModel {
   String comment;
   String createdAt;
   String imgUrl;
   int likeCount;
   String userId;
 
-  BlogAnasayfaModel(
+  BlogPostModel(
       {this.comment, this.createdAt, this.imgUrl, this.likeCount, this.userId});
 
-  BlogAnasayfaModel.fromJson(Map<String, dynamic> json) {
+  BlogPostModel.fromJson(Map<String, dynamic> json) {
     comment = json['comment'];
     createdAt = json['created_at'];
     imgUrl = json['img_url'];
