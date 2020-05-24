@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/services/blog_service.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,14 @@ class BlogGonderiEkle extends StatefulWidget {
 }
 
 class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
+
+  BlogService service;
+  @override
+  void initState() {
+    super.initState();
+    service = BlogService();
+  }
+
   File _selectedImage;
   var imgUrl;
 

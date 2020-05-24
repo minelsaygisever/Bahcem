@@ -9,6 +9,7 @@ class BitkiniTaniModel {
   String toprakDegisim;
   String toprakTipi;
   String bitkiAdi;
+  String url;
 
   BitkiniTaniModel(
       {this.aciklama,
@@ -18,7 +19,8 @@ class BitkiniTaniModel {
         this.sulama,
         this.toprakDegisim,
         this.toprakTipi,
-        this.bitkiAdi});
+        this.bitkiAdi,
+        this.url});
 
   BitkiniTaniModel.fromJson(Map<String, dynamic> json) {
     aciklama = json['Aciklama'];
@@ -29,6 +31,7 @@ class BitkiniTaniModel {
     toprakDegisim = json['ToprakDegisim'];
     toprakTipi = json['ToprakTipi'];
     bitkiAdi = json['bitkiAdi'];
+    url = json['url'];
   }
 
   Map<String, dynamic> toJson() {
@@ -41,6 +44,7 @@ class BitkiniTaniModel {
     data['ToprakDegisim'] = this.toprakDegisim;
     data['ToprakTipi'] = this.toprakTipi;
     data['bitkiAdi'] = this.bitkiAdi;
+    data['url'] = this.url;
     return data;
   }
 }
