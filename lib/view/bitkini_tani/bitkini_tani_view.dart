@@ -76,7 +76,7 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/orkide.jpg"),
+              image: NetworkImage(bitkiniTani.url),
               fit: BoxFit.cover,
             ),
             borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 2),
