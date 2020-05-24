@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:bahcem_deneme/models/bitkini_tani_model.dart';
 import 'package:http/http.dart' as http;
 
-class FirebaseService {
+class BitkiniTaniService {
   static const String FIREBASE_URL = "https://bahcem-109e7.firebaseio.com/";
 
   //bitkini tani tablosu get fonksiyonu, tablodan verileri almak için

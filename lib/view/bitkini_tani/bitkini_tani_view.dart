@@ -1,6 +1,6 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/models/bitkini_tani_model.dart';
-import 'package:bahcem_deneme/services/firebase_service.dart';
+import 'package:bahcem_deneme/services/bitkini_tani_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -15,12 +15,12 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
   //servisi bağlayıp veri kullanmak için state tanımlıyoruz
   //initstate olması lazım çünkü başlangıçta ilk gelecek veriyi çekiyoruz
   //güncelleme yapmak isteseydik setstate kullanırdık
-  FirebaseService service;
+  BitkiniTaniService service;
 
   @override
   void initState() {
     super.initState();
-    service = FirebaseService();
+    service = BitkiniTaniService();
   }
 
   @override

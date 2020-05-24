@@ -1,9 +1,8 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
-import 'package:bahcem_deneme/models/blog_anasayfa_model.dart';
-import 'package:bahcem_deneme/services/blog_anasayfa_service.dart';
+import 'package:bahcem_deneme/models/blog_post_model.dart';
+import 'package:bahcem_deneme/services/blog_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:bahcem_deneme/services/firebase_service.dart';
 import 'package:flutter/painting.dart';
 
 class BlogAnaSayfaView extends StatefulWidget {
@@ -15,12 +14,12 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
   //servisi bağlayıp veri kullanmak için state tanımlıyoruz
   //initstate olması lazım çünkü başlangıçta ilk gelecek veriyi çekiyoruz
   //güncelleme yapmak isteseydik setstate kullanırdık
-  BlogAnasayfaService service;
+  BlogService service;
 
   @override
   void initState() {
     super.initState();
-    service = BlogAnasayfaService();
+    service = BlogService();
   }
 
   @override
@@ -51,7 +50,7 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
 }
 
 //uygulamamızın body si burada olacak
-Widget _listAnasayfa(List<BlogAnasayfaModel> list) {
+Widget _listAnasayfa(List<BlogPostModel> list) {
   return Padding(
     padding: EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
     child: ListView.builder(
@@ -60,7 +59,7 @@ Widget _listAnasayfa(List<BlogAnasayfaModel> list) {
   );
 }
 
-Widget _post(BlogAnasayfaModel post) {
+Widget _post(BlogPostModel post) {
   return Center(
     child:  Padding(
       padding:
