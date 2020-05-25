@@ -22,6 +22,12 @@ class SizeConfig {
     fontSize: SizeConfig.blockWidth * 4.5,
   );
 
+  static var yaziBitkiniEkleButon = TextStyle(
+    color: SizeConfig.green,
+    fontFamily: "Champagne-Limousines-Bold",
+    fontSize: SizeConfig.blockWidth * 5,
+  );
+
   static var yaziAppbarBaslik = TextStyle(
     fontFamily: "Champagne-Limousines-Bold",
     fontSize: SizeConfig.blockWidth * 5.5,
