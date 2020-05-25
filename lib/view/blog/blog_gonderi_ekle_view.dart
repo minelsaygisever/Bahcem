@@ -18,6 +18,7 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   final _commentController = TextEditingController();
   String comment = "";
   var imgUrl;
+  bool _absorbing = false;
 
   @override
   void initState() {
@@ -41,9 +42,8 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
         .child("img" + BlogService.postLength.toString() + ".jpg");
     StorageUploadTask uploadTask = ref.putFile(_selectedImage);
     imgUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
-    print("URLLLL: " + imgUrl);
+    //print("URL: " + imgUrl);
   }
-
 
   Widget showDefaultImg() {
     return Image(
@@ -75,9 +75,9 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                   children: <Widget>[
                     Container(
                       height:
-                      SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
+                          SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
                       width:
-                      SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
+                          SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -119,34 +119,45 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                 child: _selectedImage == null
                     ? Text("")
                     : Container(
-                  alignment: Alignment.center,
-                  //burayı minele sor neden değişmiyor
-                  height: SizeConfig.blockWidth * 8,
-                  width: SizeConfig.blockWidth * 26,
-                  child: FlatButton(
-                      onPressed: () async {
-                        await uploadImage();
-                        service.sendPost(
-                            comment,
-                            DateTime.now().toString(),
-                            imgUrl.toString(),
-                            0,
-                            'gSkpRkzzVxbP0uMkPaCMIFdzFIM2');
-                        _commentController.clear();
-                        setState(() {
-                          _selectedImage = null;
-                        });
-                        //burda anasayfaya yönlendirilecek
-                      },
-                      child: Container(
-                        child: Text(
-                          "Paylaş",
-                          style: SizeConfig.yaziButon,
+                        alignment: Alignment.center,
+                        height: SizeConfig.blockWidth * 8,
+                        width: SizeConfig.blockWidth * 26,
+                        child: AbsorbPointer(
+                          absorbing: _absorbing,
+                          child: FlatButton(
+                              onPressed: () async {
+                                setState(() {
+                                  _absorbing = true;
+                                });
+
+                                //await Future.delayed(Duration(seconds: 5));
+
+                                await uploadImage();
+                                service.sendPost(
+                                    comment,
+                                    DateTime.now().toString(),
+                                    imgUrl.toString(),
+                                    0,
+                                    'gSkpRkzzVxbP0uMkPaCMIFdzFIM2');
+                                _commentController.clear();
+                                setState(() {
+                                  _selectedImage = null;
+                                });
+                                setState(() {
+                                  _absorbing = false;
+                                });
+                                //burda anasayfaya yönlendirilecek
+                              },
+                              child: Container(
+                                child: Text(
+                                  "Paylaş",
+                                  style: SizeConfig.yaziButon,
+                                ),
+                              ),
+                              color: SizeConfig.green,
+                              shape: StadiumBorder()),
                         ),
                       ),
-                      color: SizeConfig.green,
-                      shape: StadiumBorder()),
-                ),
               ),
               Padding(
                 padding: EdgeInsets.only(
@@ -155,21 +166,21 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                 child: _selectedImage == null
                     ? Text("")
                     : Container(
-                  alignment: Alignment.bottomRight,
-                  height: SizeConfig.blockWidth * 10,
-                  width: SizeConfig.blockWidth * 30,
-                  child: IconButton(
-                    iconSize: SizeConfig.blockWidth * 8,
-                    icon: Icon(Icons.delete),
-                    color: Colors.black45,
-                    onPressed: () {
-                      _commentController.clear();
-                      setState(() {
-                        _selectedImage = null;
-                      });
-                    },
-                  ),
-                ),
+                        alignment: Alignment.bottomRight,
+                        height: SizeConfig.blockWidth * 10,
+                        width: SizeConfig.blockWidth * 30,
+                        child: IconButton(
+                          iconSize: SizeConfig.blockWidth * 8,
+                          icon: Icon(Icons.delete),
+                          color: Colors.black45,
+                          onPressed: () {
+                            _commentController.clear();
+                            setState(() {
+                              _selectedImage = null;
+                            });
+                          },
+                        ),
+                      ),
               ),
             ],
           ),
