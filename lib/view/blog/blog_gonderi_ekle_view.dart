@@ -13,16 +13,17 @@ class BlogGonderiEkle extends StatefulWidget {
 }
 
 class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
-
   BlogService service;
+  File _selectedImage;
+  final _commentController = TextEditingController();
+  String comment = "";
+  var imgUrl;
+
   @override
   void initState() {
     super.initState();
     service = BlogService();
   }
-
-  File _selectedImage;
-  var imgUrl;
 
   Future selectImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -35,13 +36,12 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   Future uploadImage() async {
     StorageReference ref = FirebaseStorage.instance
         .ref()
-        .child("user")
-        .child("blogpost")
+        .child("0H9SC3y9PAQsFx9HwSBTjv0kIA72")
+        .child("Blog")
         .child("img1.jpg");
     StorageUploadTask uploadTask = ref.putFile(_selectedImage);
-
     imgUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
-    debugPrint("URL: " + imgUrl);
+    print("URLLLL: " + imgUrl);
   }
 
   Widget showDefaultImg() {
@@ -74,9 +74,9 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                   children: <Widget>[
                     Container(
                       height:
-                          SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
+                      SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
                       width:
-                          SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
+                      SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -92,7 +92,11 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                   ],
                 ),
               ),
-              TextField(
+              TextFormField(
+                controller: _commentController,
+                onChanged: (val) {
+                  setState(() => comment = val);
+                },
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
                 cursorColor: SizeConfig.green,
@@ -114,21 +118,32 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                 child: _selectedImage == null
                     ? Text("")
                     : Container(
-                        alignment: Alignment.center,
-                        //burayı minele sor neden değişmiyor
-                        height: SizeConfig.blockWidth * 8,
-                        width: SizeConfig.blockWidth * 26,
-                        child: FlatButton(
-                            onPressed: () => uploadImage(),
-                            child: Container(
-                              child: Text(
-                                "Paylaş",
-                                style: SizeConfig.yaziButon,
-                              ),
-                            ),
-                            color: SizeConfig.green,
-                            shape: StadiumBorder()),
+                  alignment: Alignment.center,
+                  //burayı minele sor neden değişmiyor
+                  height: SizeConfig.blockWidth * 8,
+                  width: SizeConfig.blockWidth * 26,
+                  child: FlatButton(
+                      onPressed: () {
+                        uploadImage();
+                        print("*********************" + imgUrl);
+                        print("resmi attı");
+                        service.sendPost(
+                            comment,
+                            DateTime.now().toString(),
+                            imgUrl.toString(),
+                            0,
+                            'gSkpRkzzVxbP0uMkPaCMIFdzFIM2');
+                        print("geçti");
+                      },
+                      child: Container(
+                        child: Text(
+                          "Paylaş",
+                          style: SizeConfig.yaziButon,
+                        ),
                       ),
+                      color: SizeConfig.green,
+                      shape: StadiumBorder()),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(
@@ -137,20 +152,20 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                 child: _selectedImage == null
                     ? Text("")
                     : Container(
-                        alignment: Alignment.bottomRight,
-                        height: SizeConfig.blockWidth * 10,
-                        width: SizeConfig.blockWidth * 30,
-                        child: IconButton(
-                          iconSize: 37,
-                          icon: Icon(Icons.delete),
-                          color: Colors.black45,
-                          onPressed: () {
-                            setState(() {
-                              _selectedImage = null;
-                            });
-                          },
-                        ),
-                      ),
+                  alignment: Alignment.bottomRight,
+                  height: SizeConfig.blockWidth * 10,
+                  width: SizeConfig.blockWidth * 30,
+                  child: IconButton(
+                    iconSize: 37,
+                    icon: Icon(Icons.delete),
+                    color: Colors.black45,
+                    onPressed: () {
+                      setState(() {
+                        _selectedImage = null;
+                      });
+                    },
+                  ),
+                ),
               ),
             ],
           ),

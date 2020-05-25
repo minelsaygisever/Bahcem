@@ -2,29 +2,33 @@
 //servisten gelen veriler burada eşleşiyor
 class BlogPostModel {
   String comment;
-  String createdAt;
-  String imgUrl;
-  int likeCount;
-  String userId;
+  String created_at;
+  String img_url;
+  int like_count;
+  String user_id;
 
   BlogPostModel(
-      {this.comment, this.createdAt, this.imgUrl, this.likeCount, this.userId});
+      {this.comment,
+      this.created_at,
+      this.img_url,
+      this.like_count,
+      this.user_id});
 
   BlogPostModel.fromJson(Map<String, dynamic> json) {
     comment = json['comment'];
-    createdAt = json['created_at'];
-    imgUrl = json['img_url'];
-    likeCount = json['like_count'];
-    userId = json['user_id'];
+    created_at = json['created_at'];
+    img_url = json['img_url'];
+    like_count = json['like_count'];
+    user_id = json['user_id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['comment'] = this.comment;
-    data['created_at'] = this.createdAt;
-    data['img_url'] = this.imgUrl;
-    data['like_count'] = this.likeCount;
-    data['user_id'] = this.userId;
+    data['created_at'] = this.created_at;
+    data['img_url'] = this.img_url;
+    data['like_count'] = this.like_count;
+    data['user_id'] = this.user_id;
     return data;
   }
 }

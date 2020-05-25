@@ -15,6 +15,8 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
   //servisi bağlayıp veri kullanmak için state tanımlıyoruz
   //initstate olması lazım çünkü başlangıçta ilk gelecek veriyi çekiyoruz
   //güncelleme yapmak isteseydik setstate kullanırdık
+
+  BitkiniTaniModel bitkiniTani;
   BitkiniTaniService service;
 
   @override
@@ -65,7 +67,7 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
     );
   }
 
-  Widget _card(BitkiniTaniModel bitkiniTani) {
+  Widget _card(bitkiniTani) {
     return Center(
       child: GestureDetector(
         onTap: () => Navigator.push(
