@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/services/blog_service.dart';
+import 'package:bahcem_deneme/view/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -146,7 +147,11 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                                 setState(() {
                                   _absorbing = false;
                                 });
-                                //burda anasayfaya yönlendirilecek
+                                setState(() {
+                                  Navigator.of(context).push(
+                                      MaterialPageRoute(builder: (BuildContext context) => MyHomePage()));
+                                });
+
                               },
                               child: Container(
                                 child: Text(
