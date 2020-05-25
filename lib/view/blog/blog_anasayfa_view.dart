@@ -16,7 +16,6 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
   //güncelleme yapmak isteseydik setstate kullanırdık
   BlogService service;
 
-
   @override
   void initState() {
     super.initState();
@@ -50,9 +49,11 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
   }
 }
 
+
 //uygulamamızın body si burada olacak
 Widget _listAnasayfa(List<BlogPostModel> list) {
   BlogService.postLength = list.length;
+  list.sort((a, b) => -DateTime.parse(a.created_at).compareTo(DateTime.parse(b.created_at)) );
   return Padding(
     padding: EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
     child: ListView.builder(

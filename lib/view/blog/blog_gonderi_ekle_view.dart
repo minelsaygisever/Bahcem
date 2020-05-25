@@ -38,11 +38,12 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
         .ref()
         .child("0H9SC3y9PAQsFx9HwSBTjv0kIA72")
         .child("Blog")
-        .child("img1.jpg");
+        .child("img" + BlogService.postLength.toString() + ".jpg");
     StorageUploadTask uploadTask = ref.putFile(_selectedImage);
     imgUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
     print("URLLLL: " + imgUrl);
   }
+
 
   Widget showDefaultImg() {
     return Image(
@@ -123,17 +124,14 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                   height: SizeConfig.blockWidth * 8,
                   width: SizeConfig.blockWidth * 26,
                   child: FlatButton(
-                      onPressed: () {
-                        uploadImage();
-                        print("*********************" + imgUrl);
-                        print("resmi attı");
+                      onPressed: () async {
+                        await uploadImage();
                         service.sendPost(
                             comment,
                             DateTime.now().toString(),
                             imgUrl.toString(),
                             0,
                             'gSkpRkzzVxbP0uMkPaCMIFdzFIM2');
-                        print("geçti");
                       },
                       child: Container(
                         child: Text(
