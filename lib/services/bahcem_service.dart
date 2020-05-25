@@ -7,7 +7,7 @@ class BahcemService {
   static const String FIREBASE_URL = "https://bahcem-109e7.firebaseio.com/";
 
   Future<List<BahcemBitkiModel>> getBahcemAnasayfa() async {
-    final response = await http.get("$FIREBASE_URL/BahcemBitki.json");
+    final response = await http.get("$FIREBASE_URL/BahcemBitki2.json");
 
     switch (response.statusCode) {
       case HttpStatus.ok:

@@ -30,8 +30,6 @@ dependencies:
   firebase_core: ^0.4.4+3
   date_format: ^1.0.8
 
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

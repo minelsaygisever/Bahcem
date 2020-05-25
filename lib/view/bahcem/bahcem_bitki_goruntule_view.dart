@@ -1,16 +1,22 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/view/bahcem/bahcem_sayfasi_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'bahcem_bitki_duzenle_view.dart';
 
 class BahcemBitkiGoruntule extends StatelessWidget {
+
+  final BahcemDetailPlant bahcemDetailPlant;
+
+  BahcemBitkiGoruntule({this.bahcemDetailPlant});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
       appBar: AppBar(
         title: Text(
-          'Ponsetya 1',
+          bahcemDetailPlant.bitkininAdi,
           style: SizeConfig.yaziAppbarBaslik,
         ),
         actions: <Widget>[
@@ -57,7 +63,7 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                             0.3,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("assets/images/ponsetya.jpg"),
+                        image: NetworkImage("${bahcemDetailPlant.profilImgUrl}"),
                         fit: BoxFit.cover,
                       ),
                       borderRadius:
@@ -72,7 +78,7 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                   width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
                       0.7,
                   child: Text(
-                    "Zeynep'in kendisi kadar zarif hediyesi <3",
+                    bahcemDetailPlant.notlar,
                     style: SizeConfig.yaziAciklama,
                   ),
                 ),
@@ -103,7 +109,7 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
                             0.5,
                     child: Text(
-                      "3 günde bir",
+                      bahcemDetailPlant.sulama,
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -135,7 +141,7 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
                             0.5,
                     child: Text(
-                      "6 ayda bir",
+                      bahcemDetailPlant.toprakDegisim,
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -167,7 +173,7 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
                             0.5,
                     child: Text(
-                      "Torflu",
+                      bahcemDetailPlant.toprakTipi,
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -199,7 +205,7 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
                             0.5,
                     child: Text(
-                      "Çok ışıklı ortam",
+                      bahcemDetailPlant.isikIhtiyaci,
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -231,7 +237,7 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
                             0.5,
                     child: Text(
-                      "20 - 22 derece",
+                      bahcemDetailPlant.isiIhtiyaci,
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -307,7 +313,7 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
                             0.5,
                     child: Text(
-                      "Açık",
+                      bahcemDetailPlant.hatirlatici,
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
