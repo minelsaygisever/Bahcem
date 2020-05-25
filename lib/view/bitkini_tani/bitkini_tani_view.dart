@@ -11,6 +11,30 @@ class BitkiniTaniView extends StatefulWidget {
   _BitkiniTaniViewState createState() => _BitkiniTaniViewState();
 }
 
+//bu class bitkinin detayları için bitkini_tani_bitki_goruntule sayfasına bilgileri atmak için
+class DetailPlant {
+  String aciklama;
+  String isiIhtiyaci;
+  String isikIhtiyaci;
+  String notlar;
+  String sulama;
+  String toprakDegisim;
+  String toprakTipi;
+  String bitkiAdi;
+  String url;
+
+  DetailPlant(
+      {this.aciklama,
+      this.isiIhtiyaci,
+      this.isikIhtiyaci,
+      this.notlar,
+      this.sulama,
+      this.toprakDegisim,
+      this.toprakTipi,
+      this.bitkiAdi,
+      this.url});
+}
+
 class _BitkiniTaniViewState extends State<BitkiniTaniView> {
   //servisi bağlayıp veri kullanmak için state tanımlıyoruz
   //initstate olması lazım çünkü başlangıçta ilk gelecek veriyi çekiyoruz
@@ -70,11 +94,25 @@ class _BitkiniTaniViewState extends State<BitkiniTaniView> {
   Widget _card(bitkiniTani) {
     return Center(
       child: GestureDetector(
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => BitkiniTaniBitkiGoruntule()),
-        ),
+        onTap: () {
+          final detailPlant = DetailPlant(
+              aciklama: bitkiniTani.aciklama,
+              isiIhtiyaci: bitkiniTani.isiIhtiyaci,
+              isikIhtiyaci: bitkiniTani.isikIhtiyaci,
+              notlar: bitkiniTani.notlar,
+              sulama: bitkiniTani.sulama,
+              toprakDegisim: bitkiniTani.toprakDegisim,
+              toprakTipi: bitkiniTani.toprakTipi,
+              bitkiAdi: bitkiniTani.bitkiAdi,
+              url: bitkiniTani.url);
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    BitkiniTaniBitkiGoruntule(detailPlant: detailPlant)),
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(

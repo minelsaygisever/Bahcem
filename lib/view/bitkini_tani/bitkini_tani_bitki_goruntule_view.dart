@@ -1,14 +1,20 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'bitkini_tani_view.dart';
 
 class BitkiniTaniBitkiGoruntule extends StatelessWidget {
+  final DetailPlant detailPlant;
+
+  BitkiniTaniBitkiGoruntule({this.detailPlant});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
       appBar: AppBar(
-        title: Text('Orkide', style: SizeConfig.yaziAppbarBaslik),
+        title:
+            Text("${detailPlant.bitkiAdi}", style: SizeConfig.yaziAppbarBaslik),
         backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
         iconTheme: IconThemeData(
@@ -37,7 +43,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                             0.4,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("assets/images/orkide.jpg"),
+                        image: NetworkImage("${detailPlant.url}"),
                         fit: BoxFit.cover,
                       ),
                       borderRadius:
@@ -51,9 +57,11 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                           0.4,
                   width: (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
                       0.6,
-                  child: Text(
-                    "Tropikal iklim seven orkidelerin küçük yaprakları ve uzun gövdeleri vardır. Orkide çiçeklerinin ince uzun gövdeleri narin oldukları hissini uyandırsada fazlasıyla dayanıklı uzun ömürlü bitkilerdir.",
-                    style: SizeConfig.yaziAciklama,
+                  child: ListView(
+                    children: <Widget>[
+                      Text("${detailPlant.aciklama}",
+                          style: SizeConfig.yaziAciklama)
+                    ],
                   ),
                 ),
               ]),
@@ -69,7 +77,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                     child: Container(
                       width: (SizeConfig.screenWidth -
                               SizeConfig.blockWidth * 12) *
-                          0.5,
+                          0.4,
                       child: Text(
                         "Sulama",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -79,9 +87,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                   Container(
                     width:
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
-                            0.5,
+                            0.6,
                     child: Text(
-                      "3 günde bir",
+                      "${detailPlant.sulama}",
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -99,7 +107,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                     child: Container(
                       width: (SizeConfig.screenWidth -
                               SizeConfig.blockWidth * 12) *
-                          0.5,
+                          0.4,
                       child: Text(
                         "Toprak değişim",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -109,9 +117,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                   Container(
                     width:
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
-                            0.5,
+                            0.6,
                     child: Text(
-                      "Yılda 1, ilkbahar",
+                      "${detailPlant.toprakDegisim}",
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -129,7 +137,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                     child: Container(
                       width: (SizeConfig.screenWidth -
                               SizeConfig.blockWidth * 12) *
-                          0.5,
+                          0.4,
                       child: Text(
                         "Toprak Tipi",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -139,9 +147,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                   Container(
                     width:
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
-                            0.5,
+                            0.6,
                     child: Text(
-                      "Özel orkide toprağı",
+                      "${detailPlant.toprakTipi}",
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -159,7 +167,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                     child: Container(
                       width: (SizeConfig.screenWidth -
                               SizeConfig.blockWidth * 12) *
-                          0.5,
+                          0.4,
                       child: Text(
                         "Işık ihtiyacı",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -169,9 +177,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                   Container(
                     width:
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
-                            0.5,
+                            0.6,
                     child: Text(
-                      "Aydınlık sever ancak direkt ışık almamalı",
+                      "${detailPlant.isikIhtiyaci}",
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -189,7 +197,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                     child: Container(
                       width: (SizeConfig.screenWidth -
                               SizeConfig.blockWidth * 12) *
-                          0.5,
+                          0.4,
                       child: Text(
                         "Isı ihtiyacı",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -199,9 +207,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                   Container(
                     width:
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
-                            0.5,
+                            0.6,
                     child: Text(
-                      "20 - 30 derece",
+                      "${detailPlant.isiIhtiyaci}",
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
@@ -219,7 +227,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                     child: Container(
                       width: (SizeConfig.screenWidth -
                               SizeConfig.blockWidth * 12) *
-                          0.5,
+                          0.4,
                       child: Text(
                         "Notlar",
                         style: SizeConfig.yaziAciklamaBaslik,
@@ -229,9 +237,9 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
                   Container(
                     width:
                         (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) *
-                            0.5,
+                            0.6,
                     child: Text(
-                      "Şeffaf saksıda durmalı köklerin güneşe ihtiyacı var.",
+                      "${detailPlant.notlar}",
                       style: SizeConfig.yaziAciklama,
                     ),
                   ),
