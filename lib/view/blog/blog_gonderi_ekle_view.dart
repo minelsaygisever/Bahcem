@@ -132,6 +132,11 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                             imgUrl.toString(),
                             0,
                             'gSkpRkzzVxbP0uMkPaCMIFdzFIM2');
+                        _commentController.clear();
+                        setState(() {
+                          _selectedImage = null;
+                        });
+                        //burda anasayfaya yönlendirilecek
                       },
                       child: Container(
                         child: Text(
@@ -154,10 +159,11 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                   height: SizeConfig.blockWidth * 10,
                   width: SizeConfig.blockWidth * 30,
                   child: IconButton(
-                    iconSize: 37,
+                    iconSize: SizeConfig.blockWidth * 8,
                     icon: Icon(Icons.delete),
                     color: Colors.black45,
                     onPressed: () {
+                      _commentController.clear();
                       setState(() {
                         _selectedImage = null;
                       });
