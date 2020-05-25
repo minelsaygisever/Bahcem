@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'bitkini_tani_view.dart';
 
 class BitkiniTaniBitkiGoruntule extends StatelessWidget {
+
   final DetailPlant detailPlant;
 
   BitkiniTaniBitkiGoruntule({this.detailPlant});
@@ -14,7 +15,7 @@ class BitkiniTaniBitkiGoruntule extends StatelessWidget {
       backgroundColor: SizeConfig.backgroundColor,
       appBar: AppBar(
         title:
-            Text("${detailPlant.bitkiAdi}", style: SizeConfig.yaziAppbarBaslik),
+            Text(detailPlant.bitkiAdi, style: SizeConfig.yaziAppbarBaslik),
         backgroundColor: SizeConfig.almostWhite,
         elevation: 0.0,
         iconTheme: IconThemeData(

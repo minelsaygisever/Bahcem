@@ -10,7 +10,6 @@ class BlogService {
   static int postLength;
 
   sendPost(String comment, String createdAt, String imgUrl, int likeCount, String userId) {
-
     FirebaseDatabase.instance.reference().child('BlogPosts').child(postLength.toString()).update({
       'comment': comment,
       'created_at': createdAt,

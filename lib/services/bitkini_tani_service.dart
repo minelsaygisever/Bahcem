@@ -15,10 +15,12 @@ class BitkiniTaniService {
     //response işlemi başarılıysa
       case HttpStatus.ok:
         final jsonModel = json
-            .decode(response.body); //response dan gelen bilgileri parçalıyor
+            .decode(response.body); //re
+        print(jsonModel);// sponse dan gelen bilgileri parçalıyor
         final bitkiniTaniList = jsonModel
             .map((e) => BitkiniTaniModel.fromJson(e as Map<String, dynamic>))
-            .toList().cast<BitkiniTaniModel>(); //jsonModele gelen bilgileri liste cast ediyoruz
+            .toList().cast<BitkiniTaniModel>(); 
+        //jsonModele gelen bilgileri liste cast ediyoruz
         return bitkiniTaniList;
         break;
 
