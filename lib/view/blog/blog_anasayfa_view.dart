@@ -49,8 +49,11 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
   }
 }
 
+
 //uygulamamızın body si burada olacak
 Widget _listAnasayfa(List<BlogPostModel> list) {
+  BlogService.postLength = list.length;
+  list.sort((a, b) => -DateTime.parse(a.created_at).compareTo(DateTime.parse(b.created_at)) );
   return Padding(
     padding: EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
     child: ListView.builder(
@@ -111,7 +114,7 @@ Widget _post(BlogPostModel post) {
             padding:
             EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
             child: Image(
-              image: AssetImage('assets/images/photo1.jpg'),
+              image: NetworkImage(post.img_url),
               height: SizeConfig.screenWidth,
               width: SizeConfig.screenWidth,
               fit: BoxFit.cover,
@@ -134,7 +137,7 @@ Widget _post(BlogPostModel post) {
                   ),
                 ),
                 Text(
-                  post.likeCount.toString() + ' beğeni',
+                  post.like_count.toString() + ' beğeni',
                   style: SizeConfig.yaziAciklama,
                 ),
               ],
