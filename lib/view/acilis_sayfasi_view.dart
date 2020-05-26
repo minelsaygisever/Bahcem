@@ -1,5 +1,6 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/view/login/login_sayfasi_view.dart';
+import 'package:bahcem_deneme/wrapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
@@ -16,11 +17,8 @@ class _AcilisSayfasiState extends State<AcilisSayfasi> {
 
     //_mockCheckForSession true dönerse status true oluyor, false dönerse status false oluyor
     _mockCheckForSession().then((status) {
-      if (status) {
-        _navigateToHome();
-      } else {
-        _navigateToLogin();
-      }
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (BuildContext context) => Wrapper()));
     });
   }
 

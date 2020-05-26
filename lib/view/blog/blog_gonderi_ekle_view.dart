@@ -134,12 +134,11 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                                 //await Future.delayed(Duration(seconds: 5));
 
                                 await uploadImage();
-                                service.sendPost(
+                                await service.sendPost(
                                     comment,
                                     DateTime.now().toString(),
                                     imgUrl.toString(),
-                                    0,
-                                    'gSkpRkzzVxbP0uMkPaCMIFdzFIM2');
+                                    0);
                                 _commentController.clear();
                                 setState(() {
                                   _selectedImage = null;

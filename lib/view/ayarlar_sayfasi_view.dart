@@ -1,6 +1,8 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/custom_switch.dart';
 import 'package:bahcem_deneme/services/auth_service.dart';
+import 'package:bahcem_deneme/view/login/login_sayfasi_view.dart';
+import 'package:bahcem_deneme/view/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'hakkinda_sayfasi_view.dart';
@@ -157,7 +159,7 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi> {
               padding: EdgeInsets.all(0.0),
               onPressed: () async {
                 await _auth.signOut();
-                Navigator.popUntil(context, ModalRoute.withName("/"));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyApp()),);
               },
               child: Text(
                 "Çıkış Yap",

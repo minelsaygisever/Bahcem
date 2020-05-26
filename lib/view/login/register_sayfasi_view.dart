@@ -23,6 +23,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
   String error = '';
 
   String email = '';
+  String kullanici_adi = '';
   String password = '';
 
   @override
@@ -115,6 +116,11 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
+                                validator: (val) =>
+                                val.isEmpty ? 'Lütfen kullanıcı adı giriniz' : null,
+                                onChanged: (val) {
+                                  setState(() => kullanici_adi = val);
+                                },
                                 textAlignVertical: TextAlignVertical.bottom,
                                 cursorColor: SizeConfig.green,
                                 controller: _kullaniciAdi,
@@ -131,13 +137,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                     ),
                                   ),
                                 ),
-                                validator: (val) {
-                                  if (val.isEmpty) {
-                                    return "Boş geçilemez";
-                                  } else {
-                                    return null;
-                                  }
-                                }),
+                            )
                           ),
                         ),
                         Padding(
@@ -153,9 +153,6 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                               validator: (val) => val.length < 6
                                   ? 'En az 6 karakter uzunluğunda şifre giriniz'
                                   : null,
-                              onChanged: (val) {
-                                setState(() => password = val);
-                              },
                               textAlignVertical: TextAlignVertical.bottom,
                               cursorColor: SizeConfig.green,
                               controller: _sifre,
@@ -184,6 +181,12 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
+                                validator: (val) => val != "" ? (val == password
+                                    ? 'Şifreler eşleşmiyor.'
+                                    : null) : 'Boş geçilmez.',
+                                onChanged: (val) {
+                                  setState(() => password = val);
+                                },
                                 obscureText: true,
                                 textAlignVertical: TextAlignVertical.bottom,
                                 cursorColor: SizeConfig.green,
@@ -201,13 +204,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                     ),
                                   ),
                                 ),
-                                validator: (val) {
-                                  if (val.isEmpty) {
-                                    return "Boş geçilemez";
-                                  } else {
-                                    return null;
-                                  }
-                                }),
+                            ),
                           ),
                         ),
                         Padding(
@@ -230,7 +227,6 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                     }
                                   }
                                 },
-                                //onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
                                 child: Container(
                                   child: Text(
                                     "Kayıt",
@@ -254,29 +250,6 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                               style:
                                   TextStyle(color: Colors.red, fontSize: 14.0),
                             )),
-                        Padding(
-                          padding:
-                              EdgeInsets.only(top: SizeConfig.blockWidth * 30),
-                          child: Container(
-                            height: SizeConfig.blockWidth * 10,
-                            width: SizeConfig.blockWidth * 40,
-                            child: FlatButton(
-                                onPressed: () => widget.toggleView(),
-                                //onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
-                                child: Container(
-                                  child: Text(
-                                    "Giriş Yap",
-                                    style: TextStyle(
-                                      fontSize: SizeConfig.blockWidth * 5.5,
-                                      color: SizeConfig.almostWhite,
-                                      fontFamily: "Champagne-Limousines-Bold",
-                                    ),
-                                  ),
-                                ),
-                                color: SizeConfig.green,
-                                shape: StadiumBorder()),
-                          ),
-                        ),
                       ],
                     ),
                   ),
