@@ -15,6 +15,7 @@ class BahcemSayfasi extends StatefulWidget {
 class BahcemDetailPlant {
   String albumUrl;
   String bitkininAdi;
+  String createdAt;
   String hatirlatici;
   String isiIhtiyaci;
   String isikIhtiyaci;
@@ -23,10 +24,12 @@ class BahcemDetailPlant {
   String sulama;
   String toprakDegisim;
   String toprakTipi;
+  String userId;
 
   BahcemDetailPlant(
       {this.albumUrl,
       this.bitkininAdi,
+      this.createdAt,
       this.hatirlatici,
       this.isiIhtiyaci,
       this.isikIhtiyaci,
@@ -34,7 +37,8 @@ class BahcemDetailPlant {
       this.profilImgUrl,
       this.sulama,
       this.toprakDegisim,
-      this.toprakTipi});
+      this.toprakTipi,
+      this.userId});
 }
 
 class _BahcemSayfasiState extends State<BahcemSayfasi> {
@@ -115,6 +119,7 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
           final bahcemDetailPlant = BahcemDetailPlant(
             albumUrl: bahcemBitki.albumUrl,
             bitkininAdi: bahcemBitki.bitkininAdi,
+            createdAt: bahcemBitki.createdAt,
             hatirlatici: bahcemBitki.hatirlatici,
             isiIhtiyaci: bahcemBitki.isiIhtiyaci,
             isikIhtiyaci: bahcemBitki.isikIhtiyaci,
@@ -123,6 +128,7 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
             sulama: bahcemBitki.sulama,
             toprakDegisim: bahcemBitki.toprakDegisim,
             toprakTipi: bahcemBitki.toprakTipi,
+            userId: bahcemBitki.userId
           );
 
           Navigator.push(
