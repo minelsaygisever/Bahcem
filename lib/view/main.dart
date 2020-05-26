@@ -1,6 +1,8 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/models/user_model.dart';
 import 'package:bahcem_deneme/services/auth_service.dart';
+import 'package:bahcem_deneme/view/acilis_sayfasi_view.dart';
+import 'package:bahcem_deneme/view/login/login_sayfasi_view.dart';
 import 'package:bahcem_deneme/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'bitkini_tani/bitkini_tani_view.dart';
@@ -9,7 +11,7 @@ import 'bahcem/bahcem_sayfasi_view.dart';
 import 'ayarlar_sayfasi_view.dart';
 import 'blog/blog_tab_bar_view.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp( MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -19,7 +21,12 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       child: MaterialApp(
         title: 'Bahçem',
-        home: Wrapper(),
+        initialRoute: "/",
+        routes: {
+          "/": (context) => AcilisSayfasi(),
+          "/wrapper": (context) => Wrapper(),
+          "/login": (context) => LoginSayfasi(),
+        },
       ),
     );
   }
