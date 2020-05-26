@@ -57,7 +57,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                           Padding(
                             padding: EdgeInsets.fromLTRB(
                                 0,
-                                SizeConfig.blockWidth * 40,
+                                SizeConfig.blockWidth * 22,
                                 0,
                                 SizeConfig.blockWidth * 10),
                             child: Text(
