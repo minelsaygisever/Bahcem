@@ -27,7 +27,7 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
       body: FutureBuilder(
-        future: service.getBlogAnasayfaModel(),
+        future: service.getBlogPostModel(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
           //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir
@@ -36,6 +36,7 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
               if (snapshot.hasData)
                 return _listAnasayfa(snapshot.data);
               else
+                BlogService.postLength = 0;
                 //servis geldi ama data yoksa
                 return _notFoundWidget;
               break;

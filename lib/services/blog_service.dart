@@ -22,17 +22,17 @@ class BlogService {
   }
 
   //minelin anasayfa için yazdığı kısım (DOKUNMA)
-  Future<List<BlogPostModel>> getBlogAnasayfaModel() async {
-    final response = await http.get("$FIREBASE_URL/BlogPosts.json");
+  Future<List<BlogPostModel>> getBlogPostModel() async {
+    final response = await http.get(FIREBASE_URL + "BlogPosts.json");
 
     switch (response.statusCode) {
       case HttpStatus.ok:
         final jsonModel = json.decode(response.body);
-        final blogAnasayfaList = jsonModel
+        final blogPostList = jsonModel
             .map((e) => BlogPostModel.fromJson(e as Map<String, dynamic>))
             .toList()
             .cast<BlogPostModel>();
-        return blogAnasayfaList;
+        return blogPostList;
         break;
 
       default:

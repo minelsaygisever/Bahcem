@@ -30,6 +30,12 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
   String password = '';
 
   @override
+  void initState() {
+    super.initState();
+    userService = UserService();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
@@ -233,7 +239,9 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                           'Bu e-posta kullanılamaz!';
                                         });
                                       }
-                                      await userService.sendUser([], "", "", email, kullanici_adi, "");
+                                      print(email);
+                                      print(kullanici_adi);
+                                      await userService.sendUser(null, "", "", email, kullanici_adi, "");
                                     }
                                   },
                                   child: Container(

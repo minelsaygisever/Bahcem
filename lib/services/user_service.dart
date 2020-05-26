@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 import 'package:bahcem_deneme/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,17 +8,13 @@ import 'package:http/http.dart' as http;
 
 class UserService {
   static const String FIREBASE_URL = "https://bahcem-109e7.firebaseio.com/";
-
   static int userLength;
 
   sendUser(List<Arkadaslar> arkadaslar, String bio, String blogIsim,
       String email, String kullaniciAdi, String profilImg) async {
+
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
-    FirebaseDatabase.instance
-        .reference()
-        .child('Kullanicilar')
-        .child(userLength.toString())
-        .update({
+    FirebaseDatabase.instance.reference().child('Kullanicilar').child(userLength.toString()).update({
       'arkadaslar': arkadaslar,
       'bio': bio,
       'blog_isim': blogIsim,
