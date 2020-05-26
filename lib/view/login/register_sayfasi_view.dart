@@ -185,7 +185,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                               height: SizeConfig.blockWidth * 12,
                               alignment: Alignment.center,
                               child: TextFormField(
-                                validator: (val) => val != "" ? (_sifreTekrar == _sifre
+                                validator: (val) => val != "" ? (val == _sifre
                                     ? 'Şifreler eşleşmiyor.'
                                     : null) : 'Boş geçilmez.',
                                 onChanged: (val) {
@@ -226,7 +226,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                       if (result == null) {
                                         setState(() {
                                           error =
-                                          'Lütfen geçerli bir eposta giriniz';
+                                          'Bu e-posta kullanılamaz!';
                                         });
                                       }
                                     }
