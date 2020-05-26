@@ -23,10 +23,12 @@ class BahcemBitkiGoruntule extends StatelessWidget {
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 4, 0),
             child: GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => BahcemBitkiDuzenle()),
-              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BahcemBitkiDuzenle()),
+                );
+              },
               child: Icon(
                 Icons.edit,
                 size: SizeConfig.blockWidth * 7,
