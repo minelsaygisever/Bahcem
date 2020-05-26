@@ -21,7 +21,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
 
   final AuthService _auth = AuthService();
   String error = '';
-
+  String passwordFirst= '';
   String email = '';
   String kullanici_adi = '';
   String password = '';
@@ -48,84 +48,52 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                   child: Form(
                     key: _formKey,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              0,
-                              SizeConfig.blockWidth * 6,
-                              0,
-                              SizeConfig.blockWidth * 10),
-                          child: Text(
-                            "Bahçem",
-                            textDirection: TextDirection.ltr,
-                            style: TextStyle(
-                              color: SizeConfig.green,
-                              fontFamily: "Photoshoot",
-                              fontSize: SizeConfig.blockWidth * 13,
-                              shadows: <Shadow>[
-                                Shadow(
-                                  offset: Offset(SizeConfig.blockWidth * 0.5,
-                                      SizeConfig.blockWidth * 0.5),
-                                  blurRadius: 5.0,
-                                  color: Color.fromARGB(60, 0, 0, 0),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              bottom: SizeConfig.blockWidth * 3,
-                              left: SizeConfig.blockWidth * 6,
-                              right: SizeConfig.blockWidth * 6),
-                          child: Container(
-                            height: SizeConfig.blockWidth * 12,
-                            alignment: Alignment.center,
-                            child: TextFormField(
-                              validator: (val) =>
-                                  val.isEmpty ? 'Lütfen eposta giriniz' : null,
-                              onChanged: (val) {
-                                setState(() => email = val);
-                              },
-                              textAlignVertical: TextAlignVertical.bottom,
-                              cursorColor: SizeConfig.green,
-                              controller: _eposta,
-                              decoration: InputDecoration(
-                                hintText: "E-Posta",
-                                hintStyle: SizeConfig.yaziHint,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                  borderSide: BorderSide(
-                                    color: SizeConfig.green,
+                        Column(children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                0,
+                                SizeConfig.blockWidth * 40,
+                                0,
+                                SizeConfig.blockWidth * 10),
+                            child: Text(
+                              "Bahçem",
+                              textDirection: TextDirection.ltr,
+                              style: TextStyle(
+                                color: SizeConfig.green,
+                                fontFamily: "Photoshoot",
+                                fontSize: SizeConfig.blockWidth * 13,
+                                shadows: <Shadow>[
+                                  Shadow(
+                                    offset: Offset(SizeConfig.blockWidth * 0.5,
+                                        SizeConfig.blockWidth * 0.5),
+                                    blurRadius: 5.0,
+                                    color: Color.fromARGB(60, 0, 0, 0),
                                   ),
-                                ),
+                                ],
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              bottom: SizeConfig.blockWidth * 3,
-                              left: SizeConfig.blockWidth * 6,
-                              right: SizeConfig.blockWidth * 6),
-                          child: Container(
-                            height: SizeConfig.blockWidth * 12,
-                            alignment: Alignment.center,
-                            child: TextFormField(
+                          Padding(
+                            padding: EdgeInsets.only(
+                                bottom: SizeConfig.blockWidth * 3,
+                                left: SizeConfig.blockWidth * 6,
+                                right: SizeConfig.blockWidth * 6),
+                            child: Container(
+                              height: SizeConfig.blockWidth * 12,
+                              alignment: Alignment.center,
+                              child: TextFormField(
                                 validator: (val) =>
-                                val.isEmpty ? 'Lütfen kullanıcı adı giriniz' : null,
+                                val.isEmpty ? 'Lütfen eposta giriniz' : null,
                                 onChanged: (val) {
-                                  setState(() => kullanici_adi = val);
+                                  setState(() => email = val);
                                 },
                                 textAlignVertical: TextAlignVertical.bottom,
                                 cursorColor: SizeConfig.green,
-                                controller: _kullaniciAdi,
+                                controller: _eposta,
                                 decoration: InputDecoration(
-                                  hintText: "Kullanıcı adı",
+                                  hintText: "E-Posta",
                                   hintStyle: SizeConfig.yaziHint,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.zero,
@@ -137,51 +105,87 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                     ),
                                   ),
                                 ),
-                            )
+                              ),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              bottom: SizeConfig.blockWidth * 3,
-                              left: SizeConfig.blockWidth * 6,
-                              right: SizeConfig.blockWidth * 6),
-                          child: Container(
-                            height: SizeConfig.blockWidth * 12,
-                            alignment: Alignment.center,
-                            child: TextFormField(
-                              obscureText: true,
-                              validator: (val) => val.length < 6
-                                  ? 'En az 6 karakter uzunluğunda şifre giriniz'
-                                  : null,
-                              textAlignVertical: TextAlignVertical.bottom,
-                              cursorColor: SizeConfig.green,
-                              controller: _sifre,
-                              decoration: InputDecoration(
-                                hintText: "Şifre",
-                                hintStyle: SizeConfig.yaziHint,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.zero,
-                                  borderSide: BorderSide(
-                                    color: SizeConfig.green,
+                          Padding(
+                            padding: EdgeInsets.only(
+                                bottom: SizeConfig.blockWidth * 3,
+                                left: SizeConfig.blockWidth * 6,
+                                right: SizeConfig.blockWidth * 6),
+                            child: Container(
+                                height: SizeConfig.blockWidth * 12,
+                                alignment: Alignment.center,
+                                child: TextFormField(
+                                  validator: (val) =>
+                                  val.isEmpty ? 'Lütfen kullanıcı adı giriniz' : null,
+                                  onChanged: (val) {
+                                    setState(() => kullanici_adi = val);
+                                  },
+                                  textAlignVertical: TextAlignVertical.bottom,
+                                  cursorColor: SizeConfig.green,
+                                  controller: _kullaniciAdi,
+                                  decoration: InputDecoration(
+                                    hintText: "Kullanıcı adı",
+                                    hintStyle: SizeConfig.yaziHint,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.zero,
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.zero,
+                                      borderSide: BorderSide(
+                                        color: SizeConfig.green,
+                                      ),
+                                    ),
+                                  ),
+                                )
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                bottom: SizeConfig.blockWidth * 3,
+                                left: SizeConfig.blockWidth * 6,
+                                right: SizeConfig.blockWidth * 6),
+                            child: Container(
+                              height: SizeConfig.blockWidth * 12,
+                              alignment: Alignment.center,
+                              child: TextFormField(
+                                obscureText: true,
+                                validator: (val) => val.length < 6
+                                    ? 'En az 6 karakter uzunluğunda şifre giriniz'
+                                    : null,
+                                onChanged: (val) {
+                                  setState(() => passwordFirst = val);
+                                },
+                                textAlignVertical: TextAlignVertical.bottom,
+                                cursorColor: SizeConfig.green,
+                                controller: _sifre,
+                                decoration: InputDecoration(
+                                  hintText: "Şifre",
+                                  hintStyle: SizeConfig.yaziHint,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.zero,
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.zero,
+                                    borderSide: BorderSide(
+                                      color: SizeConfig.green,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              bottom: SizeConfig.blockWidth * 3,
-                              left: SizeConfig.blockWidth * 6,
-                              right: SizeConfig.blockWidth * 6),
-                          child: Container(
-                            height: SizeConfig.blockWidth * 12,
-                            alignment: Alignment.center,
-                            child: TextFormField(
-                                validator: (val) => val != "" ? (val == password
+                          Padding(
+                            padding: EdgeInsets.only(
+                                bottom: SizeConfig.blockWidth * 3,
+                                left: SizeConfig.blockWidth * 6,
+                                right: SizeConfig.blockWidth * 6),
+                            child: Container(
+                              height: SizeConfig.blockWidth * 12,
+                              alignment: Alignment.center,
+                              child: TextFormField(
+                                validator: (val) => val != "" ? (_sifreTekrar == _sifre
                                     ? 'Şifreler eşleşmiyor.'
                                     : null) : 'Boş geçilmez.',
                                 onChanged: (val) {
@@ -204,52 +208,93 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                     ),
                                   ),
                                 ),
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              bottom: SizeConfig.blockWidth * 1),
-                          child: Container(
-                            height: SizeConfig.blockWidth * 10,
-                            width: SizeConfig.blockWidth * 26,
-                            child: FlatButton(
-                                onPressed: () async {
-                                  if (_formKey.currentState.validate()) {
-                                    dynamic result = await _auth
-                                        .registerWithEmailAndPassword(
-                                            email, password);
-                                    if (result == null) {
-                                      setState(() {
-                                        error =
-                                            'Lütfen geçerli bir eposta giriniz';
-                                      });
-                                    }
-                                  }
-                                },
-                                child: Container(
-                                  child: Text(
-                                    "Kayıt",
-                                    style: TextStyle(
-                                      fontSize: SizeConfig.blockWidth * 5.5,
-                                      color: SizeConfig.almostWhite,
-                                      fontFamily: "Champagne-Limousines-Bold",
-                                    ),
-                                  ),
-                                ),
-                                color: SizeConfig.green,
-                                shape: StadiumBorder()),
-                          ),
-                        ),
-                        Padding(
+                          Padding(
                             padding: EdgeInsets.only(
                                 bottom: SizeConfig.blockWidth * 1),
-                            //child: SizedBox(height: 12.0),
-                            child: Text(
-                              error,
-                              style:
-                                  TextStyle(color: Colors.red, fontSize: 14.0),
-                            )),
+                            child: Container(
+                              height: SizeConfig.blockWidth * 10,
+                              width: SizeConfig.blockWidth * 26,
+                              child: FlatButton(
+                                  onPressed: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      dynamic result = await _auth
+                                          .registerWithEmailAndPassword(
+                                          email, password);
+                                      if (result == null) {
+                                        setState(() {
+                                          error =
+                                          'Lütfen geçerli bir eposta giriniz';
+                                        });
+                                      }
+                                    }
+                                  },
+                                  child: Container(
+                                    child: Text(
+                                      "Kayıt",
+                                      style: TextStyle(
+                                        fontSize: SizeConfig.blockWidth * 5.5,
+                                        color: SizeConfig.almostWhite,
+                                        fontFamily: "Champagne-Limousines-Bold",
+                                      ),
+                                    ),
+                                  ),
+                                  color: SizeConfig.green,
+                                  shape: StadiumBorder()),
+                            ),
+                          ),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  bottom: SizeConfig.blockWidth * 1),
+                              //child: SizedBox(height: 12.0),
+                              child: Text(
+                                error,
+                                style:
+                                TextStyle(color: Colors.red, fontSize: 14.0),
+                              )),
+
+                        ],),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: SizeConfig.blockWidth * 4,
+                              bottom: SizeConfig.blockWidth * 4),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                width: SizeConfig.blockWidth * 50,
+                                alignment: Alignment.bottomCenter,
+                                child: Text(
+                                  "Zaten üye misiniz?",
+                                  textDirection: TextDirection.ltr,
+                                  style: SizeConfig.yaziAciklamaBaslik,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: SizeConfig.blockWidth * 2),
+                                child: Container(
+                                  height: SizeConfig.blockWidth * 8,
+                                  width: SizeConfig.blockWidth * 26,
+                                  child: FlatButton(
+                                    /*onPressed: () => Navigator.push(context, MaterialPageRoute(
+                                          builder: (BuildContext context) => RegisterSayfasi()
+                                      )),*/
+                                      onPressed: () => widget.toggleView(),
+                                      child: Container(
+                                        child: Text(
+                                          "Giriş",
+                                          style: SizeConfig.yaziButon,
+                                        ),
+                                      ),
+                                      color: SizeConfig.green,
+                                      shape: StadiumBorder()),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
