@@ -10,13 +10,8 @@ class UserService {
 
   static int userLength;
 
-  sendUser(
-      List<Arkadaslar> arkadaslar,
-      String bio,
-      String blogIsim,
-      String email,
-      String kullaniciAdi,
-      String profilImg) async {
+  sendUser(List<Arkadaslar> arkadaslar, String bio, String blogIsim,
+      String email, String kullaniciAdi, String profilImg) async {
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
     FirebaseDatabase.instance
         .reference()

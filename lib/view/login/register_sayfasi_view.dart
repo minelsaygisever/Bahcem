@@ -2,6 +2,7 @@ import 'package:bahcem_deneme/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../SizeConfig.dart';
+import 'package:bahcem_deneme/services/user_service.dart';
 
 class RegisterSayfasi extends StatefulWidget {
   final Function toggleView;
@@ -13,6 +14,8 @@ class RegisterSayfasi extends StatefulWidget {
 }
 
 class _RegisterSayfasiState extends State<RegisterSayfasi> {
+  UserService userService;
+
   final _formKey = GlobalKey<FormState>();
   final _kullaniciAdi = TextEditingController();
   final _sifre = TextEditingController();
@@ -223,12 +226,14 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                       dynamic result = await _auth
                                           .registerWithEmailAndPassword(
                                           email, password);
+
                                       if (result == null) {
                                         setState(() {
                                           error =
                                           'Bu e-posta kullanılamaz!';
                                         });
                                       }
+                                      await userService.sendUser([], "", "", email, kullanici_adi, "");
                                     }
                                   },
                                   child: Container(
