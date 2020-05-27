@@ -66,7 +66,7 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
                   return _listBahcemAnasayfa(snapshot.data);
                 else
                   //servis geldi ama data yoksa
-                  return _notFoundWidget;
+                  return _notFoundWidget();
                 break;
               //servisten dönemediyse, hata varsa
               default:
@@ -82,6 +82,7 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
 //uygulamamızın body si burada olacak
   Widget _listBahcemAnasayfa(List<BahcemBitkiModel> list) {
     List<BahcemBitkiModel> secondList = [];
+    BahcemService.plantLength = list.length;
     for (int i = 0; i < list.length; i++) {
       if (list[i].userId == BahcemService.user.uid) {
         secondList.add(list[i]);
@@ -183,10 +184,10 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
   }
 
   //servisten data dönmediyse bu gelecek
-  Widget get _notFoundWidget => Center(
-        child: Text("Not Found"),
-      );
-
+  Widget _notFoundWidget(){
+    BahcemService.plantLength = 0;
+    return Text("Bitki Yok");
+  }
   //bir hata meydana geldiyse servis cevap vermediyse bu dönecek
   Widget get _waitingWidget => Center(child: CircularProgressIndicator());
 }
