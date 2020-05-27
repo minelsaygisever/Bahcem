@@ -15,7 +15,7 @@ class RegisterSayfasi extends StatefulWidget {
 }
 
 class _RegisterSayfasiState extends State<RegisterSayfasi> {
-  UserService userService;
+  UserService _userService;
 
   final _formKey = GlobalKey<FormState>();
   final _kullaniciAdi = TextEditingController();
@@ -33,7 +33,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
   @override
   void initState() {
     super.initState();
-    userService = UserService();
+    _userService = UserService();
   }
 
   @override
@@ -44,7 +44,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
       body: Stack(
         children: <Widget>[
           FutureBuilder(
-            future: userService.getUser(),
+            future: _userService.getUser(),
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
               //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir
@@ -281,7 +281,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                         'Bu e-posta kullanılamaz!';
                                       });
                                     }
-                                    await userService.sendUser(null, "", "", email, kullanici_adi, "");
+                                    await _userService.sendUser(null, "", "", email, kullanici_adi, "");
                                   }
                                 },
                                 child: Container(
