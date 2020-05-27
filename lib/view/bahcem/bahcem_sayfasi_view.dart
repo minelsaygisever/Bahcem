@@ -81,22 +81,31 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
 
 //uygulamamızın body si burada olacak
   Widget _listBahcemAnasayfa(List<BahcemBitkiModel> list) {
+    List<BahcemBitkiModel> secondList = [];
+    print("------------------------------------");
+    print(list.toString());
+    print("------------------------------------");
+    for(int i = 0; i < list.length; i++){
+      print(list[i]);
+      if(list[i].userId == BahcemService.user.uid){
+        secondList.add(list[i]);
+      }
+  }
     return Padding(
       padding: EdgeInsets.all(SizeConfig.blockWidth * 4),
       //çiçeklerin hr birini grid içine çekmek için _item widgetini çağıracağız
       child: GridView.builder(
-          itemCount: list.length,
+          itemCount: secondList.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisSpacing: SizeConfig.blockWidth * 4,
               mainAxisSpacing: SizeConfig.blockWidth * 4,
               crossAxisCount: 3),
-          itemBuilder: (context, index) => _card(list[index])),
+          itemBuilder: (context, index) => _card(secondList[index])),
     );
   }
 
   Widget _card(bahcemBitki)  {
 
-    if(bahcemBitki.userId == BahcemService.user.uid){
       return Center(
         child: GestureDetector(
           onTap: () {
@@ -154,7 +163,7 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
           ),
         ),
       );
-    }
+
   }
 
   Widget _bitkiniEkleButonu(){
