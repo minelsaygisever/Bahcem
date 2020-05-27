@@ -1,21 +1,120 @@
+import 'dart:io';
+
 import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/services/bahcem_service.dart';
+import 'package:bahcem_deneme/view/main.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class BahcemBitkiEkle extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => BahcemBitkiEkleState();
+  State<StatefulWidget> createState() => _BahcemBitkiEkleState();
 }
 
-class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
-  String dropdownValue = '1';
-  String dropdownValue1 = 'günde';
-  String dropdownValue3 = '1';
-  String dropdownValue4 = 'günde';
-  String dropdownValue5 = 'torflu';
-  String dropdownValue6 = 'Çok ışıklı ortam';
-  String dropdownValue7 = '20-22 derece';
-  String dropdownValue8 = 'Açık';
+class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
+  BahcemService _bahcemService;
+  File _selectedImageProfil;
+  File _selectedImageAlbum;
+  var imgUrl;
+  bool _absorbing = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _bahcemService = BahcemService();
+  }
+
+  final _bitkininAdiController = TextEditingController();
+  final _notlarController = TextEditingController();
+
+  String albumUrl = "";
+  String bitkininAdi = "";
+  String createdAt = "";
+  String hatirlatici = "";
+  String isiIhtiyaci = "";
+  String isikIhtiyaci = "";
+  String notlar = "";
+  String profilImgUrl = "";
+  String sulama = "";
+  String toprakDegisim = "";
+  String toprakTipi = "";
+
+  String sulamaDropDown = '1';
+  String sulamaAralikDropDown = 'günde';
+  String toprakDegisimDropDown = '1';
+  String toprakDegisimAralikDropDown = 'günde';
+  String toprakTipiDropDown = 'torflu';
+  String isikIhtiyaciDropDown = 'Çok ışıklı ortam';
+  String isiIhtiyaciDropDown = '20-22 derece';
+  String hatirlaticiDropDown = 'Açık';
+
+  Future selectImageProfil() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    //var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
+      _selectedImageProfil = image;
+    });
+  }
+
+  Future uploadImageProfil() async {
+    StorageReference ref = FirebaseStorage.instance
+        .ref()
+        .child("0H9SC3y9PAQsFx9HwSBTjv0kIA72")
+        .child("Profil")
+        .child("img" + BahcemService.plantLength.toString() + ".jpg");
+    StorageUploadTask uploadTask = ref.putFile(_selectedImageProfil);
+    imgUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
+    profilImgUrl = imgUrl.toString();
+  }
+
+  Future selectImageAlbum() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    //var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
+      _selectedImageAlbum = image;
+    });
+  }
+
+  Future uploadImageAlbum() async {
+    StorageReference ref = FirebaseStorage.instance
+        .ref()
+        .child("0H9SC3y9PAQsFx9HwSBTjv0kIA72")
+        .child("Album")
+        .child("img" + BahcemService.plantLength.toString() + ".jpg");
+    StorageUploadTask uploadTask = ref.putFile(_selectedImageAlbum);
+    imgUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
+    albumUrl = imgUrl.toString();
+  }
+
+  Widget showDefaultProfile() {
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.blockWidth * 3),
+      child: Image(
+        image: AssetImage('assets/icons/postdef.png'),
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Widget showDefaultAlbum() {
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.blockWidth * 7),
+      child: Image(
+        image: AssetImage('assets/icons/plus.png'),
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Widget showNewProfile() {
+    return Expanded(child: Image.file(_selectedImageProfil));
+  }
+
+  Widget showNewAlbum() {
+    return Expanded(child: Image.file(_selectedImageAlbum));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +142,10 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   TextFormField(
+                    controller: _bitkininAdiController,
+                    onChanged: (val) {
+                      setState(() => bitkininAdi = val);
+                    },
                     maxLines: null,
                     cursorColor: SizeConfig.green,
                     decoration: InputDecoration(
@@ -62,56 +165,59 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
             Padding(
                 padding:
                     EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Padding(
-                        padding:
-                            EdgeInsets.only(right: SizeConfig.blockWidth * 4),
-                        child: Container(
+                child: GestureDetector(
+                  onTap: () => selectImageProfil(),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Padding(
+                          padding:
+                              EdgeInsets.only(right: SizeConfig.blockWidth * 4),
+                          child: Container(
+                            height: (SizeConfig.screenWidth -
+                                    SizeConfig.blockWidth * 12) *
+                                0.3,
+                            width: (SizeConfig.screenWidth -
+                                    SizeConfig.blockWidth * 12) *
+                                0.3,
+                            decoration: BoxDecoration(
+                              color: SizeConfig.almostWhite,
+                            ),
+                            child: _selectedImageProfil == null
+                                ? showDefaultProfile()
+                                : showNewProfile(),
+                          ),
+                        ),
+                        Container(
                           height: (SizeConfig.screenWidth -
                                   SizeConfig.blockWidth * 12) *
                               0.3,
                           width: (SizeConfig.screenWidth -
                                   SizeConfig.blockWidth * 12) *
-                              0.3,
-                          decoration: BoxDecoration(
-                            color: SizeConfig.almostWhite,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(SizeConfig.blockWidth * 3),
-                            child: Image(
-                              image: AssetImage("assets/images/postdef.png"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: (SizeConfig.screenWidth -
-                                SizeConfig.blockWidth * 12) *
-                            0.3,
-                        width: (SizeConfig.screenWidth -
-                                SizeConfig.blockWidth * 12) *
-                            0.7,
-                        alignment: Alignment.bottomCenter,
-                        child: TextFormField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                          cursorColor: SizeConfig.green,
-                          decoration: InputDecoration(
-                            hintText: 'Bitki hakkında notlar...',
-                            hintStyle: SizeConfig.yaziHint,
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: SizeConfig.green,
+                              0.7,
+                          alignment: Alignment.bottomCenter,
+                          child: TextFormField(
+                            controller: _notlarController,
+                            onChanged: (val) {
+                              setState(() => notlar = val);
+                            },
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            cursorColor: SizeConfig.green,
+                            decoration: InputDecoration(
+                              hintText: 'Bitki hakkında notlar...',
+                              hintStyle: SizeConfig.yaziHint,
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: SizeConfig.green,
+                                ),
                               ),
                             ),
+                            style: SizeConfig.yaziAciklama,
                           ),
-                          style: SizeConfig.yaziAciklama,
                         ),
-                      ),
-                    ])),
+                      ]),
+                )),
             Padding(
               padding: EdgeInsets.fromLTRB(
                   0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
@@ -137,7 +243,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                           width: SizeConfig.blockWidth * 12,
                           //alignment: Alignment.topLeft,
                           child: DropdownButton<String>(
-                            value: dropdownValue,
+                            value: sulamaDropDown,
                             icon: Icon(Icons.expand_more),
                             iconSize: SizeConfig.blockWidth * 6,
                             elevation: 15,
@@ -149,7 +255,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                             ),
                             onChanged: (String newValue) {
                               setState(() {
-                                dropdownValue = newValue;
+                                sulamaDropDown = newValue;
                               });
                             },
                             items: <String>['1', '2', '3', '4']
@@ -172,7 +278,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                           width: SizeConfig.blockWidth * 22,
                           //alignment: Alignment.topLeft,
                           child: DropdownButton<String>(
-                            value: dropdownValue1,
+                            value: sulamaAralikDropDown,
                             isExpanded: true,
                             icon: Icon(Icons.expand_more),
                             iconSize: SizeConfig.blockWidth * 6,
@@ -184,7 +290,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                             ),
                             onChanged: (String newValue) {
                               setState(() {
-                                dropdownValue1 = newValue;
+                                sulamaAralikDropDown = newValue;
                               });
                             },
                             items: <String>['günde', 'haftada', 'ayda', 'yılda']
@@ -242,7 +348,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                           width: SizeConfig.blockWidth * 12,
                           //alignment: Alignment.topLeft,
                           child: DropdownButton<String>(
-                            value: dropdownValue3,
+                            value: toprakDegisimDropDown,
                             icon: Icon(Icons.expand_more),
                             iconSize: SizeConfig.blockWidth * 6,
                             elevation: 15,
@@ -254,7 +360,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                             ),
                             onChanged: (String newValue) {
                               setState(() {
-                                dropdownValue3 = newValue;
+                                toprakDegisimDropDown = newValue;
                               });
                             },
                             items: <String>['1', '2', '3', '4']
@@ -277,7 +383,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                           width: SizeConfig.blockWidth * 22,
                           //alignment: Alignment.topLeft,
                           child: DropdownButton<String>(
-                            value: dropdownValue4,
+                            value: toprakDegisimAralikDropDown,
                             icon: Icon(Icons.expand_more),
                             iconSize: SizeConfig.blockWidth * 6,
                             elevation: 15,
@@ -289,7 +395,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                             ),
                             onChanged: (String newValue) {
                               setState(() {
-                                dropdownValue4 = newValue;
+                                toprakDegisimAralikDropDown = newValue;
                               });
                             },
                             items: <String>['günde', 'haftada', 'ayda', 'yılda']
@@ -345,7 +451,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                       width: SizeConfig.blockWidth * 47,
                       //alignment: Alignment.topLeft,
                       child: DropdownButton<String>(
-                        value: dropdownValue5,
+                        value: toprakTipiDropDown,
                         icon: Icon(Icons.expand_more),
                         iconSize: SizeConfig.blockWidth * 6,
                         elevation: 15,
@@ -357,7 +463,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                         ),
                         onChanged: (String newValue) {
                           setState(() {
-                            dropdownValue5 = newValue;
+                            toprakTipiDropDown = newValue;
                           });
                         },
                         items: <String>['torflu', 'orkide toprağı']
@@ -399,7 +505,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                       width: SizeConfig.blockWidth * 47,
                       //alignment: Alignment.topLeft,
                       child: DropdownButton<String>(
-                        value: dropdownValue6,
+                        value: isikIhtiyaciDropDown,
                         isExpanded: true,
                         icon: Icon(Icons.expand_more),
                         iconSize: SizeConfig.blockWidth * 6,
@@ -411,7 +517,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                         ),
                         onChanged: (String newValue) {
                           setState(() {
-                            dropdownValue6 = newValue;
+                            isikIhtiyaciDropDown = newValue;
                           });
                         },
                         items: <String>['Çok ışıklı ortam', 'Az ışıklı ortam']
@@ -453,7 +559,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                       width: SizeConfig.blockWidth * 47,
                       //alignment: Alignment.topLeft,
                       child: DropdownButton<String>(
-                        value: dropdownValue7,
+                        value: isiIhtiyaciDropDown,
                         icon: Icon(Icons.expand_more),
                         iconSize: SizeConfig.blockWidth * 6,
                         elevation: 15,
@@ -465,7 +571,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                         ),
                         onChanged: (String newValue) {
                           setState(() {
-                            dropdownValue7 = newValue;
+                            isiIhtiyaciDropDown = newValue;
                           });
                         },
                         items: <String>['20-22 derece', '20-30 derece']
@@ -500,23 +606,22 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                 ],
               ),
             ),
-            Row(
-              children: <Widget>[
-                Container(
-                  height: SizeConfig.blockWidth * 20,
-                  width: SizeConfig.blockWidth * 20,
-                  decoration: BoxDecoration(
-                    color: SizeConfig.almostWhite,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(SizeConfig.blockWidth * 7),
-                    child: Image.asset(
-                      "assets/icons/plus.png",
-                      color: SizeConfig.almostBlack,
+            GestureDetector(
+              onTap: () => selectImageAlbum(),
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    height: SizeConfig.blockWidth * 20,
+                    width: SizeConfig.blockWidth * 20,
+                    decoration: BoxDecoration(
+                      color: SizeConfig.almostWhite,
                     ),
+                    child: _selectedImageAlbum == null
+                        ? showDefaultAlbum()
+                        : showNewAlbum(),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(
@@ -541,7 +646,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                       width: SizeConfig.blockWidth * 47,
                       //alignment: Alignment.topLeft,
                       child: DropdownButton<String>(
-                        value: dropdownValue8,
+                        value: hatirlaticiDropDown,
                         icon: Icon(Icons.expand_more),
                         iconSize: SizeConfig.blockWidth * 6,
                         elevation: 15,
@@ -553,7 +658,7 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                         ),
                         onChanged: (String newValue) {
                           setState(() {
-                            dropdownValue8 = newValue;
+                            hatirlaticiDropDown = newValue;
                           });
                         },
                         items: <String>['Açık', 'Kapalı']
@@ -581,13 +686,62 @@ class BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
               child: Container(
                 height: SizeConfig.blockWidth * 8,
                 width: SizeConfig.blockWidth * 26,
-                child: FlatButton(
-                    onPressed: () {},
-                    child: Container(
-                      child: Text("Ekle", style: SizeConfig.yaziButon),
-                    ),
-                    color: SizeConfig.green,
-                    shape: StadiumBorder()),
+                child: AbsorbPointer(
+                  absorbing: _absorbing,
+                  child: FlatButton(
+                      onPressed: () async {
+                        setState(() {
+                          _absorbing = true;
+                        });
+
+                        sulama = sulamaDropDown +
+                            " " +
+                            sulamaAralikDropDown +
+                            " " +
+                            "bir";
+                        toprakDegisim = toprakDegisimDropDown +
+                            " " +
+                            toprakDegisimAralikDropDown +
+                            " " +
+                            "bir";
+                        toprakTipi = toprakTipiDropDown;
+                        isikIhtiyaci = isikIhtiyaciDropDown;
+                        isiIhtiyaci = isiIhtiyaciDropDown;
+                        hatirlatici = hatirlaticiDropDown;
+                        createdAt = DateTime.now().toString();
+
+                        await uploadImageProfil();
+                        await uploadImageAlbum();
+
+                        await _bahcemService.sendPlant(
+                            albumUrl,
+                            bitkininAdi,
+                            createdAt,
+                            hatirlatici,
+                            isiIhtiyaci,
+                            isikIhtiyaci,
+                            notlar,
+                            profilImgUrl,
+                            sulama,
+                            toprakDegisim,
+                            toprakTipi);
+
+                        setState(() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  MyHomePage()));
+                        });
+
+                        setState(() {
+                          _absorbing = false;
+                        });
+                      },
+                      child: Container(
+                        child: Text("Ekle", style: SizeConfig.yaziButon),
+                      ),
+                      color: SizeConfig.green,
+                      shape: StadiumBorder()),
+                ),
               ),
             ),
           ],
