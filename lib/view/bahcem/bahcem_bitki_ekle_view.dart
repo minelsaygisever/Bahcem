@@ -381,7 +381,6 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                             0, SizeConfig.blockWidth * 2, 0),
                         child: Container(
                           width: SizeConfig.blockWidth * 22,
-                          //alignment: Alignment.topLeft,
                           child: DropdownButton<String>(
                             value: toprakDegisimAralikDropDown,
                             icon: Icon(Icons.expand_more),
