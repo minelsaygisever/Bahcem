@@ -1,13 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:bahcem_deneme/models/bahcem_bitki_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
 
 class BahcemService {
   static const String FIREBASE_URL = "https://bahcem-109e7.firebaseio.com/";
+  static FirebaseUser user;
 
   Future<List<BahcemBitkiModel>> getBahcemAnasayfa() async {
     final response = await http.get("$FIREBASE_URL/BahcemBitki2.json");
+    user = await FirebaseAuth.instance.currentUser();
 
     switch (response.statusCode) {
       case HttpStatus.ok:
