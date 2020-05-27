@@ -281,8 +281,6 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                         'Bu e-posta kullanılamaz!';
                                       });
                                     }
-                                    print(email);
-                                    print(kullanici_adi);
                                     await userService.sendUser(null, "", "", email, kullanici_adi, "");
                                   }
                                 },

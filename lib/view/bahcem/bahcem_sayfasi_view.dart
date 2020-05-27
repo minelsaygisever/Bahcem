@@ -82,11 +82,7 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
 //uygulamamızın body si burada olacak
   Widget _listBahcemAnasayfa(List<BahcemBitkiModel> list) {
     List<BahcemBitkiModel> secondList = [];
-    print("------------------------------------");
-    print(list.toString());
-    print("------------------------------------");
     for(int i = 0; i < list.length; i++){
-      print(list[i]);
       if(list[i].userId == BahcemService.user.uid){
         secondList.add(list[i]);
       }

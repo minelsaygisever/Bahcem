@@ -43,7 +43,6 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
         .child("img" + BlogService.postLength.toString() + ".jpg");
     StorageUploadTask uploadTask = ref.putFile(_selectedImage);
     imgUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
-    //print("URL: " + imgUrl);
   }
 
   Widget showDefaultImg() {

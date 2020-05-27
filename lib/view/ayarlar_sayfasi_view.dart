@@ -65,7 +65,6 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi> {
               activeColor: SizeConfig.green,
               value: isSwitched,
               onChanged: (value) {
-                print("VALUE : $value");
                 setState(() {
                   isSwitched = value;
                 });
