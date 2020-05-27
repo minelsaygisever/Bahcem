@@ -9,7 +9,6 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     // return either the Bahcem or login widget
     final user = Provider.of<AuthModel>(context);
-    print(user);
 
     // return either the Home or Authenticate widget
     //return Authenticate();

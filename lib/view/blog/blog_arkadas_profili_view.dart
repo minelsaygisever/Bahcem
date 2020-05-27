@@ -128,7 +128,6 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                                     child: FlatButton(
                                         onPressed: () {
                                           //formKey.currentState.reset();
-                                          print("ok");
                                         },
                                         child: Text(
                                           "Takip Et",
