@@ -14,6 +14,7 @@ class BlogGonderiEkle extends StatefulWidget {
 }
 
 class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
+
   BlogService service;
   File _selectedImage;
   final _commentController = TextEditingController();
@@ -130,8 +131,6 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                                   _absorbing = true;
                                 });
 
-                                //await Future.delayed(Duration(seconds: 5));
-
                                 await uploadImage();
                                 await service.sendPost(
                                     comment,
@@ -142,9 +141,11 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                                 setState(() {
                                   _selectedImage = null;
                                 });
+
                                 setState(() {
                                   _absorbing = false;
                                 });
+
                                 setState(() {
                                   Navigator.of(context).push(
                                       MaterialPageRoute(builder: (BuildContext context) => MyHomePage()));
