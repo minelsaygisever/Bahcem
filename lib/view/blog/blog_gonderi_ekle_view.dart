@@ -150,6 +150,10 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                                   Navigator.of(context).push(
                                       MaterialPageRoute(builder: (BuildContext context) => MyHomePage()));
                                 });
+                                setState(() {
+                                  Navigator.of(context).push(
+                                      MaterialPageRoute(builder: (BuildContext context) => MyHomePage()));
+                                });
 
                               },
                               child: Container(

@@ -730,6 +730,11 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                               builder: (BuildContext context) =>
                                   MyHomePage()));
                         });
+                        setState(() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  MyHomePage()));
+                        });
 
                         setState(() {
                           _absorbing = false;
