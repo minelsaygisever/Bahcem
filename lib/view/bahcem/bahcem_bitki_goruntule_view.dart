@@ -1,11 +1,11 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/view/bahcem/bahcem_sayfasi_view.dart';
+import 'bahcem_bitki_duzenle_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'bahcem_bitki_duzenle_view.dart';
 
 class BahcemBitkiGoruntule extends StatelessWidget {
-
   final BahcemDetailPlant bahcemDetailPlant;
 
   BahcemBitkiGoruntule({this.bahcemDetailPlant});
@@ -26,7 +26,19 @@ class BahcemBitkiGoruntule extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => BahcemBitkiDuzenle()),
+                  MaterialPageRoute(
+                      builder: (context) => BahcemBitkiDuzenle(
+                          bahcemDetailPlant.albumUrl,
+                          bahcemDetailPlant.bitkininAdi,
+                          bahcemDetailPlant.hatirlatici,
+                          bahcemDetailPlant.isiIhtiyaci,
+                          bahcemDetailPlant.isikIhtiyaci,
+                          bahcemDetailPlant.notlar,
+                          bahcemDetailPlant.profilImgUrl,
+                          bahcemDetailPlant.sulama,
+                          bahcemDetailPlant.toprakDegisim,
+                          bahcemDetailPlant.toprakTipi,
+                          bahcemDetailPlant.userId)),
                 );
               },
               child: Icon(
@@ -65,7 +77,8 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                             0.3,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage("${bahcemDetailPlant.profilImgUrl}"),
+                        image:
+                            NetworkImage("${bahcemDetailPlant.profilImgUrl}"),
                         fit: BoxFit.cover,
                       ),
                       borderRadius:

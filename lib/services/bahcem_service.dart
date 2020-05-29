@@ -21,7 +21,7 @@ class BahcemService {
       String profilImgUrl,
       String sulama,
       String toprakDegisim,
-      String toprakTipi,) async {
+      String toprakTipi) async {
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
     FirebaseDatabase.instance
         .reference()
@@ -60,5 +60,34 @@ class BahcemService {
       default:
         return Future.error(response.statusCode);
     }
+  }
+
+  updatePlant(String albumUrl,
+      String bitkininAdi,
+      String hatirlatici,
+      String isiIhtiyaci,
+      String isikIhtiyaci,
+      String notlar,
+      String profilImgUrl,
+      String sulama,
+      String toprakDegisim,
+      String toprakTipi, int index) async {
+    DatabaseReference ref = FirebaseDatabase.instance
+        .reference()
+        .child('BahcemBitki')
+        .child(index.toString());
+    ref.update({
+      'album_url': albumUrl,
+      'bitkinin_adi': bitkininAdi,
+      'hatirlatici': hatirlatici,
+      'isi_ihtiyaci': isiIhtiyaci,
+      'isik_ihtiyaci': isikIhtiyaci,
+      'notlar': notlar,
+      'profil_img_url': profilImgUrl,
+      'sulama': sulama,
+      'toprak_degisim': toprakDegisim,
+      'toprak_tipi': toprakTipi,
+      'user_id': user.uid,
+    });
   }
 }
