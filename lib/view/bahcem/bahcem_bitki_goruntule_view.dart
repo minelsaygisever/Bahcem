@@ -38,7 +38,8 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                           bahcemDetailPlant.sulama,
                           bahcemDetailPlant.toprakDegisim,
                           bahcemDetailPlant.toprakTipi,
-                          bahcemDetailPlant.userId)),
+                          bahcemDetailPlant.userId,
+                          bahcemDetailPlant.bitkiId)),
                 );
               },
               child: Icon(
@@ -281,7 +282,8 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                     width: SizeConfig.blockWidth * 20,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("assets/images/ponsetya.jpg"),
+                        image:
+                            NetworkImage("${bahcemDetailPlant.profilImgUrl}"),
                         fit: BoxFit.cover,
                       ),
                     ),

@@ -20,6 +20,7 @@ class BahcemBitkiDuzenle extends StatefulWidget {
   final String toprakDegisim;
   final String toprakTipi;
   final String userId;
+  final String bitkiId;
 
   const BahcemBitkiDuzenle(
       this.albumUrl,
@@ -32,7 +33,8 @@ class BahcemBitkiDuzenle extends StatefulWidget {
       this.sulama,
       this.toprakDegisim,
       this.toprakTipi,
-      this.userId);
+      this.userId,
+      this.bitkiId);
 
   @override
   State<StatefulWidget> createState() => BahcemBitkiDuzenleState();
@@ -49,6 +51,23 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
   String _sulama = "";
   String _toprakDegisim = "";
   String _toprakTipi = "";
+
+  String sulamaDropDownValue;
+  int count_sulama=0;
+  String sulamaAralikDropDownValue;
+  int count_sulama_aralik=0;
+  String toprakDegisimDropDownValue;
+  int count_toprak_degisim=0;
+  String toprakDegisimAralikDropDownValue;
+  int count_toprak_degisim_aralik=0;
+  String toprakTipiDropDownValue;
+  int count_toprak_tipi=0;
+  String isikIhtiyaciDropDownValue;
+  int count_isik_ihtiyaci=0;
+  String isiIhtiyaciDropDownValue;
+  int count_isi_ihtiyaci=0;
+  String hatirlaticiDropDownValue;
+  int count_hatirlatici=0;
 
   BahcemService _bahcemService;
   File _selectedImageProfil;
@@ -191,14 +210,15 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
 
   @override
   Widget build(BuildContext context) {
-    String sulamaDropDown = widget.sulama[0];
-    String sulamaAralikDropDown = widget.sulama.split(" ")[1];
-    String toprakDegisimDropDown = widget.toprakDegisim[0];
-    String toprakDegisimAralikDropDown = widget.toprakDegisim.split(" ")[1];
-    String toprakTipiDropDown = widget.toprakTipi;
-    String isikIhtiyaciDropDown = widget.isikIhtiyaci;
-    String isiIhtiyaciDropDown = widget.isiIhtiyaci;
-    String hatirlaticiDropDown = widget.hatirlatici;
+
+    String sulamaDropDown = count_sulama == 0 ? widget.sulama[0]: sulamaDropDownValue;
+    String sulamaAralikDropDown =  count_sulama_aralik == 0 ? widget.sulama.split(" ")[1]: sulamaAralikDropDownValue;
+    String toprakDegisimDropDown = count_toprak_degisim == 0 ? widget.toprakDegisim[0]: toprakDegisimDropDownValue;
+    String toprakDegisimAralikDropDown = count_toprak_degisim_aralik == 0 ? widget.toprakDegisim.split(" ")[1]: toprakDegisimAralikDropDownValue;
+    String toprakTipiDropDown = count_toprak_tipi == 0 ? widget.toprakTipi: toprakTipiDropDownValue;
+    String isikIhtiyaciDropDown = count_isik_ihtiyaci == 0 ? widget.isikIhtiyaci: isikIhtiyaciDropDownValue;
+    String isiIhtiyaciDropDown = count_isi_ihtiyaci == 0 ? widget.isiIhtiyaci: isiIhtiyaciDropDownValue;
+    String hatirlaticiDropDown = count_hatirlatici == 0 ? widget.hatirlatici: hatirlaticiDropDownValue;
 
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
@@ -282,7 +302,8 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                             ),
                             onChanged: (String newValue) {
                               setState(() {
-                                sulamaDropDown = newValue;
+                                count_sulama ++;
+                                sulamaDropDownValue = newValue;
                               });
                             },
                             items: <String>['1', '2', '3', '4']
@@ -317,7 +338,8 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                             ),
                             onChanged: (String newValue) {
                               setState(() {
-                                sulamaAralikDropDown = newValue;
+                                count_sulama_aralik ++;
+                                sulamaAralikDropDownValue = newValue;
                               });
                             },
                             items: <String>['günde', 'haftada', 'ayda', 'yılda']
@@ -387,7 +409,8 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                             ),
                             onChanged: (String newValue) {
                               setState(() {
-                                toprakDegisimDropDown = newValue;
+                                count_toprak_degisim ++;
+                                toprakDegisimDropDownValue = newValue;
                               });
                             },
                             items: <String>['1', '2', '3', '4']
@@ -422,7 +445,8 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                             ),
                             onChanged: (String newValue) {
                               setState(() {
-                                toprakDegisimAralikDropDown = newValue;
+                                count_toprak_degisim_aralik ++;
+                                toprakDegisimAralikDropDownValue = newValue;
                               });
                             },
                             items: <String>['günde', 'haftada', 'ayda', 'yılda']
@@ -490,7 +514,8 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                         ),
                         onChanged: (String newValue) {
                           setState(() {
-                            toprakTipiDropDown = newValue;
+                            count_toprak_tipi ++;
+                            toprakTipiDropDownValue = newValue;
                           });
                         },
                         items: <String>['torflu', 'orkide toprağı']
@@ -544,7 +569,8 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                         ),
                         onChanged: (String newValue) {
                           setState(() {
-                            isikIhtiyaciDropDown = newValue;
+                            count_isik_ihtiyaci ++;
+                            isikIhtiyaciDropDownValue = newValue;
                           });
                         },
                         items: <String>['Çok ışıklı ortam', 'Az ışıklı ortam']
@@ -598,7 +624,8 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                         ),
                         onChanged: (String newValue) {
                           setState(() {
-                            isiIhtiyaciDropDown = newValue;
+                            count_isi_ihtiyaci ++;
+                            isiIhtiyaciDropDownValue = newValue;
                           });
                         },
                         items: <String>['20-22 derece', '20-30 derece']
@@ -728,7 +755,8 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                         ),
                         onChanged: (String newValue) {
                           setState(() {
-                            hatirlaticiDropDown = newValue;
+                            count_hatirlatici ++;
+                            hatirlaticiDropDownValue = newValue;
                           });
                         },
                         items: <String>['Açık', 'Kapalı']
@@ -760,9 +788,13 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                   absorbing: _absorbing,
                   child: FlatButton(
                       onPressed: () async {
+
+                        print("girdi");
                         setState(() {
                           _absorbing = true;
                         });
+
+                        print("verileri aldı");
 
                         _sulama = sulamaDropDown + " " + sulamaAralikDropDown + " " + "bir";
                         _toprakDegisim = toprakDegisimDropDown + " " + toprakDegisimAralikDropDown + " " + "bir";
@@ -771,19 +803,28 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                         _isiIhtiyaci = isiIhtiyaciDropDown;
                         _hatirlatici = hatirlaticiDropDown;
 
+                        print("verileri aldı");
+
                         await uploadImageProfil();
 
-                       await _bahcemService.updatePlant(
+                        print("resmi yükledi");
+
+
+                        await _bahcemService.updatePlant(
                             _albumUrl,
                             _bitkininAdi,
-                            _hatirlatici,
-                            _isiIhtiyaci,
-                            _isikIhtiyaci,
+                            hatirlaticiDropDown,
+                            isiIhtiyaciDropDown,
+                            isikIhtiyaciDropDown,
                             _notlar,
                             _profilImgUrl,
-                            _sulama,
-                            _toprakDegisim,
-                            _toprakTipi, 0);
+                            sulamaDropDown,
+                            toprakDegisimDropDown,
+                            toprakTipiDropDown,
+                          widget.bitkiId
+                        );
+
+                        print("update etti");
 
                         setState(() {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -795,6 +836,9 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                               builder: (BuildContext context) =>
                                   MyHomePage()));
                         });
+
+                        print("anasayfaya dönecek");
+
 
                         setState(() {
                           _absorbing = false;
