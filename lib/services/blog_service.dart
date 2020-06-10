@@ -9,9 +9,11 @@ import 'dart:async';
 class BlogService {
   static const String FIREBASE_URL = "https://bahcem-109e7.firebaseio.com/";
   static int postLength;
+  static FirebaseUser user;
+
 
   sendPost(String comment, String createdAt, String imgUrl, int likeCount) async {
-    FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    user = await FirebaseAuth.instance.currentUser();
     FirebaseDatabase.instance.reference().child('BlogPosts').child(postLength.toString()).update({
       'comment': comment,
       'created_at': createdAt,
@@ -21,10 +23,9 @@ class BlogService {
     });
   }
 
-  //minelin anasayfa için yazdığı kısım (DOKUNMA)
   Future<List<BlogPostModel>> getBlogPostModel() async {
+    user = await FirebaseAuth.instance.currentUser();
     final response = await http.get(FIREBASE_URL + "BlogPosts.json");
-
     switch (response.statusCode) {
       case HttpStatus.ok:
         final jsonModel = json.decode(response.body);
@@ -39,4 +40,5 @@ class BlogService {
         return Future.error(response.statusCode);
     }
   }
+
 }

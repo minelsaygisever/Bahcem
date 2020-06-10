@@ -1,4 +1,8 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/models/blog_post_model.dart';
+import 'package:bahcem_deneme/models/user_model.dart';
+import 'package:bahcem_deneme/services/blog_service.dart';
+import 'package:bahcem_deneme/services/user_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'blog_gonderi_ekle_view.dart';
@@ -10,197 +14,219 @@ class BlogProfilePage extends StatefulWidget {
 }
 
 class _BlogProfilePageState extends State<BlogProfilePage> {
+  BlogService blogService;
+  BlogPostModel blogPostModel;
+  UserModel userModel;
+  UserService userService;
+
+  @override
+  void initState() {
+    super.initState();
+    blogService = BlogService();
+    userService = UserService();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding:
-                EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 4, 0.0, 0.0),
-            child: Column(
+      body: Stack(children: <Widget>[
+        Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 1,
+                  SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 1, 0),
+              child: FutureBuilder(
+                future: userService.getUser(),
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.done:
+                      if (snapshot.hasData)
+                        return _profileBilgi(snapshot.data);
+                      else
+                        //servis geldi ama data yoksa
+                        return _notFoundWidget();
+                      break;
+                    //servisten dönemediyse, hata varsa
+                    default:
+                      return _waitingWidget;
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 1,
+              SizeConfig.blockWidth * 33, SizeConfig.blockWidth * 1, 0),
+          child: FutureBuilder(
+            future: blogService.getBlogPostModel(),
+            builder: (context, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.done:
+                  if (snapshot.hasData)
+                    return _kullaniciPosts(snapshot.data);
+                  else
+                    //servis geldi ama data yoksa
+                    return _notFoundWidget();
+                  break;
+                //servisten dönemediyse, hata varsa
+                default:
+                  return _waitingWidget;
+              }
+            },
+          ),
+        ),
+      ]),
+    );
+  }
+
+  Widget _kullaniciPosts(List<BlogPostModel> list) {
+    List<BlogPostModel> secondList = [];
+    BlogService.postLength = list.length;
+    for (int i = 0; i < list.length; i++) {
+      if (list[i].user_id == BlogService.user.uid) {
+        secondList.add(list[i]);
+      }
+    }
+    return GridView.builder(
+        itemCount: secondList.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: SizeConfig.blockWidth * 1,
+            mainAxisSpacing: SizeConfig.blockWidth * 1,
+            crossAxisCount: 3),
+        itemBuilder: (context, index) => _post(secondList[index]));
+  }
+
+  Widget _post(blogPostModel) {
+    return Center(
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(blogPostModel.img_url),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 0),
+        ),
+        alignment: Alignment.bottomCenter,
+      ),
+    );
+  }
+
+  Widget _profileBilgi(List<UserModel> list) {
+    UserModel currentUser;
+    UserService.userLength = list.length;
+    for (int i = 0; i < list.length; i++) {
+      if (list[i].userId == UserService.user.uid) {
+        currentUser = list[i];
+        break;
+      }
+    }
+    return Column(children: <Widget>[
+      Padding(
+        padding: EdgeInsets.fromLTRB(
+            SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0,
-                      SizeConfig.blockWidth * 4, 0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(
-                                0.0, 0.0, SizeConfig.blockWidth * 4, 0.0),
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/minel.jpg'),
-                              radius: SizeConfig.blockWidth * 10,
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                'minelsaygisever',
-                                style: SizeConfig.yaziUserName,
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.0,
-                                        SizeConfig.blockWidth * 1,
-                                        SizeConfig.blockWidth * 4,
-                                        0.0),
-                                    child: Text(
-                                      '6 gönderi',
-                                      style: SizeConfig.yaziProfilKucukAciklama,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.0,
-                                        SizeConfig.blockWidth * 1,
-                                        SizeConfig.blockWidth * 1.5,
-                                        0.0),
-                                    child: Text(
-                                      '25 arkadaş',
-                                      style: SizeConfig.yaziProfilKucukAciklama,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    0.0, SizeConfig.blockWidth * 2.5, 0.0, 0.0),
-                                child: Text(
-                                  'Minel',
-                                  style: SizeConfig.yaziAciklama,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
-                                child: Text(
-                                  'Welcome to my green life!',
-                                  style: SizeConfig.yaziProfilKucukAciklama,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: SizeConfig.blockWidth * 2),
-                            child: new GestureDetector(
-                              onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BlogProfilDuzenle()),
-                              ),
-                              child: new Image.asset(
-                                "assets/icons/more.png",
-                                color: Colors.black45,
-                                height: SizeConfig.blockWidth * 4,
-                                width: SizeConfig.blockWidth * 4,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Image(
-                        image: AssetImage('assets/images/photo1.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
-                      ),
-                      Image(
-                        image: AssetImage('assets/images/photo2.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
-                      ),
-                      Image(
-                        image: AssetImage('assets/images/photo3.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
                   padding: EdgeInsets.fromLTRB(
-                      0, SizeConfig.blockWidth * 3 / 4, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Image(
-                        image: AssetImage('assets/images/photo4.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
+                      0.0, 0.0, SizeConfig.blockWidth * 4, 0.0),
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(currentUser.profilImg),
+                    radius: SizeConfig.blockWidth * 10,
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      currentUser.kullaniciAdi,
+                      style: SizeConfig.yaziUserName,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              0.0,
+                              SizeConfig.blockWidth * 1,
+                              SizeConfig.blockWidth * 4,
+                              0.0),
+                          child: Text(
+                            '6 gönderi',
+                            style: SizeConfig.yaziProfilKucukAciklama,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              0.0,
+                              SizeConfig.blockWidth * 1,
+                              SizeConfig.blockWidth * 1.5,
+                              0.0),
+                          child: Text(
+                            '25 arkadaş',
+                            style: SizeConfig.yaziProfilKucukAciklama,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0.0, SizeConfig.blockWidth * 2.5, 0.0, 0.0),
+                      child: Text(
+                        currentUser.blogIsim,
+                        style: SizeConfig.yaziAciklama,
                       ),
-                      Image(
-                        image: AssetImage('assets/images/photo5.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
+                      child: Text(
+                        currentUser.bio,
+                        style: SizeConfig.yaziProfilKucukAciklama,
                       ),
-                      Image(
-                        image: AssetImage('assets/images/photo6.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2),
+                  child: new GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BlogProfilDuzenle()),
+                    ),
+                    child: new Image.asset(
+                      "assets/icons/more.png",
+                      color: Colors.black45,
+                      height: SizeConfig.blockWidth * 4,
+                      width: SizeConfig.blockWidth * 4,
+                    ),
                   ),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      )
+    ]);
   }
+
+  //servisten data dönmediyse bu gelecek
+  Widget _notFoundWidget() {
+    BlogService.postLength = 0;
+    return Text("Post Yok");
+  }
+
+  //bir hata meydana geldiyse servis cevap vermediyse bu dönecek
+  Widget get _waitingWidget => Center(child: CircularProgressIndicator());
 }
