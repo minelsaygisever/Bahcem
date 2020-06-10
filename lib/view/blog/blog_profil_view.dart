@@ -228,7 +228,6 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
 
   //servisten data dönmediyse bu gelecek
   Widget _notFoundWidget() {
-    BlogService.postLength = 0;
     return Text("Post Yok");
   }
 

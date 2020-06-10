@@ -14,6 +14,7 @@ class BlogService {
 
   sendPost(String comment, String createdAt, String imgUrl, int likeCount, String kullaniciAdi, String profileImg) async {
     user = await FirebaseAuth.instance.currentUser();
+    print("*********" + postLength.toString());
     FirebaseDatabase.instance.reference().child('BlogPosts').child(postLength.toString()).update({
       'comment': comment,
       'created_at': createdAt,
@@ -27,7 +28,7 @@ class BlogService {
 
   Future<List<BlogPostModel>> getBlogPostModel() async {
     user = await FirebaseAuth.instance.currentUser();
-    final response = await http.get(FIREBASE_URL + "BlogPosts.json");
+    final response = await http.get("$FIREBASE_URL/BlogPosts.json");
     switch (response.statusCode) {
       case HttpStatus.ok:
         final jsonModel = json.decode(response.body);

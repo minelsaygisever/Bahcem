@@ -35,10 +35,10 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
             //datası var mı
               if (snapshot.hasData)
                 return _listAnasayfa(snapshot.data);
-              else
-                BlogService.postLength = 0;
+              else{
                 //servis geldi ama data yoksa
-                return _notFoundWidget;
+                BlogService.postLength = 0;
+                return _notFoundWidget;}
               break;
           //servisten dönemediyse, hata varsa
             default:
@@ -54,12 +54,13 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
 //uygulamamızın body si burada olacak
 Widget _listAnasayfa(List<BlogPostModel> list) {
   BlogService.postLength = list.length;
+  print(BlogService.postLength);
   list.sort((a, b) => -DateTime.parse(a.createdAt).compareTo(DateTime.parse(b.createdAt)) );
   return Padding(
     padding: EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
     child: ListView.builder(
         itemCount: list.length,
-        itemBuilder: (context, index) => _post(list[index])),
+        itemBuilder: (context, j) => _post(list[j])),
   );
 }
 
