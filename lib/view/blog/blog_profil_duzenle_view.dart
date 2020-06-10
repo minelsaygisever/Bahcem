@@ -1,11 +1,14 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/models/user_model.dart';
 import 'package:bahcem_deneme/services/user_service.dart';
 import 'package:bahcem_deneme/view/blog/blog_profil_view.dart';
 import 'package:bahcem_deneme/view/main.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class BlogProfilDuzenle extends StatefulWidget {
   @override
@@ -14,17 +17,42 @@ class BlogProfilDuzenle extends StatefulWidget {
 
 class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
   UserService userService;
-  int index = 0;
+  UserModel currentUser;
+  File _selectedImageProfil;
+  String _profilImgUrl = "";
+  var imgUrl;
 
-  String isim = "Minel";
-  String kullaniciAdi = "minelsaygisever";
-  String bio = "Welcome to my green world!";
+  String isim="";
+  String kullaniciAdi="";
+  String bio="";
+  int index = 0;
 
   @override
   void initState() {
     super.initState();
     userService = UserService();
   }
+
+  Future selectImageProfil() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    //var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() {
+      _selectedImageProfil = image;
+    });
+  }
+
+  Future uploadImageProfil() async {
+    StorageReference ref = FirebaseStorage.instance
+        .ref()
+        .child(currentUser.userId.toString())
+        .child("Profil")
+        .child("profile_img.jpg");
+
+    StorageUploadTask uploadTask = ref.putFile(_selectedImageProfil);
+    imgUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
+    _profilImgUrl = imgUrl.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -71,6 +99,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
     for (int i = 0; i < list.length; i++) {
       if (list[i].userId == UserService.user.uid) {
         index = i;
+        currentUser = list[i];
         break;
       }
     }
@@ -94,7 +123,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/minel.jpg'),
+                      backgroundImage: _selectedImageProfil == null ? NetworkImage(currentUser.profilImg):  FileImage(_selectedImageProfil),
                       radius: SizeConfig.blockWidth * 16,
                     ),
                   ],
@@ -105,9 +134,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                     Container(
                         alignment: Alignment.center,
                         child: FlatButton(
-                          onPressed: () {
-                            /*...*/
-                          },
+                          onPressed: () => selectImageProfil(),
                           child: Text(
                             "Profil Fotoğrafını Değiştir",
                             textAlign: TextAlign.center,
@@ -138,7 +165,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                         child: TextFormField(
                           autofocus: false,
                           cursorColor: SizeConfig.green,
-                          initialValue: isim,
+                          initialValue: currentUser.blogIsim,
                           onChanged: (val) {
                             setState(() => isim = val);
                           },
@@ -172,7 +199,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                         child: TextFormField(
                           autofocus: false,
                           cursorColor: SizeConfig.green,
-                          initialValue: kullaniciAdi,
+                          initialValue: currentUser.kullaniciAdi,
                           onChanged: (val) {
                             setState(() => kullaniciAdi = val);
                           },
@@ -208,7 +235,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                           cursorColor: SizeConfig.green,
-                          initialValue: bio,
+                          initialValue: currentUser.bio,
                           onChanged: (val) {
                             setState(() => bio = val);
                           },
@@ -229,7 +256,8 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                     width: SizeConfig.blockWidth * 26,
                     child: FlatButton(
                         onPressed: () async {
-                          await userService.editUser(bio, isim, kullaniciAdi, "", index);
+                          await uploadImageProfil();
+                          await userService.editUser(bio, isim, kullaniciAdi, _profilImgUrl, index);
                           setState(() {
                             Navigator.pop(context);
                           });
