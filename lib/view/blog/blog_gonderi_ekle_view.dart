@@ -245,4 +245,4 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
 
 }
 
-Widget get _waitingWidget => Center(child: CircularProgressIndicator());
+Widget get _waitingWidget => Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),));

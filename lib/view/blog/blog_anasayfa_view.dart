@@ -81,8 +81,7 @@ Widget _post(BlogPostModel post) {
                 Row(
                   children: <Widget>[
                     CircleAvatar(
-                      backgroundImage:
-                      NetworkImage(post.profileImg),
+                      backgroundImage: NetworkImage(post.profileImg),
                       radius: SizeConfig.blockWidth * 5,
                     ),
                     Padding(
@@ -178,5 +177,5 @@ Widget get _notFoundWidget => Center(
 );
 
 //bir hata meydana geldiyse servis cevap vermediyse bu dönecek
-Widget get _waitingWidget => Center(child: CircularProgressIndicator());
+Widget get _waitingWidget => Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),));
 

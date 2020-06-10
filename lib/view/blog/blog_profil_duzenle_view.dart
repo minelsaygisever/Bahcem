@@ -292,5 +292,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
   }
 
 
-  Widget get _waitingWidget => Center(child: CircularProgressIndicator());
+  Widget get _waitingWidget => Center(child: CircularProgressIndicator(
+    valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),
+  ));
 }
