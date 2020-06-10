@@ -142,7 +142,8 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                   padding: EdgeInsets.fromLTRB(
                       0.0, 0.0, SizeConfig.blockWidth * 4, 0.0),
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(currentUser.profilImg),
+                    backgroundColor: SizeConfig.almostWhite,
+                    backgroundImage: currentUser.profilImg == "" ? AssetImage("assets/icons/user.png") : NetworkImage(currentUser.profilImg),
                     radius: SizeConfig.blockWidth * 10,
                   ),
                 ),

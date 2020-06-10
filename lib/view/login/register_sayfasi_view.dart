@@ -74,14 +74,14 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
   }
   Widget _listUser(List<UserModel> list) {
     UserService.userLength = list.length;
-    return _registerThings();
+    return _registerThings(list);
   }
   Widget _listNotFoundUser() {
     UserService.userLength = 0;
-    return _registerThings();
+    return _registerThings(null);
   }
 
-  Widget _registerThings(){
+  Widget _registerThings(List<UserModel> list){
     return ListView(
       children: <Widget>[
         Container(
@@ -136,7 +136,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             alignment: Alignment.center,
                             child: TextFormField(
                               validator: (val) =>
-                              val.isEmpty ? 'Lütfen eposta giriniz' : null,
+                              val.isEmpty ? 'Lütfen e-posta giriniz' : null,
                               onChanged: (val) {
                                 setState(() => email = val);
                               },
@@ -168,8 +168,19 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                               height: SizeConfig.blockWidth * 12,
                               alignment: Alignment.center,
                               child: TextFormField(
-                                validator: (val) =>
-                                val.isEmpty ? 'Lütfen kullanıcı adı giriniz' : null,
+                                  validator: (value) {
+                                    if (value.isEmpty) {
+                                      return 'Lütfen kullanıcı adı giriniz.';
+                                    }
+
+                                    for(int i = 0; i < list.length; i++){
+                                      if(list[i].kullaniciAdi == kullanici_adi){
+                                        return 'Bu kullanıcı adı zaten var.';
+                                      }
+                                    }
+
+                                    return null;
+                                  },
                                 onChanged: (val) {
                                   setState(() => kullanici_adi = val);
                                 },
@@ -236,9 +247,17 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
-                              validator: (val) => val != "" ? (val == _sifre
-                                  ? 'Şifreler eşleşmiyor.'
-                                  : null) : 'Boş geçilmez.',
+                              validator: (value) {
+                                if (value.isEmpty) {
+                                  return 'Bu alanı doldurmak zorunludur.';
+                                }
+
+                               if(value != passwordFirst){
+                                 return 'Şifeler eşleşmiyor.';
+                               }
+
+                                return null;
+                              },
                               onChanged: (val) {
                                 setState(() => password = val);
                               },
@@ -281,9 +300,6 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                         'Bu e-posta kullanılamaz!';
                                       });
                                     }
-
-
-
                                     await _userService.sendUser(null, "", "", email, kullanici_adi, "");
                                   }
                                 },
@@ -362,3 +378,4 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
     );
   }
 }
+
