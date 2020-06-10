@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class BahcemService {
   static const String FIREBASE_URL = "https://bahcem-109e7.firebaseio.com/";
   static FirebaseUser user;
-  static int plantLength;
+  static int plantLength = 0;
 
   sendPlant(
       String albumUrl,
@@ -40,6 +40,7 @@ class BahcemService {
       'toprak_degisim': toprakDegisim,
       'toprak_tipi': toprakTipi,
       'user_id': user.uid,
+      'bitki_id': plantLength.toString(),
     });
   }
 
@@ -71,11 +72,11 @@ class BahcemService {
       String profilImgUrl,
       String sulama,
       String toprakDegisim,
-      String toprakTipi, int index) async {
+      String toprakTipi, String bitkiId) async {
     DatabaseReference ref = FirebaseDatabase.instance
         .reference()
         .child('BahcemBitki')
-        .child(index.toString());
+        .child(bitkiId.toString());
     ref.update({
       'album_url': albumUrl,
       'bitkinin_adi': bitkininAdi,

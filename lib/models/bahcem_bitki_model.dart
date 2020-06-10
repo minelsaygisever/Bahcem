@@ -11,6 +11,7 @@ class BahcemBitkiModel {
   String toprakDegisim;
   String toprakTipi;
   String userId;
+  String bitkiId;
 
   BahcemBitkiModel(
       {this.albumUrl,
@@ -24,7 +25,8 @@ class BahcemBitkiModel {
         this.sulama,
         this.toprakDegisim,
         this.toprakTipi,
-        this.userId});
+        this.userId,
+      this.bitkiId});
 
   BahcemBitkiModel.fromJson(Map<String, dynamic> json) {
     albumUrl = json['album_url'];
@@ -39,6 +41,7 @@ class BahcemBitkiModel {
     toprakDegisim = json['toprak_degisim'];
     toprakTipi = json['toprak_tipi'];
     userId = json['user_id'];
+    bitkiId = json['bitki_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -55,6 +58,7 @@ class BahcemBitkiModel {
     data['toprak_degisim'] = this.toprakDegisim;
     data['toprak_tipi'] = this.toprakTipi;
     data['user_id'] = this.userId;
+    data['bitki_id'] = this.bitkiId;
     return data;
   }
 }

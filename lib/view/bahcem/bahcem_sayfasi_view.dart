@@ -26,6 +26,7 @@ class BahcemDetailPlant {
   String toprakDegisim;
   String toprakTipi;
   String userId;
+  String bitkiId;
 
   BahcemDetailPlant(
       {this.albumUrl,
@@ -39,7 +40,8 @@ class BahcemDetailPlant {
       this.sulama,
       this.toprakDegisim,
       this.toprakTipi,
-      this.userId});
+      this.userId,
+      this.bitkiId});
 }
 
 class _BahcemSayfasiState extends State<BahcemSayfasi> {
@@ -117,7 +119,8 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
               sulama: bahcemBitki.sulama,
               toprakDegisim: bahcemBitki.toprakDegisim,
               toprakTipi: bahcemBitki.toprakTipi,
-              userId: bahcemBitki.userId);
+              userId: bahcemBitki.userId,
+          bitkiId: bahcemBitki.bitkiId);
 
           Navigator.push(
             context,

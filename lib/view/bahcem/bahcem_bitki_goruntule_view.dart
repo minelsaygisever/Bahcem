@@ -38,7 +38,8 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                           bahcemDetailPlant.sulama,
                           bahcemDetailPlant.toprakDegisim,
                           bahcemDetailPlant.toprakTipi,
-                          bahcemDetailPlant.userId)),
+                          bahcemDetailPlant.userId,
+                          bahcemDetailPlant.bitkiId)),
                 );
               },
               child: Icon(
