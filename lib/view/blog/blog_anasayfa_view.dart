@@ -81,6 +81,7 @@ Widget _post(BlogPostModel post) {
                 Row(
                   children: <Widget>[
                     CircleAvatar(
+                      backgroundColor: SizeConfig.green,
                       backgroundImage: NetworkImage(post.profileImg),
                       radius: SizeConfig.blockWidth * 5,
                     ),
