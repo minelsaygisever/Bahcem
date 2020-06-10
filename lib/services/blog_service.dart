@@ -14,7 +14,6 @@ class BlogService {
 
   sendPost(String comment, String createdAt, String imgUrl, int likeCount, String kullaniciAdi, String profileImg) async {
     user = await FirebaseAuth.instance.currentUser();
-    print("*********" + postLength.toString());
     FirebaseDatabase.instance.reference().child('BlogPosts').child(postLength.toString()).update({
       'comment': comment,
       'created_at': createdAt,

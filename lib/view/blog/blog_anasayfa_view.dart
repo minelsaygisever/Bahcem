@@ -54,7 +54,6 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
 //uygulamamızın body si burada olacak
 Widget _listAnasayfa(List<BlogPostModel> list) {
   BlogService.postLength = list.length;
-  print(BlogService.postLength);
   list.sort((a, b) => -DateTime.parse(a.createdAt).compareTo(DateTime.parse(b.createdAt)) );
   return Padding(
     padding: EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
