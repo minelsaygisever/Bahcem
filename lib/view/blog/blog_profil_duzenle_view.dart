@@ -22,9 +22,9 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
   String _profilImgUrl = "";
   var imgUrl;
 
-  String isim="";
-  String kullaniciAdi="";
-  String bio="";
+  String isim = "";
+  String kullaniciAdi = "";
+  String bio = "";
   int index = 0;
 
   int count_isim = 0;
@@ -82,11 +82,10 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
           //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir
             case ConnectionState.done:
             //datası var mı
-              if (snapshot.hasData){
+              if (snapshot.hasData) {
                 print("has data");
                 return _listUser(snapshot.data);
-              }
-              else{
+              } else {
                 print("no data");
                 return _listNotFoundUser();
               }
@@ -111,11 +110,12 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
     }
     return _ProfilDuzenleThings();
   }
+
   Widget _listNotFoundUser() {
     return _ProfilDuzenleThings();
   }
 
-  Widget _ProfilDuzenleThings(){
+  Widget _ProfilDuzenleThings() {
     return Padding(
       padding: EdgeInsets.fromLTRB(
           SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
@@ -129,7 +129,12 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     CircleAvatar(
-                      backgroundImage: _selectedImageProfil == null ? NetworkImage(currentUser.profilImg):  FileImage(_selectedImageProfil),
+                      backgroundColor: SizeConfig.almostWhite,
+                      backgroundImage: _selectedImageProfil == null
+                          ? (currentUser.profilImg == ""
+                          ? AssetImage("assets/icons/user.png")
+                          : NetworkImage(currentUser.profilImg))
+                          : FileImage(_selectedImageProfil),
                       radius: SizeConfig.blockWidth * 16,
                     ),
                   ],
@@ -150,8 +155,8 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      SizeConfig.blockWidth * 2, 0, 0, 0.0),
+                  padding:
+                  EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0.0),
                   child: Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -180,17 +185,17 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                             fillColor: SizeConfig.green,
                             labelStyle: SizeConfig.yaziWidgetIci,
                             border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: SizeConfig.almostWhite)),
+                                borderSide:
+                                BorderSide(color: SizeConfig.almostWhite)),
                           ),
                         ))),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      SizeConfig.blockWidth * 2, 0, 0, 0.0),
+                  padding:
+                  EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0.0),
                   child: Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Kullanıcı adı",
+                      "E-Posta",
                       style: SizeConfig.yaziAciklamaBaslik,
                     ),
                   ),
@@ -215,13 +220,13 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                             fillColor: SizeConfig.green,
                             labelStyle: SizeConfig.yaziWidgetIci,
                             border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: SizeConfig.almostWhite)),
+                                borderSide:
+                                BorderSide(color: SizeConfig.almostWhite)),
                           ),
                         ))),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      SizeConfig.blockWidth * 2, 0, 0, 0.0),
+                  padding:
+                  EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0, 0, 0.0),
                   child: Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -252,8 +257,8 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                             fillColor: SizeConfig.green,
                             labelStyle: SizeConfig.yaziWidgetIci,
                             border: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: SizeConfig.almostWhite)),
+                                borderSide:
+                                BorderSide(color: SizeConfig.almostWhite)),
                           ),
                         ))),
                 Padding(
@@ -265,10 +270,19 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                     width: SizeConfig.blockWidth * 26,
                     child: FlatButton(
                         onPressed: () async {
-                          if(count_profilImg != 0){
+                          if (count_profilImg != 0) {
                             await uploadImageProfil();
                           }
-                          await userService.editUser(count_bio == 0 ? currentUser.bio : bio, count_isim == 0 ? currentUser.blogIsim : isim, count_kullaniciAdi == 0 ? currentUser.kullaniciAdi : kullaniciAdi, count_profilImg == 0 ? currentUser.profilImg : _profilImgUrl, index);
+                          await userService.editUser(
+                              count_bio == 0 ? currentUser.bio : bio,
+                              count_isim == 0 ? currentUser.blogIsim : isim,
+                              count_kullaniciAdi == 0
+                                  ? currentUser.kullaniciAdi
+                                  : kullaniciAdi,
+                              count_profilImg == 0
+                                  ? currentUser.profilImg
+                                  : _profilImgUrl,
+                              index);
                           setState(() {
                             Navigator.pop(context);
                           });
@@ -291,8 +305,19 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
     );
   }
 
+  /*Widget _waitingWidget() {
+    Center(
+        child: CircularProgressIndicator(
+            valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green)));
+    return _ProfilDuzenleThings();
+  }
+  CircularProgressIndicator(
+          valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),
+        ),
+        */
 
-  Widget get _waitingWidget => Center(child: CircularProgressIndicator(
-    valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),
-  ));
+  Widget get _waitingWidget =>
+      Center(
+          child: CircularProgressIndicator(
+              valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green)));
 }

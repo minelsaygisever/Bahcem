@@ -94,7 +94,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                   cursorColor: SizeConfig.green,
                                   controller: _kullaniciAdi,
                                   decoration: InputDecoration(
-                                    hintText: "Kullanıcı Adı",
+                                    hintText: "E-posta",
                                     hintStyle: SizeConfig.yaziHint,
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.zero,
@@ -160,7 +160,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                         if (result == null) {
                                           setState(() {
                                             error =
-                                                'Lütfen kayıtlı bir eposta ve şifre giriniz';
+                                                'Lütfen kayıtlı bir e-posta ve şifre giriniz';
                                           });
                                         }
                                       }
