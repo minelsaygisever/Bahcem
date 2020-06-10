@@ -12,7 +12,7 @@ class BlogService {
   static FirebaseUser user;
 
 
-  sendPost(String comment, String createdAt, String imgUrl, int likeCount) async {
+  sendPost(String comment, String createdAt, String imgUrl, int likeCount, String kullaniciAdi, String profileImg) async {
     user = await FirebaseAuth.instance.currentUser();
     FirebaseDatabase.instance.reference().child('BlogPosts').child(postLength.toString()).update({
       'comment': comment,
@@ -20,6 +20,8 @@ class BlogService {
       'img_url': imgUrl,
       'like_count': likeCount,
       'user_id': user.uid,
+      'kullaniciAdi' : kullaniciAdi,
+      'profileImg' : profileImg
     });
   }
 

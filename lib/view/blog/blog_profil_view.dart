@@ -90,7 +90,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
     List<BlogPostModel> secondList = [];
     BlogService.postLength = list.length;
     for (int i = 0; i < list.length; i++) {
-      if (list[i].user_id == BlogService.user.uid) {
+      if (list[i].userId == BlogService.user.uid) {
         secondList.add(list[i]);
       }
     }
@@ -109,7 +109,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(blogPostModel.img_url),
+            image: NetworkImage(blogPostModel.imgUrl),
             fit: BoxFit.cover,
           ),
           borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 0),
