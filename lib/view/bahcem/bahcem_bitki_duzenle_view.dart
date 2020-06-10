@@ -41,12 +41,11 @@ class BahcemBitkiDuzenle extends StatefulWidget {
 }
 
 class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
+
+
   String _albumUrl = "";
-  String _bitkininAdi = "";
-  String _hatirlatici = "";
-  String _isiIhtiyaci = "";
-  String _isikIhtiyaci = "";
-  String _notlar = "";
+  String bitkininAdi = "";
+  String notlar = "";
   String _profilImgUrl = "";
   String _sulama = "";
   String _toprakDegisim = "";
@@ -80,9 +79,6 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
     _bahcemService = BahcemService();
   }
 
-  final _bitkininAdiController = TextEditingController();
-  final _notlarController = TextEditingController();
-
   Future selectImageProfil() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     //var image = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -92,14 +88,24 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
   }
 
   Future uploadImageProfil() async {
+    print("girdi resim");
     StorageReference ref = FirebaseStorage.instance
         .ref()
         .child("0H9SC3y9PAQsFx9HwSBTjv0kIA72")
         .child("Profil")
-        .child("img" + BahcemService.plantLength.toString() + ".jpg");
+        .child("img" + widget.bitkiId + ".jpg");
+    print("2");
+
     StorageUploadTask uploadTask = ref.putFile(_selectedImageProfil);
+
+    print("3");
+
     imgUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
+    print("4");
+
     _profilImgUrl = imgUrl.toString();
+    print("5");
+
   }
 
   Widget showDefaultProfile() {
@@ -141,6 +147,9 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
               keyboardType: TextInputType.multiline,
               maxLines: null,
               cursorColor: SizeConfig.green,
+              onChanged: (val) {
+                setState(() => notlar = val);
+              },
               initialValue: widget.notlar,
               decoration: InputDecoration(
                 focusedBorder: UnderlineInputBorder(
@@ -194,6 +203,9 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
               keyboardType: TextInputType.multiline,
               maxLines: null,
               cursorColor: SizeConfig.green,
+              onChanged: (val) {
+                setState(() => notlar = val);
+              },
               initialValue: widget.notlar,
               decoration: InputDecoration(
                 focusedBorder: UnderlineInputBorder(
@@ -247,6 +259,9 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                     maxLines: null,
                     cursorColor: SizeConfig.green,
                     initialValue: widget.bitkininAdi,
+                    onChanged: (val) {
+                      setState(() => bitkininAdi = val);
+                    },
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
@@ -793,18 +808,6 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                         setState(() {
                           _absorbing = true;
                         });
-
-                        print("verileri aldı");
-
-                        _sulama = sulamaDropDown + " " + sulamaAralikDropDown + " " + "bir";
-                        _toprakDegisim = toprakDegisimDropDown + " " + toprakDegisimAralikDropDown + " " + "bir";
-                        _toprakTipi = toprakTipiDropDown;
-                        _isikIhtiyaci = isikIhtiyaciDropDown;
-                        _isiIhtiyaci = isiIhtiyaciDropDown;
-                        _hatirlatici = hatirlaticiDropDown;
-
-                        print("verileri aldı");
-
                         await uploadImageProfil();
 
                         print("resmi yükledi");
@@ -812,14 +815,22 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
 
                         await _bahcemService.updatePlant(
                             _albumUrl,
-                            _bitkininAdi,
+                            bitkininAdi,
                             hatirlaticiDropDown,
                             isiIhtiyaciDropDown,
                             isikIhtiyaciDropDown,
-                            _notlar,
+                            notlar,
                             _profilImgUrl,
-                            sulamaDropDown,
-                            toprakDegisimDropDown,
+                            sulamaDropDown +
+                                " " +
+                                sulamaAralikDropDown +
+                                " " +
+                                "bir",
+                            toprakDegisimDropDown +
+                                " " +
+                                toprakDegisimAralikDropDown +
+                                " " +
+                                "bir",
                             toprakTipiDropDown,
                           widget.bitkiId
                         );
