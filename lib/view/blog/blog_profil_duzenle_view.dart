@@ -27,6 +27,11 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
   String bio="";
   int index = 0;
 
+  int count_isim = 0;
+  int count_kullaniciAdi = 0;
+  int count_bio = 0;
+  int count_profilImg = 0;
+
   @override
   void initState() {
     super.initState();
@@ -38,6 +43,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
     //var image = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
       _selectedImageProfil = image;
+      count_profilImg++;
     });
   }
 
@@ -168,6 +174,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                           initialValue: currentUser.blogIsim,
                           onChanged: (val) {
                             setState(() => isim = val);
+                            count_isim++;
                           },
                           decoration: InputDecoration(
                             fillColor: SizeConfig.green,
@@ -202,6 +209,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                           initialValue: currentUser.kullaniciAdi,
                           onChanged: (val) {
                             setState(() => kullaniciAdi = val);
+                            count_kullaniciAdi++;
                           },
                           decoration: InputDecoration(
                             fillColor: SizeConfig.green,
@@ -238,6 +246,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                           initialValue: currentUser.bio,
                           onChanged: (val) {
                             setState(() => bio = val);
+                            count_bio++;
                           },
                           decoration: InputDecoration(
                             fillColor: SizeConfig.green,
@@ -256,8 +265,10 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                     width: SizeConfig.blockWidth * 26,
                     child: FlatButton(
                         onPressed: () async {
-                          await uploadImageProfil();
-                          await userService.editUser(bio, isim, kullaniciAdi, _profilImgUrl, index);
+                          if(count_profilImg != 0){
+                            await uploadImageProfil();
+                          }
+                          await userService.editUser(count_bio == 0 ? currentUser.bio : bio, count_isim == 0 ? currentUser.blogIsim : isim, count_kullaniciAdi == 0 ? currentUser.kullaniciAdi : kullaniciAdi, count_profilImg == 0 ? currentUser.profilImg : _profilImgUrl, index);
                           setState(() {
                             Navigator.pop(context);
                           });
