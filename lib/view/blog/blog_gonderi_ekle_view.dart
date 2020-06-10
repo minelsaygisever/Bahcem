@@ -239,7 +239,6 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
 
   //servisten data dönmediyse bu gelecek
   Widget _notFoundWidget() {
-    BlogService.postLength = 0;
     return Text("Post Yok");
   }
 
