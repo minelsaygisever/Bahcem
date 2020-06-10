@@ -30,18 +30,18 @@ class BahcemDetailPlant {
 
   BahcemDetailPlant(
       {this.albumUrl,
-      this.bitkininAdi,
-      this.createdAt,
-      this.hatirlatici,
-      this.isiIhtiyaci,
-      this.isikIhtiyaci,
-      this.notlar,
-      this.profilImgUrl,
-      this.sulama,
-      this.toprakDegisim,
-      this.toprakTipi,
-      this.userId,
-      this.bitkiId});
+        this.bitkininAdi,
+        this.createdAt,
+        this.hatirlatici,
+        this.isiIhtiyaci,
+        this.isikIhtiyaci,
+        this.notlar,
+        this.profilImgUrl,
+        this.sulama,
+        this.toprakDegisim,
+        this.toprakTipi,
+        this.userId,
+        this.bitkiId});
 }
 
 class _BahcemSayfasiState extends State<BahcemSayfasi> {
@@ -67,10 +67,8 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
                 if (snapshot.hasData)
                   return _listBahcemAnasayfa(snapshot.data);
                 else
-                  //servis geldi ama data yoksa
                   return _notFoundWidget();
                 break;
-              //servisten dönemediyse, hata varsa
               default:
                 return _waitingWidget;
             }

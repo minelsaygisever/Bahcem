@@ -29,12 +29,11 @@ class UserService {
   }
 
 
-  editUser(String bio, String blogIsim, String kullaniciAdi, String profilImg, int index) async {
+  editUser(String bio, String blogIsim, String profilImg, int index) async {
     DatabaseReference ref = FirebaseDatabase.instance.reference().child('Kullanicilar').child(index.toString());
     ref.update({
       'bio': bio,
       'blog_isim': blogIsim,
-      'kullanici_adi': kullaniciAdi,
       'profil_img': profilImg,
     });
   }
