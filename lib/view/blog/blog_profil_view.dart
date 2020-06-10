@@ -9,6 +9,7 @@ import 'blog_gonderi_ekle_view.dart';
 import 'blog_profil_duzenle_view.dart';
 
 class BlogProfilePage extends StatefulWidget {
+
   @override
   _BlogProfilePageState createState() => _BlogProfilePageState();
 }
@@ -18,6 +19,8 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
   BlogPostModel blogPostModel;
   UserModel userModel;
   UserService userService;
+
+  int gonderiSayisi = 0;
 
   @override
   void initState() {
@@ -32,6 +35,27 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
       body: Stack(children: <Widget>[
+        Padding(
+          padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 1,
+              SizeConfig.blockWidth * 33, SizeConfig.blockWidth * 1, 0),
+          child: FutureBuilder(
+            future: blogService.getBlogPostModel(),
+            builder: (context, snapshot) {
+              switch (snapshot.connectionState) {
+                case ConnectionState.done:
+                  if (snapshot.hasData)
+                    return _kullaniciPosts(snapshot.data);
+                  else
+                    //servis geldi ama data yoksa
+                    return _notFoundWidget();
+                  break;
+              //servisten dönemediyse, hata varsa
+                default:
+                  return _waitingWidget;
+              }
+            },
+          ),
+        ),
         Column(
           children: <Widget>[
             Padding(
@@ -57,27 +81,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
             ),
           ],
         ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 1,
-              SizeConfig.blockWidth * 33, SizeConfig.blockWidth * 1, 0),
-          child: FutureBuilder(
-            future: blogService.getBlogPostModel(),
-            builder: (context, snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.done:
-                  if (snapshot.hasData)
-                    return _kullaniciPosts(snapshot.data);
-                  else
-                    //servis geldi ama data yoksa
-                    return _notFoundWidget();
-                  break;
-                //servisten dönemediyse, hata varsa
-                default:
-                  return _waitingWidget;
-              }
-            },
-          ),
-        ),
+
       ]),
     );
   }
@@ -90,6 +94,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
         secondList.add(list[i]);
       }
     }
+    gonderiSayisi = secondList.length;
     return GridView.builder(
         itemCount: secondList.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -157,7 +162,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                               SizeConfig.blockWidth * 4,
                               0.0),
                           child: Text(
-                            '6 gönderi',
+                            gonderiSayisi.toString() + ' gönderi',
                             style: SizeConfig.yaziProfilKucukAciklama,
                           ),
                         ),
