@@ -94,7 +94,7 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
               break;
           //servisten dönemediyse, hata varsa
             default:
-              return _listNotFoundUser();
+              return _waitingWidget;
           }
         },
       ),
@@ -290,4 +290,9 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
       ),
     );
   }
+
+
+  Widget get _waitingWidget => Center(child: CircularProgressIndicator(
+    valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),
+  ));
 }

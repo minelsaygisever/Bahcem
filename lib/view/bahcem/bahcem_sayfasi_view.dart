@@ -192,5 +192,5 @@ class _BahcemSayfasiState extends State<BahcemSayfasi> {
     return Text("Bitki Yok");
   }
   //bir hata meydana geldiyse servis cevap vermediyse bu dönecek
-  Widget get _waitingWidget => Center(child: CircularProgressIndicator());
+  Widget get _waitingWidget => Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),));
 }

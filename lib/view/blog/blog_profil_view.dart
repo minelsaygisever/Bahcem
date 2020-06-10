@@ -232,5 +232,5 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
   }
 
   //bir hata meydana geldiyse servis cevap vermediyse bu dönecek
-  Widget get _waitingWidget => Center(child: CircularProgressIndicator());
+  Widget get _waitingWidget => Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),));
 }

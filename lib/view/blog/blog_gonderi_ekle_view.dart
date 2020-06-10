@@ -80,13 +80,14 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
               }
               else{
                 print("no data");
-                return _notFoundWidget();
+                return _notFoundUserWidget();
               }
               //servis geldi ama data yoksa
               break;
           //servisten dönemediyse, hata varsa
             default:
-              return _notFoundWidget();
+              print("default");
+              return _waitingWidget;
           }
         },
       )
@@ -238,8 +239,10 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   }
 
   //servisten data dönmediyse bu gelecek
-  Widget _notFoundWidget() {
+  Widget _notFoundUserWidget() {
     return Text("Post Yok");
   }
 
 }
+
+Widget get _waitingWidget => Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),));
