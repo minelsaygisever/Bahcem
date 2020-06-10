@@ -54,7 +54,7 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
 //uygulamamızın body si burada olacak
 Widget _listAnasayfa(List<BlogPostModel> list) {
   BlogService.postLength = list.length;
-  list.sort((a, b) => -DateTime.parse(a.created_at).compareTo(DateTime.parse(b.created_at)) );
+  list.sort((a, b) => -DateTime.parse(a.createdAt).compareTo(DateTime.parse(b.createdAt)) );
   return Padding(
     padding: EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
     child: ListView.builder(
@@ -82,14 +82,14 @@ Widget _post(BlogPostModel post) {
                   children: <Widget>[
                     CircleAvatar(
                       backgroundImage:
-                      AssetImage('assets/images/minel.jpg'),
+                      NetworkImage(post.profileImg),
                       radius: SizeConfig.blockWidth * 5,
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                           left: SizeConfig.blockWidth * 2),
                       child: Text(
-                        'minelsaygisever',
+                        post.kullaniciAdi,
                         style: SizeConfig.yaziUserName,
                       ),
                     ),
@@ -115,7 +115,7 @@ Widget _post(BlogPostModel post) {
             padding:
             EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
             child: Image(
-              image: NetworkImage(post.img_url),
+              image: NetworkImage(post.imgUrl),
               height: SizeConfig.screenWidth,
               width: SizeConfig.screenWidth,
               fit: BoxFit.cover,
@@ -138,7 +138,7 @@ Widget _post(BlogPostModel post) {
                   ),
                 ),
                 Text(
-                  post.like_count.toString() + ' beğeni',
+                  post.likeCount.toString() + ' beğeni',
                   style: SizeConfig.yaziAciklama,
                 ),
               ],
