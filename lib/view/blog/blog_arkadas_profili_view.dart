@@ -1,38 +1,98 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/models/blog_post_model.dart';
+import 'package:bahcem_deneme/services/blog_service.dart';
+import 'package:date_format/date_format.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BlogFriendProfile extends StatefulWidget {
+  final String blogIsimDetail;
+  final String bioDetail;
+  final String profilImgDetail;
+  final String userIdDetail;
+  final String kullaniciAdiDetail;
+
+  const BlogFriendProfile(
+      this.userIdDetail,
+      this.blogIsimDetail,
+      this.bioDetail,
+      this.profilImgDetail,
+      this.kullaniciAdiDetail);
   @override
   _BlogFriendProfileState createState() => _BlogFriendProfileState();
 }
 
 class _BlogFriendProfileState extends State<BlogFriendProfile> {
+  BlogService blogService;
+  BlogPostModel blogPostModel;
+
+  int gonderiSayisi = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    blogService = BlogService();
+  }
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
-      body: ListView(
+      appBar: AppBar(
+        title: Text(
+          widget.kullaniciAdiDetail,
+          style: SizeConfig.yaziAppbarBaslik,
+        ),
+        backgroundColor: SizeConfig.almostWhite,
+        elevation: 0.0,
+        iconTheme: IconThemeData(
+          color: SizeConfig.green, //change your color here
+        ),
+      ),
+      body: Stack(
         children: <Widget>[
           Padding(
+            padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 1,
+                SizeConfig.blockWidth * 33, SizeConfig.blockWidth * 1, 0),
+            child: FutureBuilder(
+              future: blogService.getBlogPostModel(),
+              builder: (context, snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.done:
+                    if (snapshot.hasData){
+                      print("has data");
+                      return _kullaniciPosts(snapshot.data);}
+                    else{
+                      //servis geldi ama data yoksa
+                      return _notFoundWidget();}
+                    break;
+                //servisten dönemediyse, hata varsa
+                  default:
+                    return _waitingWidget;
+                }
+              },
+            ),
+          ),
+          Padding(
             padding:
-                EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 4, 0.0, 0.0),
+            EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 4, 0.0, 0.0),
             child: Column(
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0,
                       SizeConfig.blockWidth * 4, 0),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.fromLTRB(
                             0.0, 0.0, SizeConfig.blockWidth * 4, 0.0),
                         child: CircleAvatar(
-                          backgroundImage:
-                              AssetImage('assets/images/minel.jpg'),
+                          backgroundColor: SizeConfig.almostWhite,
+                          backgroundImage: widget.profilImgDetail == ""
+                              ? AssetImage("assets/icons/user.png")
+                              : NetworkImage(widget.profilImgDetail),
                           radius: SizeConfig.blockWidth * 10,
                         ),
                       ),
@@ -40,7 +100,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'minelsaygisever',
+                            widget.kullaniciAdiDetail,
                             style: TextStyle(
                               color: SizeConfig.green,
                               fontFamily: 'Champagne-Limousines-Bold',
@@ -56,34 +116,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                                     SizeConfig.blockWidth * 1.5,
                                     0.0),
                                 child: Text(
-                                  '6 gönderi',
-                                  style: TextStyle(
-                                    color: SizeConfig.almostBlack,
-                                    fontFamily: 'Champagne-Limousines-Bold',
-                                    fontSize: SizeConfig.blockWidth * 3.5,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    0.0,
-                                    SizeConfig.blockWidth * 1,
-                                    SizeConfig.blockWidth * 1.5,
-                                    0.0),
-                                child: Text(
-                                  '25 takipçi',
-                                  style: TextStyle(
-                                    color: SizeConfig.almostBlack,
-                                    fontFamily: 'Champagne-Limousines-Bold',
-                                    fontSize: SizeConfig.blockWidth * 3.5,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    0.0, SizeConfig.blockWidth * 1, 0, 0.0),
-                                child: Text(
-                                  '20 takip edilen',
+                                  gonderiSayisi.toString() + ' gönderi',
                                   style: TextStyle(
                                     color: SizeConfig.almostBlack,
                                     fontFamily: 'Champagne-Limousines-Bold',
@@ -97,7 +130,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                             padding: EdgeInsets.fromLTRB(
                                 0.0, SizeConfig.blockWidth * 2.5, 0.0, 0.0),
                             child: Text(
-                              'Minel',
+                              widget.blogIsimDetail,
                               style: TextStyle(
                                 color: SizeConfig.almostBlack,
                                 fontFamily: 'Champagne-Limousines-Bold',
@@ -112,119 +145,17 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Text(
-                                  'Welcome to my green life!',
+                                  widget.bioDetail,
                                   style: TextStyle(
                                     color: SizeConfig.almostBlack,
                                     fontFamily: 'Champagne-Limousines-Bold',
                                     fontSize: SizeConfig.blockWidth * 3.5,
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      SizeConfig.blockWidth * 8, 0, 0, 0),
-                                  child: Container(
-                                    height: SizeConfig.blockWidth * 6,
-                                    width: SizeConfig.blockWidth * 23,
-                                    child: FlatButton(
-                                        onPressed: () {
-                                          //formKey.currentState.reset();
-                                        },
-                                        child: Text(
-                                          "Takip Et",
-                                          style: TextStyle(
-                                            fontSize:
-                                                SizeConfig.blockWidth * 3.5,
-                                            color: SizeConfig.almostWhite,
-                                            fontFamily:
-                                                "Champagne-Limousines-Bold",
-                                          ),
-                                        ),
-                                        color: SizeConfig.green,
-                                        shape: StadiumBorder()),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
                         ],
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Image(
-                        image: AssetImage('assets/images/photo1.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
-                      ),
-                      Image(
-                        image: AssetImage('assets/images/photo2.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
-                      ),
-                      Image(
-                        image: AssetImage('assets/images/photo3.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      0, SizeConfig.blockWidth * 3 / 4, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Image(
-                        image: AssetImage('assets/images/photo4.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
-                      ),
-                      Image(
-                        image: AssetImage('assets/images/photo5.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
-                      ),
-                      Image(
-                        image: AssetImage('assets/images/photo6.jpg'),
-                        height: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        width: (SizeConfig.screenWidth -
-                                (3 * SizeConfig.blockWidth)) /
-                            3,
-                        fit: BoxFit.cover,
                       ),
                     ],
                   ),
@@ -236,4 +167,48 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
       ),
     );
   }
+
+  Widget _kullaniciPosts(List<BlogPostModel> list) {
+    List<BlogPostModel> secondList = [];
+    BlogService.postLength = list.length;
+    for (int i = 0; i < list.length; i++) {
+      if (list[i].userId == widget.userIdDetail) {
+        secondList.add(list[i]);
+      }
+    }
+    gonderiSayisi = secondList.length;
+    return GridView.builder(
+        itemCount: secondList.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: SizeConfig.blockWidth * 1,
+            mainAxisSpacing: SizeConfig.blockWidth * 1,
+            crossAxisCount: 3),
+        itemBuilder: (context, index) => _post(secondList[index]));
+  }
+
+  Widget _post(blogPostModel) {
+    return Center(
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(blogPostModel.imgUrl),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: BorderRadius.circular(SizeConfig.blockWidth * 0),
+        ),
+        alignment: Alignment.bottomCenter,
+      ),
+    );
+  }
+
+  //servisten data dönmediyse bu gelecek
+  Widget _notFoundWidget() {
+    return Text("Post Yok");
+  }
+
+  //bir hata meydana geldiyse servis cevap vermediyse bu dönecek
+  Widget get _waitingWidget => Center(
+      child: CircularProgressIndicator(
+        valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),
+      ));
 }
