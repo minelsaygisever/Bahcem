@@ -38,11 +38,16 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
 
   int gonderiSayisi = 0;
 
+  Future<List<UserModel>> _users;
+  Future<List<BlogPostModel>> _posts;
+
   @override
   void initState() {
     super.initState();
     blogService = BlogService();
     userService = UserService();
+    _users = userService.getUser();
+    _posts =  blogService.getBlogPostModel();
   }
 
   @override
@@ -55,7 +60,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
           padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 1,
               SizeConfig.blockWidth * 33, SizeConfig.blockWidth * 1, 0),
           child: FutureBuilder(
-            future: blogService.getBlogPostModel(),
+            future: _posts,
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.done:
@@ -78,7 +83,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
               padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 1,
                   SizeConfig.blockWidth * 4, SizeConfig.blockWidth * 1, 0),
               child: FutureBuilder(
-                future: userService.getUser(),
+                future: _users,
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.done:

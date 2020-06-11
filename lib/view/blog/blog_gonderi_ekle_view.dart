@@ -26,11 +26,16 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   var imgUrl;
   bool _absorbing = false;
 
+  Future<List<UserModel>> _users;
+
+
+
   @override
   void initState() {
     super.initState();
     service = BlogService();
     userService = UserService();
+    _users = userService.getUser();
   }
 
   Future selectImage() async {
@@ -68,7 +73,7 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
     return Scaffold(
       backgroundColor: SizeConfig.backgroundColor,
       body: FutureBuilder(
-        future: userService.getUser(),
+        future: _users,
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
           //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir

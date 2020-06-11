@@ -74,14 +74,14 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
   }
   Widget _listUser(List<UserModel> list) {
     UserService.userLength = list.length;
-    return _registerThings(list);
+    return _registerThings();
   }
   Widget _listNotFoundUser() {
     UserService.userLength = 0;
-    return _registerThings(null);
+    return _registerThings();
   }
 
-  Widget _registerThings(List<UserModel> list){
+  Widget _registerThings(){
     return ListView(
       children: <Widget>[
         Container(
@@ -136,7 +136,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             alignment: Alignment.center,
                             child: TextFormField(
                               validator: (val) =>
-                              val.isEmpty ? 'Lütfen e-posta giriniz' : null,
+                              val.isEmpty ? 'Lütfen eposta giriniz' : null,
                               onChanged: (val) {
                                 setState(() => email = val);
                               },
@@ -168,19 +168,8 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                               height: SizeConfig.blockWidth * 12,
                               alignment: Alignment.center,
                               child: TextFormField(
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Lütfen kullanıcı adı giriniz.';
-                                    }
-
-                                    for(int i = 0; i < list.length; i++){
-                                      if(list[i].kullaniciAdi == kullanici_adi){
-                                        return 'Bu kullanıcı adı zaten var.';
-                                      }
-                                    }
-
-                                    return null;
-                                  },
+                                validator: (val) =>
+                                val.isEmpty ? 'Lütfen kullanıcı adı giriniz' : null,
                                 onChanged: (val) {
                                   setState(() => kullanici_adi = val);
                                 },
@@ -247,17 +236,9 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                             height: SizeConfig.blockWidth * 12,
                             alignment: Alignment.center,
                             child: TextFormField(
-                              validator: (value) {
-                                if (value.isEmpty) {
-                                  return 'Bu alanı doldurmak zorunludur.';
-                                }
-
-                               if(value != passwordFirst){
-                                 return 'Şifeler eşleşmiyor.';
-                               }
-
-                                return null;
-                              },
+                              validator: (val) => val != "" ? (val == _sifre
+                                  ? 'Şifreler eşleşmiyor.'
+                                  : null) : 'Boş geçilmez.',
                               onChanged: (val) {
                                 setState(() => password = val);
                               },
@@ -305,7 +286,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                 },
                                 child: Container(
                                   child: Text(
-                                    "Kayıt",
+                                    "Kaydet",
                                     style: TextStyle(
                                       fontSize: SizeConfig.blockWidth * 5.5,
                                       color: SizeConfig.almostWhite,
@@ -378,4 +359,3 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
     );
   }
 }
-
