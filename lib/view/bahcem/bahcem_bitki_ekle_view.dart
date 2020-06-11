@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/services/bahcem_service.dart';
+import 'package:bahcem_deneme/view/ayarlar_sayfasi_view.dart';
 import 'package:bahcem_deneme/view/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -53,13 +54,13 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
   String hatirlaticiDropDown = 'Açık';
 
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-  FlutterLocalNotificationsPlugin();
+      FlutterLocalNotificationsPlugin();
   AndroidInitializationSettings androidInitializationSettings;
   IOSInitializationSettings iosInitializationSettings;
   InitializationSettings initializationSettings;
 
   void initializing() async {
-    androidInitializationSettings = AndroidInitializationSettings('@drawable/flower_not');
+    androidInitializationSettings = AndroidInitializationSettings('flower_not');
     iosInitializationSettings = IOSInitializationSettings(
         onDidReceiveLocalNotification: onDidReceiveLocalNotification);
     initializationSettings = InitializationSettings(
@@ -72,23 +73,21 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
     await notification();
   }
 
-
   Future<void> notification() async {
     AndroidNotificationDetails androidNotificationDetails =
-    AndroidNotificationDetails(
-        'Channel ID', 'Channel title', 'channel body',
-        priority: Priority.High,
-        importance: Importance.Max,
-        ticker: 'test');
+        AndroidNotificationDetails(
+            'Channel ID', 'Channel title', 'channel body',
+            priority: Priority.High,
+            importance: Importance.Max,
+            ticker: 'test');
 
     IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails();
 
     NotificationDetails notificationDetails =
-    NotificationDetails(androidNotificationDetails, iosNotificationDetails);
+        NotificationDetails(androidNotificationDetails, iosNotificationDetails);
     await flutterLocalNotificationsPlugin.show(
-        0, 'Bahçem', 'Çiçeğiniz Eklendi :)', notificationDetails);
+        0, 'Bahçem', '$bitkininAdi bahçene eklendi!', notificationDetails);
   }
-
 
   Future onSelectNotification(String payLoad) {
     if (payLoad != null) {
@@ -772,6 +771,7 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                         createdAt = DateTime.now().toString();
 
                         await uploadImageProfil();
+
                         await uploadImageAlbum();
 
                         await _bahcemService.sendPlant(
@@ -796,12 +796,13 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                               builder: (BuildContext context) => MyHomePage()));
                         });
 
-                        _showNotifications();
+                        if (AyarlarSayfasiState.bildirimState) {
+                          _showNotifications();
+                        }
 
                         setState(() {
                           _absorbing = false;
                         });
-
                       },
                       child: Container(
                         child: Text("Ekle", style: SizeConfig.yaziButon),

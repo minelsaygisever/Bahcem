@@ -13,9 +13,10 @@ class AyarlarSayfasi extends StatefulWidget {
 }
 
 class AyarlarSayfasiState extends State<AyarlarSayfasi> {
+
   final AuthService _auth = AuthService();
 
-  bool isSwitched = true;
+  static bool bildirimState = true;
   String heightInFeet = "null";
   int height = 180;
   String dropdownValue = 'Green Mornings';
@@ -60,18 +61,19 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi> {
           Container(
             alignment: Alignment.topLeft,
             padding: EdgeInsets.fromLTRB(
-                SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
+                SizeConfig.blockWidth * 4, 3, SizeConfig.blockWidth * 4, 10),
             child: CustomSwitch(
               activeColor: SizeConfig.green,
-              value: isSwitched,
+              value: bildirimState,
               onChanged: (value) {
                 setState(() {
-                  isSwitched = value;
+                  bildirimState = value;
+                  print(bildirimState);
                 });
               },
             ),
           ),
-          Container(
+          /*Container(
             alignment: Alignment.topLeft,
             padding: EdgeInsets.fromLTRB(
                 SizeConfig.blockWidth * 4,
@@ -130,7 +132,7 @@ class AyarlarSayfasiState extends State<AyarlarSayfasi> {
                 });
               },
             ),
-          ),
+          ),*/
           Container(
               alignment: Alignment.topLeft,
               padding: EdgeInsets.fromLTRB(
