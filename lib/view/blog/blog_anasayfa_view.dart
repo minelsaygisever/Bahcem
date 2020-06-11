@@ -106,29 +106,6 @@ Widget _post(BlogPostModel post) {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: SizeConfig.blockWidth * 2,
-                      right: SizeConfig.blockWidth * 1),
-                  child: new Image.asset(
-                    "assets/icons/flower.png",
-                    color: SizeConfig.almostBlack,
-                    height: SizeConfig.blockWidth * 7,
-                    width: SizeConfig.blockWidth * 7,
-                  ),
-                ),
-                Text(
-                  post.likeCount.toString() + ' beğeni',
-                  style: SizeConfig.yaziAciklama,
-                ),
-              ],
-            ),
-          ),
-          Padding(
             padding: EdgeInsets.fromLTRB(
                 0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 6),
             child: Row(

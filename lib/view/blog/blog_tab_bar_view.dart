@@ -16,13 +16,13 @@ class _BlogTabBarState extends State<BlogTabBar>
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(vsync: this, length: 5);
+    _tabController = new TabController(vsync: this, length: 4);
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 4,
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(SizeConfig.blockWidth * 15),
@@ -58,14 +58,14 @@ class _BlogTabBarState extends State<BlogTabBar>
                     width: SizeConfig.blockWidth * 5.5,
                   ),
                 ),
-                Tab(
+                /*Tab(
                   icon: Image.asset(
                     "assets/icons/flower.png",
                     color: SizeConfig.green,
                     height: SizeConfig.blockWidth * 5.5,
                     width: SizeConfig.blockWidth * 5.5,
                   ),
-                ),
+                ),*/
                 Tab(
                   icon: Image.asset(
                     "assets/icons/user.png",
@@ -84,7 +84,7 @@ class _BlogTabBarState extends State<BlogTabBar>
             BlogAnaSayfaView(),
             BlogSearchPage(),
             BlogGonderiEkle(),
-            BlogSearchPage(),
+            //BlogSearchPage(),
             BlogProfilePage()
           ],
         ),
