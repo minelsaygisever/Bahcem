@@ -177,21 +177,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                       currentUser.kullaniciAdi,
                       style: SizeConfig.yaziUserName,
                     ),
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              0.0,
-                              SizeConfig.blockWidth * 1,
-                              SizeConfig.blockWidth * 4,
-                              0.0),
-                          child: Text(
-                            gonderiSayisi.toString() + ' gönderi',
-                            style: SizeConfig.yaziProfilKucukAciklama,
-                          ),
-                        ),
-                      ],
-                    ),
+
                     Padding(
                       padding: EdgeInsets.fromLTRB(
                           0.0, SizeConfig.blockWidth * 2.5, 0.0, 0.0),
