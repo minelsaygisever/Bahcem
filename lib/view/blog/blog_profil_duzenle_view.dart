@@ -216,7 +216,6 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                                     ? widget.profilImgDetail
                                     : _profilImgUrl,
                                 widget.indexDetail);
-                            _bildirim();
 
                             setState(() {
                               Navigator.pop(context);
