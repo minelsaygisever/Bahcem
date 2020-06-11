@@ -82,7 +82,7 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                   padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 4, 0,
                       SizeConfig.blockWidth * 4, 0),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Padding(

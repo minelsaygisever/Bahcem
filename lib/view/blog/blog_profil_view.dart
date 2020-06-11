@@ -149,7 +149,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
         padding: EdgeInsets.fromLTRB(
             SizeConfig.blockWidth * 4, 0, SizeConfig.blockWidth * 4, 0),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Row(
@@ -230,11 +230,15 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                                 indexTemp)),
                       );
                     },
-                    child: new Image.asset(
-                      "assets/icons/more.png",
-                      color: Colors.black45,
-                      height: SizeConfig.blockWidth * 4,
-                      width: SizeConfig.blockWidth * 4,
+                    child: Container(
+                      height: SizeConfig.blockHeight * 12,
+                      alignment: Alignment.topCenter,
+                      child: new Image.asset(
+                        "assets/icons/more.png",
+                        color: Colors.black45,
+                        height: SizeConfig.blockWidth * 4,
+                        width: SizeConfig.blockWidth * 4,
+                      ),
                     ),
                   ),
                 ),
