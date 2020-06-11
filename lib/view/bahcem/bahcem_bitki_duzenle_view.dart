@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/services/bahcem_service.dart';
+import 'package:bahcem_deneme/view/bahcem/bahcem_sayfasi_view.dart';
 import 'package:bahcem_deneme/view/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,11 +43,11 @@ class BahcemBitkiDuzenle extends StatefulWidget {
 class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
   String _albumUrl = "";
   String bitkininAdi = "";
+  int count_bitkininAdi = 0;
   String notlar = "";
+  int count_notlar = 0;
   String _profilImgUrl = "";
-  String _sulama = "";
-  String _toprakDegisim = "";
-  String _toprakTipi = "";
+  int count_profilImg = 0;
 
   String sulamaDropDownValue;
   int count_sulama = 0;
@@ -81,6 +82,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
     //var image = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
       _selectedImageProfil = image;
+      count_profilImg++;
     });
   }
 
@@ -145,6 +147,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
               cursorColor: SizeConfig.green,
               onChanged: (val) {
                 setState(() => notlar = val);
+                count_notlar++;
               },
               initialValue: widget.notlar,
               decoration: InputDecoration(
@@ -201,6 +204,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
               cursorColor: SizeConfig.green,
               onChanged: (val) {
                 setState(() => notlar = val);
+                count_notlar++;
               },
               initialValue: widget.notlar,
               decoration: InputDecoration(
@@ -268,6 +272,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                     initialValue: widget.bitkininAdi,
                     onChanged: (val) {
                       setState(() => bitkininAdi = val);
+                      count_bitkininAdi++;
                     },
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
@@ -814,18 +819,24 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                         setState(() {
                           _absorbing = true;
                         });
-                        await uploadImageProfil();
+                        if (count_profilImg != 0) {
+                          await uploadImageProfil();
+                        }
 
                         print("resmi yükledi");
 
                         await _bahcemService.updatePlant(
                             _albumUrl,
-                            bitkininAdi,
+                            count_bitkininAdi == 0
+                                ? widget.bitkininAdi
+                                : bitkininAdi,
                             hatirlaticiDropDown,
                             isiIhtiyaciDropDown,
                             isikIhtiyaciDropDown,
-                            notlar,
-                            _profilImgUrl,
+                            count_notlar == 0 ? widget.notlar : notlar,
+                            count_profilImg == 0
+                                ? widget.profilImgUrl
+                                : _profilImgUrl,
                             sulamaDropDown +
                                 " " +
                                 sulamaAralikDropDown +

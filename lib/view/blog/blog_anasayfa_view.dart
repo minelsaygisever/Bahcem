@@ -30,17 +30,18 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
         future: service.getBlogPostModel(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
-          //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir
+            //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir
             case ConnectionState.done:
-            //datası var mı
+              //datası var mı
               if (snapshot.hasData)
                 return _listAnasayfa(snapshot.data);
-              else{
+              else {
                 //servis geldi ama data yoksa
                 BlogService.postLength = 0;
-                return _notFoundWidget;}
+                return _notFoundWidget;
+              }
               break;
-          //servisten dönemediyse, hata varsa
+            //servisten dönemediyse, hata varsa
             default:
               return _waitingWidget;
           }
@@ -50,24 +51,22 @@ class _BlogAnaSayfaViewState extends State<BlogAnaSayfaView> {
   }
 }
 
-
 //uygulamamızın body si burada olacak
 Widget _listAnasayfa(List<BlogPostModel> list) {
   BlogService.postLength = list.length;
-  list.sort((a, b) => -DateTime.parse(a.createdAt).compareTo(DateTime.parse(b.createdAt)) );
+  list.sort((a, b) =>
+      -DateTime.parse(a.createdAt).compareTo(DateTime.parse(b.createdAt)));
   return Padding(
     padding: EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
     child: ListView.builder(
-        itemCount: list.length,
-        itemBuilder: (context, j) => _post(list[j])),
+        itemCount: list.length, itemBuilder: (context, j) => _post(list[j])),
   );
 }
 
 Widget _post(BlogPostModel post) {
   return Center(
-    child:  Padding(
-      padding:
-      EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
+    child: Padding(
+      padding: EdgeInsets.fromLTRB(0.0, SizeConfig.blockWidth * 1, 0.0, 0.0),
       child: Column(
         children: <Widget>[
           Padding(
@@ -86,24 +85,10 @@ Widget _post(BlogPostModel post) {
                       radius: SizeConfig.blockWidth * 5,
                     ),
                     Padding(
-                      padding: EdgeInsets.only(
-                          left: SizeConfig.blockWidth * 2),
+                      padding: EdgeInsets.only(left: SizeConfig.blockWidth * 2),
                       child: Text(
                         post.kullaniciAdi,
                         style: SizeConfig.yaziUserName,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {},
-                      child: new Image.asset(
-                        "assets/icons/more.png",
-                        color: Colors.black45,
-                        height: SizeConfig.blockWidth * 4,
-                        width: SizeConfig.blockWidth * 4,
                       ),
                     ),
                   ],
@@ -112,8 +97,7 @@ Widget _post(BlogPostModel post) {
             ),
           ),
           Padding(
-            padding:
-            EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
+            padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
             child: Image(
               image: NetworkImage(post.imgUrl),
               height: SizeConfig.screenWidth,
@@ -122,14 +106,14 @@ Widget _post(BlogPostModel post) {
             ),
           ),
           Padding(
-            padding:
-            EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
+            padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(
-                      left: SizeConfig.blockWidth * 2, right: SizeConfig.blockWidth * 1),
+                      left: SizeConfig.blockWidth * 2,
+                      right: SizeConfig.blockWidth * 1),
                   child: new Image.asset(
                     "assets/icons/flower.png",
                     color: SizeConfig.almostBlack,
@@ -145,17 +129,16 @@ Widget _post(BlogPostModel post) {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2, 0,
-                SizeConfig.blockWidth * 6),
+            padding: EdgeInsets.fromLTRB(
+                0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 6),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2,
-                      0, SizeConfig.blockWidth * 2, 0),
+                  padding: EdgeInsets.fromLTRB(SizeConfig.blockWidth * 2, 0,
+                      SizeConfig.blockWidth * 2, 0),
                   child: Container(
-                    width: SizeConfig.screenWidth -
-                        SizeConfig.blockWidth * 4,
+                    width: SizeConfig.screenWidth - SizeConfig.blockWidth * 4,
                     child: Text(
                       post.comment,
                       maxLines: null,
@@ -174,9 +157,11 @@ Widget _post(BlogPostModel post) {
 
 //servisten data dönmediyse bu gelecek
 Widget get _notFoundWidget => Center(
-  child: Text("Not Found"),
-);
+      child: Text("Not Found"),
+    );
 
 //bir hata meydana geldiyse servis cevap vermediyse bu dönecek
-Widget get _waitingWidget => Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),));
-
+Widget get _waitingWidget => Center(
+        child: CircularProgressIndicator(
+      valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),
+    ));

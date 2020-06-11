@@ -9,9 +9,23 @@ import 'blog_gonderi_ekle_view.dart';
 import 'blog_profil_duzenle_view.dart';
 
 class BlogProfilePage extends StatefulWidget {
-
   @override
   _BlogProfilePageState createState() => _BlogProfilePageState();
+}
+
+class KullaniciDetail {
+  String userIdDetail;
+  String blogIsimDetail;
+  String bioDetail;
+  String profilImgDetail;
+  int indexDetail;
+
+  KullaniciDetail(
+      {this.userIdDetail,
+      this.blogIsimDetail,
+      this.bioDetail,
+      this.profilImgDetail,
+      this.indexDetail});
 }
 
 class _BlogProfilePageState extends State<BlogProfilePage> {
@@ -19,6 +33,8 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
   BlogPostModel blogPostModel;
   UserModel userModel;
   UserService userService;
+
+  int indexTemp = 0;
 
   int gonderiSayisi = 0;
 
@@ -49,7 +65,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                     //servis geldi ama data yoksa
                     return _notFoundWidget();
                   break;
-              //servisten dönemediyse, hata varsa
+                //servisten dönemediyse, hata varsa
                 default:
                   return _waitingWidget;
               }
@@ -81,7 +97,6 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
             ),
           ],
         ),
-
       ]),
     );
   }
@@ -125,6 +140,7 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
     for (int i = 0; i < list.length; i++) {
       if (list[i].userId == UserService.user.uid) {
         currentUser = list[i];
+        indexTemp = i;
         break;
       }
     }
@@ -143,7 +159,9 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                       0.0, 0.0, SizeConfig.blockWidth * 4, 0.0),
                   child: CircleAvatar(
                     backgroundColor: SizeConfig.almostWhite,
-                    backgroundImage: currentUser.profilImg == "" ? AssetImage("assets/icons/user.png") : NetworkImage(currentUser.profilImg),
+                    backgroundImage: currentUser.profilImg == ""
+                        ? AssetImage("assets/icons/user.png")
+                        : NetworkImage(currentUser.profilImg),
                     radius: SizeConfig.blockWidth * 10,
                   ),
                 ),
@@ -164,17 +182,6 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                               0.0),
                           child: Text(
                             gonderiSayisi.toString() + ' gönderi',
-                            style: SizeConfig.yaziProfilKucukAciklama,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              0.0,
-                              SizeConfig.blockWidth * 1,
-                              SizeConfig.blockWidth * 1.5,
-                              0.0),
-                          child: Text(
-                            '25 arkadaş',
                             style: SizeConfig.yaziProfilKucukAciklama,
                           ),
                         ),
@@ -206,11 +213,23 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                 Padding(
                   padding: EdgeInsets.only(top: SizeConfig.blockWidth * 2),
                   child: new GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => BlogProfilDuzenle()),
-                    ),
+                    onTap: () {
+                      final kullaniciDetail = KullaniciDetail(
+                          blogIsimDetail: currentUser.blogIsim,
+                          bioDetail: currentUser.bio,
+                          profilImgDetail: currentUser.profilImg);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BlogProfilDuzenle(
+                                kullaniciDetail.userIdDetail,
+                                kullaniciDetail.blogIsimDetail,
+                                kullaniciDetail.bioDetail,
+                                kullaniciDetail.profilImgDetail,
+                                indexTemp)),
+                      );
+                    },
                     child: new Image.asset(
                       "assets/icons/more.png",
                       color: Colors.black45,
@@ -233,5 +252,8 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
   }
 
   //bir hata meydana geldiyse servis cevap vermediyse bu dönecek
-  Widget get _waitingWidget => Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),));
+  Widget get _waitingWidget => Center(
+          child: CircularProgressIndicator(
+        valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),
+      ));
 }

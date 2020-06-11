@@ -7,6 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:scheduled_notifications/scheduled_notifications.dart';
 
 class BahcemBitkiEkle extends StatefulWidget {
   @override
@@ -49,6 +50,14 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
   String isikIhtiyaciDropDown = 'Çok ışıklı ortam';
   String isiIhtiyaciDropDown = '20-22 derece';
   String hatirlaticiDropDown = 'Açık';
+
+  _bildirim() async {
+    int notificationId = await ScheduledNotifications.scheduleNotification(
+        DateTime.now().add(Duration(seconds: 1)).millisecondsSinceEpoch,
+        "Bahçem",
+        "Bitkiniz eklendi",
+        "24 saat sonra bildirim almaya başlayacaksınız!");
+  }
 
   Future selectImageProfil() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -725,17 +734,16 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                             toprakDegisim,
                             toprakTipi);
 
-                        setState(() {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  MyHomePage()));
-                        });
-                        setState(() {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  MyHomePage()));
-                        });
+                        _bildirim();
 
+                        setState(() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => MyHomePage()));
+                        });
+                        setState(() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => MyHomePage()));
+                        });
                         setState(() {
                           _absorbing = false;
                         });
