@@ -6,8 +6,8 @@ import 'package:bahcem_deneme/view/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:scheduled_notifications/scheduled_notifications.dart';
 
 class BahcemBitkiEkle extends StatefulWidget {
   @override
@@ -25,6 +25,7 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
   void initState() {
     super.initState();
     _bahcemService = BahcemService();
+    initializing();
   }
 
   final _bitkininAdiController = TextEditingController();
@@ -51,12 +52,64 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
   String isiIhtiyaciDropDown = '20-22 derece';
   String hatirlaticiDropDown = 'Açık';
 
-  _bildirim() async {
-    int notificationId = await ScheduledNotifications.scheduleNotification(
-        DateTime.now().add(Duration(seconds: 1)).millisecondsSinceEpoch,
-        "Bahçem",
-        "Bitkiniz eklendi",
-        "24 saat sonra bildirim almaya başlayacaksınız!");
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  FlutterLocalNotificationsPlugin();
+  AndroidInitializationSettings androidInitializationSettings;
+  IOSInitializationSettings iosInitializationSettings;
+  InitializationSettings initializationSettings;
+
+  void initializing() async {
+    androidInitializationSettings = AndroidInitializationSettings('@drawable/flower_not');
+    iosInitializationSettings = IOSInitializationSettings(
+        onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+    initializationSettings = InitializationSettings(
+        androidInitializationSettings, iosInitializationSettings);
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: onSelectNotification);
+  }
+
+  void _showNotifications() async {
+    await notification();
+  }
+
+
+  Future<void> notification() async {
+    AndroidNotificationDetails androidNotificationDetails =
+    AndroidNotificationDetails(
+        'Channel ID', 'Channel title', 'channel body',
+        priority: Priority.High,
+        importance: Importance.Max,
+        ticker: 'test');
+
+    IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails();
+
+    NotificationDetails notificationDetails =
+    NotificationDetails(androidNotificationDetails, iosNotificationDetails);
+    await flutterLocalNotificationsPlugin.show(
+        0, 'Bahçem', 'Çiçeğiniz Eklendi :)', notificationDetails);
+  }
+
+
+  Future onSelectNotification(String payLoad) {
+    if (payLoad != null) {
+      print(payLoad);
+    }
+  }
+
+  Future onDidReceiveLocalNotification(
+      int id, String title, String body, String payload) async {
+    return CupertinoAlertDialog(
+      title: Text(title),
+      content: Text(body),
+      actions: <Widget>[
+        CupertinoDialogAction(
+            isDefaultAction: true,
+            onPressed: () {
+              print("");
+            },
+            child: Text("Okay")),
+      ],
+    );
   }
 
   Future selectImageProfil() async {
@@ -734,19 +787,21 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                             toprakDegisim,
                             toprakTipi);
 
-                        _bildirim();
+                        setState(() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => MyHomePage()));
+                        });
+                        setState(() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) => MyHomePage()));
+                        });
 
-                        setState(() {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => MyHomePage()));
-                        });
-                        setState(() {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => MyHomePage()));
-                        });
+                        _showNotifications();
+
                         setState(() {
                           _absorbing = false;
                         });
+
                       },
                       child: Container(
                         child: Text("Ekle", style: SizeConfig.yaziButon),
