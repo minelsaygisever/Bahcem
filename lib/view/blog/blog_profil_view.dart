@@ -222,7 +222,8 @@ class _BlogProfilePageState extends State<BlogProfilePage> {
                       final kullaniciDetail = KullaniciDetail(
                           blogIsimDetail: currentUser.blogIsim,
                           bioDetail: currentUser.bio,
-                          profilImgDetail: currentUser.profilImg);
+                          profilImgDetail: currentUser.profilImg,
+                      userIdDetail: currentUser.userId);
 
                       Navigator.push(
                         context,
