@@ -652,39 +652,6 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(
-                  0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Fotoğraf albümü",
-                      style: SizeConfig.yaziAciklamaBaslik,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            GestureDetector(
-              onTap: () => selectImageAlbum(),
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    height: SizeConfig.blockWidth * 20,
-                    width: SizeConfig.blockWidth * 20,
-                    decoration: BoxDecoration(
-                      color: SizeConfig.almostWhite,
-                    ),
-                    child: _selectedImageAlbum == null
-                        ? showDefaultAlbum()
-                        : showNewAlbum(),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(
                   0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -771,8 +738,6 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                         createdAt = DateTime.now().toString();
 
                         await uploadImageProfil();
-
-                        await uploadImageAlbum();
 
                         await _bahcemService.sendPlant(
                             albumUrl,

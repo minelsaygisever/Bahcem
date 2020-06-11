@@ -262,36 +262,6 @@ class BahcemBitkiGoruntule extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
-              child: Container(
-                alignment: Alignment.topLeft,
-                width:
-                    (SizeConfig.screenWidth - SizeConfig.blockWidth * 12) * 0.5,
-                child: Text(
-                  "Fotoğraf Albümü",
-                  style: SizeConfig.yaziAciklamaBaslik,
-                ),
-              ),
-            ),
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2,
-                      SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2),
-                  child: Container(
-                    height: SizeConfig.blockWidth * 20,
-                    width: SizeConfig.blockWidth * 20,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(bahcemDetailPlant.profilImgUrl),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 6, 0, 0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[

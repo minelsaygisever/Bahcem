@@ -673,47 +673,6 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(
-                  0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 2),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Fotoğraf albümü",
-                      style: SizeConfig.yaziAciklamaBaslik,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              children: <Widget>[
-                Padding(
-                  padding:
-                      EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 2, 0),
-                  child: Container(
-                    height: SizeConfig.blockWidth * 15,
-                    width: SizeConfig.blockWidth * 15,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(widget.profilImgUrl),
-                        colorFilter: ColorFilter.mode(
-                            Colors.white.withOpacity(0.75), BlendMode.dstATop),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Icon(
-                      Icons.clear,
-                      size: SizeConfig.blockWidth * 10,
-                      color: SizeConfig.almostBlack,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(
                   0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
