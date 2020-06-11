@@ -107,25 +107,6 @@ class _BlogFriendProfileState extends State<BlogFriendProfile> {
                               fontSize: SizeConfig.blockWidth * 5.5,
                             ),
                           ),
-                          Row(
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    0.0,
-                                    SizeConfig.blockWidth * 1,
-                                    SizeConfig.blockWidth * 1.5,
-                                    0.0),
-                                child: Text(
-                                  gonderiSayisi.toString() + ' gönderi',
-                                  style: TextStyle(
-                                    color: SizeConfig.almostBlack,
-                                    fontFamily: 'Champagne-Limousines-Bold',
-                                    fontSize: SizeConfig.blockWidth * 3.5,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(
                                 0.0, SizeConfig.blockWidth * 2.5, 0.0, 0.0),
