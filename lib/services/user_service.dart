@@ -55,4 +55,30 @@ class UserService {
         return Future.error(response.statusCode);
     }
   }
+  Future<List<UserModel>> getCurrentUser(String kullaniciAdi) async {
+    final response = await http.get("$FIREBASE_URL/Kullanicilar.json");
+    switch (response.statusCode) {
+      case HttpStatus.ok:
+        final jsonModel = json.decode(response.body);
+        final UserList = jsonModel
+            .map((e) => UserModel.fromJson(e as Map<String, dynamic>))
+            .toList()
+            .cast<UserModel>();
+        List<UserModel> resultList = [];
+        for (int i = 0; i < UserList.length; i++) {
+          if (kullaniciAdi != "" && UserList[i].kullaniciAdi.contains(kullaniciAdi)) {
+            resultList.add(UserList[i]);
+          }
+          /*
+      if (list[i].kullaniciAdi == kullaniciAdi) {
+        resultList.add(list[i]);
+      }*/
+        }
+        return resultList;
+        break;
+
+      default:
+        return Future.error(response.statusCode);
+    }
+  }
 }
