@@ -282,21 +282,7 @@ class BahcemBitkiGoruntule extends StatelessWidget {
                     width: SizeConfig.blockWidth * 20,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("assets/images/ponsetya.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 2,
-                      SizeConfig.blockWidth * 2, SizeConfig.blockWidth * 2),
-                  child: Container(
-                    height: SizeConfig.blockWidth * 20,
-                    width: SizeConfig.blockWidth * 20,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/ponsetya-saksi.jpg"),
+                        image: NetworkImage(bahcemDetailPlant.profilImgUrl),
                         fit: BoxFit.cover,
                       ),
                     ),

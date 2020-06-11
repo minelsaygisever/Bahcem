@@ -9,7 +9,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:scheduled_notifications/scheduled_notifications.dart';
 
 class BlogProfilDuzenle extends StatefulWidget {
   final String blogIsimDetail;
@@ -216,7 +215,6 @@ class _BlogProfilDuzenleState extends State<BlogProfilDuzenle> {
                                     ? widget.profilImgDetail
                                     : _profilImgUrl,
                                 widget.indexDetail);
-                            _bildirim();
 
                             setState(() {
                               Navigator.pop(context);

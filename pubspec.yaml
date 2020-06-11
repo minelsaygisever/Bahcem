@@ -29,8 +29,7 @@ dependencies:
   firebase_database: ^3.1.5
   firebase_core: ^0.4.4+3
   date_format: ^1.0.8
-  scheduled_notifications: ^1.0.0
-
+  flutter_local_notifications: ^1.4.4+1
 dev_dependencies:
   flutter_test:
     sdk: flutter

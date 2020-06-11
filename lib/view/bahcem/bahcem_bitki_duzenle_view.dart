@@ -697,7 +697,7 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                     width: SizeConfig.blockWidth * 15,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage("assets/images/ponsetya.jpg"),
+                        image: NetworkImage(widget.profilImgUrl),
                         colorFilter: ColorFilter.mode(
                             Colors.white.withOpacity(0.75), BlendMode.dstATop),
                         fit: BoxFit.cover,
@@ -706,41 +706,6 @@ class BahcemBitkiDuzenleState extends State<BahcemBitkiDuzenle> {
                     child: Icon(
                       Icons.clear,
                       size: SizeConfig.blockWidth * 10,
-                      color: SizeConfig.almostBlack,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.fromLTRB(0, 0, SizeConfig.blockWidth * 2, 0),
-                  child: Container(
-                    height: SizeConfig.blockWidth * 15,
-                    width: SizeConfig.blockWidth * 15,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/ponsetya-saksi.jpg"),
-                        colorFilter: ColorFilter.mode(
-                            Colors.white.withOpacity(0.75), BlendMode.dstATop),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Icon(
-                      Icons.clear,
-                      size: SizeConfig.blockWidth * 10,
-                      color: SizeConfig.almostBlack,
-                    ),
-                  ),
-                ),
-                Container(
-                  height: SizeConfig.blockWidth * 15,
-                  width: SizeConfig.blockWidth * 15,
-                  decoration: BoxDecoration(
-                    color: SizeConfig.almostWhite,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(SizeConfig.blockWidth * 4.5),
-                    child: Image.asset(
-                      "assets/icons/plus.png",
                       color: SizeConfig.almostBlack,
                     ),
                   ),
