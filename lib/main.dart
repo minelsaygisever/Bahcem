@@ -5,11 +5,11 @@ import 'package:bahcem_deneme/view/acilis_sayfasi_view.dart';
 import 'package:bahcem_deneme/view/login/login_sayfasi_view.dart';
 import 'package:bahcem_deneme/wrapper.dart';
 import 'package:flutter/material.dart';
-import 'bitkini_tani/bitkini_tani_view.dart';
+import 'view/bitkini_tani/bitkini_tani_view.dart';
 import 'package:provider/provider.dart';
-import 'bahcem/bahcem_sayfasi_view.dart';
-import 'ayarlar_sayfasi_view.dart';
-import 'blog/blog_tab_bar_view.dart';
+import 'view/bahcem/bahcem_sayfasi_view.dart';
+import 'view/ayarlar_sayfasi_view.dart';
+import 'view/blog/blog_tab_bar_view.dart';
 
 void main() => runApp( MyApp());
 

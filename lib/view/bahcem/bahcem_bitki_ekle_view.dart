@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/main.dart';
 import 'package:bahcem_deneme/services/bahcem_service.dart';
 import 'package:bahcem_deneme/view/ayarlar_sayfasi_view.dart';
-import 'package:bahcem_deneme/view/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

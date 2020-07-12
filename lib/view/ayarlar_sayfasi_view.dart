@@ -1,8 +1,7 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/custom_switch.dart';
+import 'package:bahcem_deneme/main.dart';
 import 'package:bahcem_deneme/services/auth_service.dart';
-import 'package:bahcem_deneme/view/login/login_sayfasi_view.dart';
-import 'package:bahcem_deneme/view/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'hakkinda_sayfasi_view.dart';

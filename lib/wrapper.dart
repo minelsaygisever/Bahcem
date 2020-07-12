@@ -1,8 +1,8 @@
 import 'package:bahcem_deneme/authenticate/authenticate.dart';
+import 'package:bahcem_deneme/main.dart';
 import 'package:bahcem_deneme/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'view/main.dart';
 
 class Wrapper extends StatelessWidget {
   @override

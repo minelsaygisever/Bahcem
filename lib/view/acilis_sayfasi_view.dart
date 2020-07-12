@@ -1,9 +1,9 @@
 import 'package:bahcem_deneme/SizeConfig.dart';
+import 'package:bahcem_deneme/main.dart';
 import 'package:bahcem_deneme/view/login/login_sayfasi_view.dart';
 import 'package:bahcem_deneme/wrapper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'main.dart';
 
 class AcilisSayfasi extends StatefulWidget {
   @override

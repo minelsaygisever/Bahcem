@@ -1,10 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 import 'package:bahcem_deneme/SizeConfig.dart';
-import 'package:bahcem_deneme/models/user_model.dart';
 import 'package:bahcem_deneme/services/user_service.dart';
-import 'package:bahcem_deneme/view/blog/blog_profil_view.dart';
-import 'package:bahcem_deneme/view/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
