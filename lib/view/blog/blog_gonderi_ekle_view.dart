@@ -63,7 +63,8 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   }
 
   Widget showNewImg() {
-    return Expanded(child: Image.file(_selectedImage));
+    return Image(
+        image: FileImage(_selectedImage));
   }
 
   @override

@@ -267,7 +267,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                               bottom: SizeConfig.blockWidth * 1),
                           child: Container(
                             height: SizeConfig.blockWidth * 10,
-                            width: SizeConfig.blockWidth * 26,
+                            width: SizeConfig.blockWidth * 30,
                             child: FlatButton(
                                 onPressed: () async {
                                   if (_formKey.currentState.validate()) {
@@ -329,7 +329,7 @@ class _RegisterSayfasiState extends State<RegisterSayfasi> {
                                   top: SizeConfig.blockWidth * 2),
                               child: Container(
                                 height: SizeConfig.blockWidth * 8,
-                                width: SizeConfig.blockWidth * 26,
+                                width: SizeConfig.blockWidth * 24,
                                 child: FlatButton(
                                   /*onPressed: () => Navigator.push(context, MaterialPageRoute(
                                             builder: (BuildContext context) => RegisterSayfasi()
