@@ -149,7 +149,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                   bottom: SizeConfig.blockWidth * 1),
                               child: Container(
                                 height: SizeConfig.blockWidth * 10,
-                                width: SizeConfig.blockWidth * 26,
+                                width: SizeConfig.blockWidth * 30,
                                 child: FlatButton(
                                     //onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()),),
                                     onPressed: () async {
@@ -214,7 +214,7 @@ class _LoginSayfasiState extends State<LoginSayfasi> {
                                     top: SizeConfig.blockWidth * 2),
                                 child: Container(
                                   height: SizeConfig.blockWidth * 8,
-                                  width: SizeConfig.blockWidth * 26,
+                                  width: SizeConfig.blockWidth * 24,
                                   child: FlatButton(
                                       /*onPressed: () => Navigator.push(context, MaterialPageRoute(
                                           builder: (BuildContext context) => RegisterSayfasi()

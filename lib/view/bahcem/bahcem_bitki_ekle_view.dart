@@ -129,25 +129,6 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
     profilImgUrl = imgUrl.toString();
   }
 
-  Future selectImageAlbum() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    //var image = await ImagePicker.pickImage(source: ImageSource.camera);
-    setState(() {
-      _selectedImageAlbum = image;
-    });
-  }
-
-  Future uploadImageAlbum() async {
-    StorageReference ref = FirebaseStorage.instance
-        .ref()
-        .child("0H9SC3y9PAQsFx9HwSBTjv0kIA72")
-        .child("Album")
-        .child("img" + BahcemService.plantLength.toString() + ".jpg");
-    StorageUploadTask uploadTask = ref.putFile(_selectedImageAlbum);
-    imgUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
-    albumUrl = imgUrl.toString();
-  }
-
   Widget showDefaultProfile() {
     return Padding(
       padding: EdgeInsets.all(SizeConfig.blockWidth * 3),
@@ -158,23 +139,11 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
     );
   }
 
-  Widget showDefaultAlbum() {
-    return Padding(
-      padding: EdgeInsets.all(SizeConfig.blockWidth * 7),
-      child: Image(
-        image: AssetImage('assets/icons/plus.png'),
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-
   Widget showNewProfile() {
-    return Expanded(child: Image.file(_selectedImageProfil));
+    return Image(
+        image: FileImage(_selectedImageProfil));
   }
 
-  Widget showNewAlbum() {
-    return Expanded(child: Image.file(_selectedImageAlbum));
-  }
 
   @override
   Widget build(BuildContext context) {
