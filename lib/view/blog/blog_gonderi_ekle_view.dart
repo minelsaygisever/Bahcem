@@ -16,7 +16,6 @@ class BlogGonderiEkle extends StatefulWidget {
 }
 
 class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
-
   BlogService service;
   UserService userService;
   File _selectedImage;
@@ -26,8 +25,6 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   bool _absorbing = false;
 
   Future<List<UserModel>> _users;
-
-
 
   @override
   void initState() {
@@ -63,43 +60,40 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   }
 
   Widget showNewImg() {
-    return Image(
-        image: FileImage(_selectedImage));
+    return Image(image: FileImage(_selectedImage));
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: SizeConfig.backgroundColor,
-      body: FutureBuilder(
-        future: _users,
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-          //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir
-            case ConnectionState.done:
-            //datası var mı
-              if (snapshot.hasData){
-                print("has data");
-                return gonderiEkle(snapshot.data);
-              }
-              else{
-                print("no data");
-                return _notFoundUserWidget();
-              }
-              //servis geldi ama data yoksa
-              break;
-          //servisten dönemediyse, hata varsa
-            default:
-              print("default");
-              return _waitingWidget;
-          }
-        },
-      )
-    );
+        backgroundColor: SizeConfig.backgroundColor,
+        body: FutureBuilder(
+          future: _users,
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              //connection done ile kontrol ediliyor. active, waiting vs durumlarda bu şekilde kontrol edilebilir
+              case ConnectionState.done:
+                //datası var mı
+                if (snapshot.hasData) {
+                  print("has data");
+                  return gonderiEkle(snapshot.data);
+                } else {
+                  print("no data");
+                  return _notFoundUserWidget();
+                }
+                //servis geldi ama data yoksa
+                break;
+              //servisten dönemediyse, hata varsa
+              default:
+                print("default");
+                return _waitingWidget;
+            }
+          },
+        ));
   }
 
-  Widget gonderiEkle(List<UserModel> list){
+  Widget gonderiEkle(List<UserModel> list) {
     UserModel currentUser;
     UserService.userLength = list.length;
     for (int i = 0; i < list.length; i++) {
@@ -117,27 +111,21 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
           children: <Widget>[
             GestureDetector(
               onTap: () => selectImage(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    height:
+              child: Container(
+                height:
                     SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
-                    width:
-                    SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: SizeConfig.almostWhite,
-                        width: 0,
-                      ),
-                      color: SizeConfig.almostWhite,
-                    ),
-                    child: _selectedImage == null
-                        ? showDefaultImg()
-                        : showNewImg(),
-                  )
-                ],
+                width: SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: SizeConfig.almostWhite,
+                    width: 0,
+                  ),
+                  color: SizeConfig.almostWhite,
+                ),
+                child: _selectedImage == null
+                    ? showDefaultImg()
+                    : showNewImg(),
               ),
             ),
             TextFormField(
@@ -166,53 +154,55 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
               child: _selectedImage == null
                   ? Text("")
                   : Container(
-                alignment: Alignment.center,
-                height: SizeConfig.blockWidth * 8,
-                width: SizeConfig.blockWidth * 26,
-                child: AbsorbPointer(
-                  absorbing: _absorbing,
-                  child: FlatButton(
-                      onPressed: () async {
-                        setState(() {
-                          _absorbing = true;
-                        });
+                      alignment: Alignment.center,
+                      height: SizeConfig.blockWidth * 8,
+                      width: SizeConfig.blockWidth * 26,
+                      child: AbsorbPointer(
+                        absorbing: _absorbing,
+                        child: FlatButton(
+                            onPressed: () async {
+                              setState(() {
+                                _absorbing = true;
+                              });
 
-                        await uploadImage();
-                        await service.sendPost(
-                            comment,
-                            DateTime.now().toString(),
-                            imgUrl.toString(),
-                            0,
-                            currentUser.kullaniciAdi, currentUser.profilImg);
-                        _commentController.clear();
-                        setState(() {
-                          _selectedImage = null;
-                        });
+                              await uploadImage();
+                              await service.sendPost(
+                                  comment,
+                                  DateTime.now().toString(),
+                                  imgUrl.toString(),
+                                  0,
+                                  currentUser.kullaniciAdi,
+                                  currentUser.profilImg);
+                              _commentController.clear();
+                              setState(() {
+                                _selectedImage = null;
+                              });
 
-                        setState(() {
-                          _absorbing = false;
-                        });
+                              setState(() {
+                                _absorbing = false;
+                              });
 
-                        setState(() {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (BuildContext context) => MyHomePage()));
-                        });
-                        setState(() {
-                          Navigator.of(context).push(
-                              MaterialPageRoute(builder: (BuildContext context) => MyHomePage()));
-                        });
-
-                      },
-                      child: Container(
-                        child: Text(
-                          "Paylaş",
-                          style: SizeConfig.yaziButon,
-                        ),
+                              setState(() {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        MyHomePage()));
+                              });
+                              setState(() {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        MyHomePage()));
+                              });
+                            },
+                            child: Container(
+                              child: Text(
+                                "Paylaş",
+                                style: SizeConfig.yaziButon,
+                              ),
+                            ),
+                            color: SizeConfig.green,
+                            shape: StadiumBorder()),
                       ),
-                      color: SizeConfig.green,
-                      shape: StadiumBorder()),
-                ),
-              ),
+                    ),
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -221,21 +211,21 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
               child: _selectedImage == null
                   ? Text("")
                   : Container(
-                alignment: Alignment.bottomRight,
-                height: SizeConfig.blockWidth * 10,
-                width: SizeConfig.blockWidth * 30,
-                child: IconButton(
-                  iconSize: SizeConfig.blockWidth * 8,
-                  icon: Icon(Icons.delete),
-                  color: Colors.black45,
-                  onPressed: () {
-                    _commentController.clear();
-                    setState(() {
-                      _selectedImage = null;
-                    });
-                  },
-                ),
-              ),
+                      alignment: Alignment.bottomRight,
+                      height: SizeConfig.blockWidth * 10,
+                      width: SizeConfig.blockWidth * 30,
+                      child: IconButton(
+                        iconSize: SizeConfig.blockWidth * 8,
+                        icon: Icon(Icons.delete),
+                        color: Colors.black45,
+                        onPressed: () {
+                          _commentController.clear();
+                          setState(() {
+                            _selectedImage = null;
+                          });
+                        },
+                      ),
+                    ),
             ),
           ],
         ),
@@ -247,7 +237,9 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   Widget _notFoundUserWidget() {
     return Text("Post Yok");
   }
-
 }
 
-Widget get _waitingWidget => Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),));
+Widget get _waitingWidget => Center(
+        child: CircularProgressIndicator(
+      valueColor: new AlwaysStoppedAnimation<Color>(SizeConfig.green),
+    ));

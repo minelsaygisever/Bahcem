@@ -110,7 +110,7 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
     );
   }
 
-  Future selectImageProfil() async {
+  Future selectImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
     //var image = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
@@ -118,7 +118,7 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
     });
   }
 
-  Future uploadImageProfil() async {
+  Future uploadImage() async {
     StorageReference ref = FirebaseStorage.instance
         .ref()
         .child("0H9SC3y9PAQsFx9HwSBTjv0kIA72")
@@ -129,9 +129,9 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
     profilImgUrl = imgUrl.toString();
   }
 
-  Widget showDefaultProfile() {
+  Widget showDefaultImg() {
     return Padding(
-      padding: EdgeInsets.all(SizeConfig.blockWidth * 3),
+      padding: EdgeInsets.all(SizeConfig.blockWidth * 2),
       child: Image(
         image: AssetImage('assets/icons/postdef.png'),
         fit: BoxFit.cover,
@@ -139,11 +139,9 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
     );
   }
 
-  Widget showNewProfile() {
-    return Image(
-        image: FileImage(_selectedImageProfil));
+  Widget showNewImg() {
+    return Image(image: FileImage(_selectedImageProfil));
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -192,61 +190,66 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
               ),
             ),
             Padding(
-                padding:
-                    EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
-                child: GestureDetector(
-                  onTap: () => selectImageProfil(),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Padding(
-                          padding:
-                              EdgeInsets.only(right: SizeConfig.blockWidth * 4),
-                          child: Container(
-                            height: (SizeConfig.screenWidth -
-                                    SizeConfig.blockWidth * 12) *
-                                0.3,
-                            width: (SizeConfig.screenWidth -
-                                    SizeConfig.blockWidth * 12) *
-                                0.3,
-                            decoration: BoxDecoration(
-                              color: SizeConfig.almostWhite,
+              padding: EdgeInsets.fromLTRB(0, SizeConfig.blockWidth * 4, 0, 0),
+              child: Row(
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () => selectImage(),
+                    child: Container(
+                      height: (SizeConfig.screenWidth -
+                          SizeConfig.blockWidth * 12) *
+                          0.3,
+                      width: (SizeConfig.screenWidth -
+                          SizeConfig.blockWidth * 12) *
+                          0.3,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: SizeConfig.almostWhite,
+                          width: 0,
+                        ),
+                        color: SizeConfig.almostWhite,
+                      ),
+                      child: _selectedImageProfil == null
+                          ? showDefaultImg()
+                          : showNewImg(),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: SizeConfig.blockWidth * 4),
+                    child: Container(
+                      height: (SizeConfig.screenWidth -
+                          SizeConfig.blockWidth * 12) *
+                          0.3,
+                      width: (SizeConfig.screenWidth -
+                          SizeConfig.blockWidth * 12) *
+                          0.7,
+                      alignment: Alignment.bottomCenter,
+                      child: TextFormField(
+                        controller: _notlarController,
+                        onChanged: (val) {
+                          setState(() => notlar = val);
+                        },
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        cursorColor: SizeConfig.green,
+                        decoration: InputDecoration(
+                          hintText: 'Bitki hakkında notlar...',
+                          hintStyle: SizeConfig.yaziHint,
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: SizeConfig.green,
                             ),
-                            child: _selectedImageProfil == null
-                                ? showDefaultProfile()
-                                : showNewProfile(),
                           ),
                         ),
-                        Container(
-                          height: (SizeConfig.screenWidth -
-                                  SizeConfig.blockWidth * 12) *
-                              0.3,
-                          width: (SizeConfig.screenWidth -
-                                  SizeConfig.blockWidth * 12) *
-                              0.7,
-                          alignment: Alignment.bottomCenter,
-                          child: TextFormField(
-                            controller: _notlarController,
-                            onChanged: (val) {
-                              setState(() => notlar = val);
-                            },
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
-                            cursorColor: SizeConfig.green,
-                            decoration: InputDecoration(
-                              hintText: 'Bitki hakkında notlar...',
-                              hintStyle: SizeConfig.yaziHint,
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: SizeConfig.green,
-                                ),
-                              ),
-                            ),
-                            style: SizeConfig.yaziAciklama,
-                          ),
-                        ),
-                      ]),
-                )),
+                        style: SizeConfig.yaziAciklama,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             Padding(
               padding: EdgeInsets.fromLTRB(
                   0, SizeConfig.blockWidth * 2, 0, SizeConfig.blockWidth * 4),
@@ -705,7 +708,7 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                         hatirlatici = hatirlaticiDropDown;
                         createdAt = DateTime.now().toString();
 
-                        await uploadImageProfil();
+                        await uploadImage();
 
                         await _bahcemService.sendPlant(
                             albumUrl,
