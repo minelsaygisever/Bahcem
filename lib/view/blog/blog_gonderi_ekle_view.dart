@@ -9,6 +9,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image/image.dart' as img;
 
 class BlogGonderiEkle extends StatefulWidget {
   @override
@@ -36,6 +37,8 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
 
   Future selectImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    var imageSmall = img.copyResize(img.decodeJpg(image.readAsBytesSync()), width: 300);
+    image.writeAsBytesSync(img.encodeJpg(imageSmall));
     //var image = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
       _selectedImage = image;
@@ -53,14 +56,18 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
   }
 
   Widget showDefaultImg() {
-    return Image(
-      image: AssetImage('assets/icons/postdef.png'),
-      fit: BoxFit.cover,
+    return Padding(
+      padding: EdgeInsets.all(SizeConfig.blockWidth * 15),
+      child: Image(
+        image: AssetImage('assets/icons/postdef.png'),
+        fit: BoxFit.cover,
+      ),
     );
   }
 
   Widget showNewImg() {
-    return Image(image: FileImage(_selectedImage));
+    return Image(image: FileImage(_selectedImage),
+      fit: BoxFit.cover,);
   }
 
   @override
@@ -115,7 +122,6 @@ class _BlogGonderiEkleState extends State<BlogGonderiEkle> {
                 height:
                     SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
                 width: SizeConfig.screenWidth - (SizeConfig.blockWidth * 8),
-                alignment: Alignment.center,
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: SizeConfig.almostWhite,

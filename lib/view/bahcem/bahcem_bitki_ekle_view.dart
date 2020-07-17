@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 import 'package:bahcem_deneme/SizeConfig.dart';
 import 'package:bahcem_deneme/main.dart';
 import 'package:bahcem_deneme/services/bahcem_service.dart';
@@ -7,7 +8,9 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/painting.dart';
 
 class BahcemBitkiEkle extends StatefulWidget {
   @override
@@ -112,6 +115,8 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
 
   Future selectImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    var imageSmall = img.copyResize(img.decodeJpg(image.readAsBytesSync()), width: 100);
+    image.writeAsBytesSync(img.encodeJpg(imageSmall));
     //var image = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
       _selectedImageProfil = image;
@@ -140,7 +145,8 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
   }
 
   Widget showNewImg() {
-    return Image(image: FileImage(_selectedImageProfil));
+    return Image(image: FileImage(_selectedImageProfil),
+      fit: BoxFit.cover,);
   }
 
   @override
@@ -202,7 +208,6 @@ class _BahcemBitkiEkleState extends State<BahcemBitkiEkle> {
                       width: (SizeConfig.screenWidth -
                           SizeConfig.blockWidth * 12) *
                           0.3,
-                      alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: SizeConfig.almostWhite,
